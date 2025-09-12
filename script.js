@@ -3,18 +3,62 @@ const portfolioData = {
     skills: [
         { id: '1', name: 'Incident & Escalation Lifecycle Management', level: 'Expert', icon: 'fas fa-exclamation-triangle' },
         { id: '2', name: 'Root-Cause Analysis & Permanent Resolution', level: 'Expert', icon: 'fas fa-search' },
-        { id: '3', name: 'Stakeholder Communication', level: 'Expert', icon: 'fas fa-comments' },
-        { id: '4', name: 'Escalation Process Optimization', level: 'Expert', icon: 'fas fa-chart-line' },
-        { id: '5', name: 'KPI Tracking & Reporting', level: 'Advanced', icon: 'fas fa-chart-bar' },
-        { id: '6', name: 'Customer Experience Monitoring', level: 'Advanced', icon: 'fas fa-user-friends' },
+        { id: '3', name: 'Stakeholder Communication (Customers, Product, Engineering, Support)', level: 'Expert', icon: 'fas fa-comments' },
+        { id: '4', name: 'Escalation Process Optimization & Efficiency Improvements', level: 'Expert', icon: 'fas fa-chart-line' },
+        { id: '5', name: 'KPI Tracking (SLA, NPS, CSAT) & Reporting', level: 'Advanced', icon: 'fas fa-chart-bar' },
+        { id: '6', name: 'Customer Experience & Satisfaction Monitoring', level: 'Advanced', icon: 'fas fa-user-friends' },
         { id: '7', name: 'Cross-Functional Collaboration', level: 'Expert', icon: 'fas fa-handshake' },
         { id: '8', name: 'ServiceNow', level: 'Advanced', icon: 'fas fa-cogs' },
-        { id: '9', name: 'Zendesk & Zendesk Explore', level: 'Advanced', icon: 'fas fa-headset' },
-        { id: '10', name: 'Tableau', level: 'Intermediate', icon: 'fas fa-chart-pie' },
+        { id: '9', name: 'Zendesk, Zendesk Explore', level: 'Advanced', icon: 'fas fa-headset' },
+        { id: '10', name: 'Tableau', level: 'Advanced', icon: 'fas fa-chart-pie' },
         { id: '11', name: 'Power Automate', level: 'Advanced', icon: 'fas fa-robot' },
-        { id: '12', name: 'Microsoft 365 Suite', level: 'Expert', icon: 'fab fa-microsoft' },
+        { id: '12', name: 'Microsoft 365 Suite (SPO & OneDrive)', level: 'Expert', icon: 'fab fa-microsoft' },
         { id: '13', name: 'SharePoint (all versions)', level: 'Advanced', icon: 'fas fa-share-alt' },
         { id: '14', name: 'Azure Fundamentals', level: 'Intermediate', icon: 'fab fa-microsoft' }
+    ],
+    experience: [
+        {
+            id: '1',
+            company: 'Microsoft',
+            location: 'Bengaluru',
+            position: 'Technical Advisor – Escalation Services',
+            duration: 'Aug 2018 – Present',
+            responsibilities: [
+                'Acted as the single point of contact for escalated incidents, ensuring intake, assessment, and impact analysis.',
+                'Led investigations for high-severity incidents, driving cross-functional collaboration with product, engineering, and customer support.',
+                'Managed escalation lifecycles, including ticket assignment, tracking, and stakeholder communication.',
+                'Designed remediation plans for escalations, tracked tasks to closure, and delivered updates to internal and external stakeholders.',
+                'Conducted trend analysis on escalations, identified recurring issues, and recommended permanent solutions to reduce future incidents.',
+                'Delivered service performance reports (SLA, customer satisfaction metrics) and presented insights during business reviews.',
+                'Implemented automation solutions (Power Automate, Copilot-integrated workflows) to streamline escalation tracking and reporting.',
+                'Mentored team members in incident handling, communication best practices, and customer engagement.'
+            ]
+        },
+        {
+            id: '2',
+            company: 'Accenture',
+            location: 'Australia',
+            position: 'Team Lead',
+            duration: 'Oct 2015 – Sep 2017',
+            responsibilities: [
+                'Directed onshore and offshore support teams, ensuring effective incident and escalation management for enterprise clients.',
+                'Acted as bridge between customers and technical teams, managing incident resolution and updates.',
+                'Coordinated with stakeholders to implement corrective actions, reducing recurrence of critical incidents.',
+                'Monitored SLA compliance, escalated risks, and provided detailed reports on incident performance and customer impact.'
+            ]
+        },
+        {
+            id: '3',
+            company: 'Accenture',
+            location: 'Australia',
+            position: 'Sr. Software Engineer',
+            duration: 'Jul 2008 – Aug 2013',
+            responsibilities: [
+                'Provided Tier 2 & Tier 3 application support for global clients, managing escalations and complex technical issues.',
+                'Partnered with business stakeholders to ensure service delivery aligned with business objectives.',
+                'Implemented improvements in escalation handling and reporting processes, improving efficiency and customer trust.'
+            ]
+        }
     ],
     education: [
         { id: '1', degree: 'MSc', school: 'Manipal University', year: '2010' },
@@ -57,7 +101,9 @@ const portfolioData = {
         { id: '1', title: 'Microsoft Spotlight Award – Performance', organization: 'Microsoft', date: '2024' },
         { id: '2', title: 'Microsoft Spotlight Award – Performance', organization: 'Microsoft', date: '2021' },
         { id: '3', title: 'Pulse Award – Culture', organization: 'Microsoft', date: '2022' },
-        { id: '4', title: 'ACE Award – Architects of Excellence', organization: 'Microsoft', date: '2019' }
+        { id: '4', title: 'ACE Award – Architects of Excellence', organization: 'Microsoft', date: '2019' },
+        { id: '5', title: 'Developed automation solutions for incident & escalation reporting and access provisioning', organization: 'Microsoft', date: 'Ongoing' },
+        { id: '6', title: 'Delivered customer success and escalation services for enterprise clients including NBN, Novo Nordisk, and Microsoft Corporation', organization: 'Various', date: 'Career-wide' }
     ],
     blogs: [
         {
@@ -132,6 +178,7 @@ function initializeNavigation() {
 function loadAllData() {
     renderSkills();
     renderEducation();
+    renderExperience();
     renderProjects();
     renderCertifications();
     renderAppreciations();
@@ -206,6 +253,61 @@ function renderEducation() {
         eduItem.appendChild(year);
         
         container.appendChild(eduItem);
+    });
+}
+
+// Experience rendering
+function renderExperience() {
+    const container = document.getElementById('experience-container');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    
+    portfolioData.experience.forEach(exp => {
+        const expItem = document.createElement('div');
+        expItem.className = 'experience-item';
+        
+        const expHeader = document.createElement('div');
+        expHeader.className = 'experience-header';
+        
+        const expTitle = document.createElement('div');
+        expTitle.className = 'experience-title';
+        
+        const position = document.createElement('h3');
+        position.className = 'experience-position';
+        safeSetText(position, exp.position);
+        
+        const company = document.createElement('div');
+        company.className = 'experience-company';
+        safeSetText(company, `${exp.company}, ${exp.location}`);
+        
+        const duration = document.createElement('div');
+        duration.className = 'experience-duration';
+        safeSetText(duration, exp.duration);
+        
+        expTitle.appendChild(position);
+        expTitle.appendChild(company);
+        expHeader.appendChild(expTitle);
+        expHeader.appendChild(duration);
+        
+        const expContent = document.createElement('div');
+        expContent.className = 'experience-content';
+        
+        const responsibilitiesList = document.createElement('ul');
+        responsibilitiesList.className = 'experience-responsibilities';
+        
+        exp.responsibilities.forEach(responsibility => {
+            const listItem = document.createElement('li');
+            safeSetText(listItem, responsibility);
+            responsibilitiesList.appendChild(listItem);
+        });
+        
+        expContent.appendChild(responsibilitiesList);
+        
+        expItem.appendChild(expHeader);
+        expItem.appendChild(expContent);
+        
+        container.appendChild(expItem);
     });
 }
 
