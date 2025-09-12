@@ -245,37 +245,6 @@ section {
     color: #7f8c8d;
 }
 
-.delete-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #e74c3c;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    display: none;
-}
-
-.edit-mode .delete-btn {
-    display: block;
-}
-
-.edit-mode .skill-card:hover .delete-btn,
-.edit-mode .project-card:hover .delete-btn,
-.edit-mode .education-item:hover .delete-btn,
-.edit-mode .achievement-card:hover .delete-btn,
-.edit-mode .blog-card:hover .delete-btn {
-    opacity: 1;
-}
-
-.edit-mode .admin-controls {
-    display: block !important;
-}
 
 /* Education Section */
 .education {
@@ -679,60 +648,7 @@ section {
     min-height: 100px;
 }
 
-/* Settings and Edit Mode Buttons */
-.settings-btn, .edit-mode-btn {
-    position: fixed;
-    background: #3498db;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    height: 50px;
-    font-size: 1rem;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-    transition: all 0.3s ease;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0 15px;
-}
 
-.settings-btn {
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    padding: 0;
-    justify-content: center;
-}
-
-.edit-mode-btn {
-    bottom: 30px;
-    right: 100px;
-    min-width: 80px;
-}
-
-.edit-mode-btn.active {
-    background: #e74c3c;
-}
-
-.edit-mode-btn.active:hover {
-    background: #c0392b;
-}
-
-.settings-btn:hover, .edit-mode-btn:hover {
-    background: #2980b9;
-    transform: scale(1.05);
-}
-
-.edit-mode-text {
-    font-weight: 600;
-}
-
-/* Admin Controls */
-.admin-controls {
-    text-align: center;
-}
 
 /* Animations */
 @keyframes fadeInUp {
@@ -822,10 +738,4 @@ section {
         margin: 10px;
     }
 
-    .settings-btn {
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-    }
 }
