@@ -48,11 +48,11 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="hero-title">Professional IT Engineer</h1>
-            <p class="hero-subtitle">Building innovative solutions with cutting-edge technology</p>
+            <h1 class="hero-title">Nagendra Jayaram</h1>
+            <p class="hero-subtitle">IT Professional with 18+ years of experience in customer-facing technical support, incident management, and escalation services</p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn-primary">Get In Touch</a>
-                <a href="#" id="linkedin-btn" class="btn-secondary">
+                <a href="https://linkedin.com/in/nagendra-jayaram" class="btn-secondary" target="_blank">
                     <i class="fab fa-linkedin"></i> LinkedIn Profile
                 </a>
             </div>
@@ -66,11 +66,6 @@
             <div class="skills-grid" id="skills-container">
                 <!-- Skills will be dynamically added here -->
             </div>
-            <div class="admin-controls" style="display: none;">
-                <button class="btn-add" onclick="openSkillModal()">
-                    <i class="fas fa-plus"></i> Add Skill
-                </button>
-            </div>
         </div>
     </section>
 
@@ -81,11 +76,6 @@
             <div class="education-timeline" id="education-container">
                 <!-- Education items will be dynamically added here -->
             </div>
-            <div class="admin-controls" style="display: none;">
-                <button class="btn-add" onclick="openEducationModal()">
-                    <i class="fas fa-plus"></i> Add Education
-                </button>
-            </div>
         </div>
     </section>
 
@@ -95,11 +85,6 @@
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid" id="projects-container">
                 <!-- Projects will be dynamically added here -->
-            </div>
-            <div class="admin-controls" style="display: none;">
-                <button class="btn-add" onclick="openProjectModal()">
-                    <i class="fas fa-plus"></i> Add Project
-                </button>
             </div>
         </div>
     </section>
@@ -116,20 +101,10 @@
                 <div class="achievements-grid" id="certifications-container">
                     <!-- Certifications will be dynamically added here -->
                 </div>
-                <div class="admin-controls" style="display: none;">
-                    <button class="btn-add" onclick="openCertificationModal()">
-                        <i class="fas fa-plus"></i> Add Certification
-                    </button>
-                </div>
             </div>
             <div class="tab-content" id="appreciations">
                 <div class="achievements-grid" id="appreciations-container">
                     <!-- Appreciations will be dynamically added here -->
-                </div>
-                <div class="admin-controls" style="display: none;">
-                    <button class="btn-add" onclick="openAppreciationModal()">
-                        <i class="fas fa-plus"></i> Add Appreciation
-                    </button>
                 </div>
             </div>
         </div>
@@ -141,11 +116,6 @@
             <h2 class="section-title">Blog Posts</h2>
             <div class="blogs-grid" id="blogs-container">
                 <!-- Blog posts will be dynamically added here -->
-            </div>
-            <div class="admin-controls" style="display: none;">
-                <button class="btn-add" onclick="openBlogModal()">
-                    <i class="fas fa-plus"></i> Add Blog Post
-                </button>
             </div>
         </div>
     </section>
@@ -159,17 +129,17 @@
                     <h3>Get In Touch</h3>
                     <p>Let's connect and discuss opportunities</p>
                     <div class="contact-links">
-                        <a href="#" id="contact-linkedin" class="contact-link">
+                        <a href="https://linkedin.com/in/nagendra-jayaram" class="contact-link" target="_blank">
                             <i class="fab fa-linkedin"></i>
                             <span>LinkedIn Profile</span>
                         </a>
-                        <a href="#" id="contact-email" class="contact-link">
+                        <a href="mailto:nagendra.jna@outlook.com" class="contact-link">
                             <i class="fas fa-envelope"></i>
-                            <span>Email</span>
+                            <span>nagendra.jna@outlook.com</span>
                         </a>
-                        <a href="#" id="contact-github" class="contact-link">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
+                        <a href="tel:+917406671111" class="contact-link">
+                            <i class="fas fa-phone"></i>
+                            <span>+91-7406671111</span>
                         </a>
                     </div>
                 </div>
@@ -177,64 +147,6 @@
         </div>
     </section>
 
-    <!-- Modals for adding content -->
-    <div id="modal-overlay" class="modal-overlay">
-        <div class="modal">
-            <div class="modal-header">
-                <h3 id="modal-title">Add Item</h3>
-                <button class="modal-close" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form id="modal-form">
-                    <!-- Form fields will be dynamically generated -->
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
-                <button type="submit" form="modal-form" class="btn-primary">Save</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Settings Modal for LinkedIn Profile -->
-    <div id="settings-modal" class="modal-overlay">
-        <div class="modal">
-            <div class="modal-header">
-                <h3>Profile Settings</h3>
-                <button class="modal-close" onclick="closeSettingsModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form id="settings-form">
-                    <div class="form-group">
-                        <label for="linkedin-url">LinkedIn Profile URL:</label>
-                        <input type="url" id="linkedin-url" name="linkedin-url" placeholder="https://linkedin.com/in/yourprofile">
-                    </div>
-                    <div class="form-group">
-                        <label for="email-address">Email Address:</label>
-                        <input type="email" id="email-address" name="email-address" placeholder="your.email@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="github-url">GitHub Profile URL:</label>
-                        <input type="url" id="github-url" name="github-url" placeholder="https://github.com/yourusername">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn-secondary" onclick="closeSettingsModal()">Cancel</button>
-                <button type="submit" form="settings-form" class="btn-primary">Save Settings</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Settings and Edit Mode Buttons -->
-    <button class="settings-btn" onclick="openSettingsModal()" title="Profile Settings">
-        <i class="fas fa-cog"></i>
-    </button>
-    
-    <button class="edit-mode-btn" onclick="toggleEditMode()" title="Toggle Edit Mode">
-        <i class="fas fa-edit"></i>
-        <span class="edit-mode-text">Edit</span>
-    </button>
 
     <script src="script.js"></script>
 </body>
