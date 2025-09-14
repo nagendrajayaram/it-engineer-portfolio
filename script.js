@@ -169,10 +169,21 @@ const portfolioData = {
             name: 'Microsoft',
             organization: 'Microsoft',
             duration: 'Aug 2018 - Till Date',
-            teamSize: '3',
-            role: 'Technical Advisor – Escalation Services',
-            technology: 'Office 365 products including SharePoint, Teams, Security, PowerApps, Power Automate, Azure IaaS: Virtual Machines, Virtual network, Load Balancer, Azure DNS, VPN Gateway, Azure CDN, Azure AD, Express Route, Azure Site Recovery, Backup, Disaster recovery, Scripting & Coding: C#, HTML5, CSS, Data Structures and Algorithms, PowerShell, Azure CLI, ARM templates',
-            description: 'Current role at Microsoft as Technical Advisor managing enterprise escalations and driving digital transformation initiatives.'
+            teamSize: '25',
+            role: 'Sr Technical Advisor – Escalation Services',
+            technology: 'Office 365 products including SharePoint Online & On-Prem, Teams, PowerApps, Power Automate.',
+            description: 'Current role at Microsoft Technical Advisor with 18+ years of enterprise technology leadership, I drive measurable business transformation by leading 20+ person teams to deliver 98% customer satisfaction across 500+ Fortune-level clients while engineering automation solutions that reduce processing time by 80% and resolve 40+ critical escalations monthly.',
+            responsibilities: [
+                'Resolved 40+ critical technical escalations monthly for Microsoft 365 collaboration tools (SharePoint Online, OneDrive, Copilot), achieving 98% customer satisfaction rate and reducing resolution time by 35%',
+                'Led cross-functional team of 20+ technical professionals supporting 500+ enterprise and Premier partner clients, consistently achieving 100% SLA compliance and green KPI scores across all performance metrics',
+                'Partnered with product and engineering teams to ensure 99.9% uptime during Microsoft 365 updates and launches, coordinating technical rollouts for enterprise clients',
+                'Engineered end-to-end automated solutions using Power Automate and Power Apps for critical internal processes, including India Tech-Summit registration and On-Call scheduling, resulting in 80% reduction in processing time and saving 200+ hours monthly',
+                'Developed comprehensive training programs that upskilled 50+ support engineers, achieving 25% improvement in first-call resolution rates and reducing team knowledge gaps by 60%',
+                'Implemented automation tools using PowerShell, Power Automate, and Copilot-integrated workflows that enhanced productivity by 40% and reduced manual workloads across support operations',
+                'Mentored 15+ junior engineers through regular one-on-one sessions, achieving 90% internal promotion rate and reducing team turnover by 40%',
+                'Established support KPI tracking framework using data-driven insights that improved service quality metrics by 30% and enhanced customer satisfaction scores',
+                'Provided advanced troubleshooting support for Microsoft Copilot implementations across 200+ enterprise environments, ensuring 95% successful adoption rate'
+            ]
         },
         {
             id: '2',
