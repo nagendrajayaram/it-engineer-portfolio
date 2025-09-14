@@ -102,30 +102,20 @@ const portfolioData = {
         { id: '2', degree: 'BACHELOR OF ENGINEERING, ELECTRONICS & COMMUNICATION', school: 'Dr. AIT, Visvesvaraya Technological University', year: '2006' },
         { id: '3', degree: 'DIPLOMA IN ELECTRONICS & COMMUNICATION', school: 'MEI Polytechnic', year: '2003' }
     ],
-    projects: [
+    contributions: [
         {
             id: '1',
-            title: 'Escalation Process Automation',
-            description: 'Developed automation solutions using Power Automate and Copilot-integrated workflows to streamline escalation tracking and reporting, improving efficiency and SLA adherence.',
-            technologies: 'Power Automate, Microsoft Copilot, SharePoint, Azure',
-            github: '',
-            demo: ''
-        },
-        {
-            id: '2',
-            title: 'Customer Service Analytics Dashboard',
-            description: 'Implemented comprehensive reporting and analytics solution using Tableau and Zendesk Explore for tracking SLA compliance, NPS, CSAT metrics and business performance insights.',
-            technologies: 'Tableau, Zendesk Explore, Power BI, ServiceNow',
-            github: '',
-            demo: ''
-        },
-        {
-            id: '3',
-            title: 'Enterprise Incident Management System',
-            description: 'Led the design and implementation of end-to-end incident management processes for global enterprise clients, reducing critical incident recurrence by implementing permanent solutions.',
-            technologies: 'ServiceNow, Zendesk, Microsoft 365, Azure',
-            github: '',
-            demo: ''
+            title: 'Formula AI League Core Team - Microsoft Global Hackathon 2024',
+            event: 'Microsoft Global Hackathon 2024 - Bengaluru, India',
+            description: 'Led core team to create an innovative AI-driven autonomous car racing event that became the crown jewel of Microsoft Global Hackathon 2024. Designed and built autonomous car entirely in-house using advanced LLM AI algorithms, organized transformative workshops for 100 participants across 12 teams, and executed flawless event management.',
+            impact: [
+                'Utilized advanced LLM AI algorithms to design autonomous car and race layout in-house at Garage Bengaluru, integrating 3D modeling, printing, and testing to deliver fully functional model',
+                'Organized transformative workshop for 100 participants across 12 teams, empowering them with AI-driven autonomous car concepts and fostering collaboration and innovation',
+                'Executed flawless logistics management, addressing participant needs and overcoming live event challenges while keeping participants engaged, inspired, and focused throughout the experience'
+            ],
+            technologies: 'LLM AI Algorithms, 3D Modeling, 3D Printing, Autonomous Vehicle Programming, Event Management',
+            participants: '100 participants across 12 teams',
+            feedback: 'Loved it. Best event during Hackathon. Very well organized platform of learning with awesome experience and loads of learnings.'
         }
     ],
     certifications: [
@@ -549,67 +539,88 @@ function renderAnnexure() {
     });
 }
 
-// Projects rendering
-function renderProjects() {
-    const container = document.getElementById('projects-container');
+// Contributions rendering
+function renderContributions() {
+    const container = document.getElementById('contributions-container');
     if (!container) return;
     
     container.innerHTML = '';
     
-    portfolioData.projects.forEach(project => {
-        const projectCard = document.createElement('div');
-        projectCard.className = 'project-card';
+    portfolioData.contributions.forEach(contribution => {
+        const contributionCard = document.createElement('div');
+        contributionCard.className = 'contribution-card';
         
-        const projectContent = document.createElement('div');
-        projectContent.className = 'project-content';
+        const contributionContent = document.createElement('div');
+        contributionContent.className = 'contribution-content';
         
-        const projectTitle = document.createElement('div');
-        projectTitle.className = 'project-title';
-        safeSetText(projectTitle, project.title);
+        const contributionTitle = document.createElement('div');
+        contributionTitle.className = 'contribution-title';
+        safeSetText(contributionTitle, contribution.title);
         
-        const projectDescription = document.createElement('div');
-        projectDescription.className = 'project-description';
-        safeSetText(projectDescription, project.description);
+        const contributionEvent = document.createElement('div');
+        contributionEvent.className = 'contribution-event';
+        safeSetText(contributionEvent, contribution.event);
         
-        const projectTech = document.createElement('div');
-        projectTech.className = 'project-tech';
-        if (project.technologies) {
-            project.technologies.split(',').forEach(tech => {
+        const contributionDescription = document.createElement('div');
+        contributionDescription.className = 'contribution-description';
+        safeSetText(contributionDescription, contribution.description);
+        
+        if (contribution.impact && contribution.impact.length > 0) {
+            const impactTitle = document.createElement('h4');
+            impactTitle.className = 'contribution-impact-title';
+            safeSetText(impactTitle, 'Key Impacts:');
+            
+            const impactList = document.createElement('ul');
+            impactList.className = 'contribution-impact';
+            
+            contribution.impact.forEach(impact => {
+                const listItem = document.createElement('li');
+                safeSetText(listItem, impact);
+                impactList.appendChild(listItem);
+            });
+            
+            contributionContent.appendChild(impactTitle);
+            contributionContent.appendChild(impactList);
+        }
+        
+        const contributionTech = document.createElement('div');
+        contributionTech.className = 'contribution-tech';
+        if (contribution.technologies) {
+            contribution.technologies.split(',').forEach(tech => {
                 const techTag = document.createElement('span');
                 techTag.className = 'tech-tag';
                 safeSetText(techTag, tech.trim());
-                projectTech.appendChild(techTag);
+                contributionTech.appendChild(techTag);
             });
         }
         
-        const projectLinks = document.createElement('div');
-        projectLinks.className = 'project-links';
-        
-        if (project.github) {
-            const githubLink = document.createElement('a');
-            githubLink.href = project.github;
-            githubLink.className = 'project-link';
-            githubLink.target = '_blank';
-            githubLink.innerHTML = '<i class="fab fa-github"></i> GitHub';
-            projectLinks.appendChild(githubLink);
+        if (contribution.participants) {
+            const participantsInfo = document.createElement('div');
+            participantsInfo.className = 'contribution-participants';
+            participantsInfo.innerHTML = '<i class="fas fa-users"></i> ';
+            const participantsText = document.createElement('span');
+            safeSetText(participantsText, contribution.participants);
+            participantsInfo.appendChild(participantsText);
+            contributionContent.appendChild(participantsInfo);
         }
         
-        if (project.demo) {
-            const demoLink = document.createElement('a');
-            demoLink.href = project.demo;
-            demoLink.className = 'project-link';
-            demoLink.target = '_blank';
-            demoLink.innerHTML = '<i class="fas fa-external-link-alt"></i> Live Demo';
-            projectLinks.appendChild(demoLink);
+        if (contribution.feedback) {
+            const feedbackSection = document.createElement('div');
+            feedbackSection.className = 'contribution-feedback';
+            feedbackSection.innerHTML = '<i class="fas fa-quote-left"></i> ';
+            const feedbackText = document.createElement('span');
+            safeSetText(feedbackText, contribution.feedback);
+            feedbackSection.appendChild(feedbackText);
+            contributionContent.appendChild(feedbackSection);
         }
         
-        projectContent.appendChild(projectTitle);
-        projectContent.appendChild(projectDescription);
-        projectContent.appendChild(projectTech);
-        projectContent.appendChild(projectLinks);
+        contributionContent.appendChild(contributionTitle);
+        contributionContent.appendChild(contributionEvent);
+        contributionContent.appendChild(contributionDescription);
+        contributionContent.appendChild(contributionTech);
         
-        projectCard.appendChild(projectContent);
-        container.appendChild(projectCard);
+        contributionCard.appendChild(contributionContent);
+        container.appendChild(contributionCard);
     });
 }
 
