@@ -39,6 +39,24 @@ body {
     height: 70px;
 }
 
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-logo .logo-image {
+    height: 40px;
+    width: 40px;
+    border-radius: 8px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo .logo-image:hover {
+    transform: scale(1.05);
+}
+
 .nav-logo .logo-text {
     font-size: 1.5rem;
     font-weight: bold;
