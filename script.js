@@ -17,25 +17,83 @@ const portfolioData = {
             id: '1',
             summary: 'PROFESSIONAL EXPERIENCE SUMMARY',
             content: `
-                <h3>Accomplished Microsoft Technology Leader with 18+ Years of Enterprise Excellence</h3>
+                <div class="experience-hero">
+                    <h3>Accomplished Microsoft Technology Leader</h3>
+                    <p class="experience-subtitle">18+ Years of Enterprise Excellence</p>
+                </div>
                 
-                <p>My career at Microsoft spans nearly two decades of progressive leadership, evolving from Software Engineer to Technical Advisor while consistently delivering exceptional results for enterprise clients and high-performing teams. Currently serving as Technical Advisor at Microsoft, I combine deep technical expertise with strategic business acumen to drive digital transformation initiatives across Fortune-level organizations.</p>
+                <div class="experience-overview">
+                    <p>My career at Microsoft spans nearly two decades of progressive leadership, evolving from Software Engineer to Technical Advisor while consistently delivering exceptional results for enterprise clients and high-performing teams. Currently serving as Technical Advisor at Microsoft, I combine deep technical expertise with strategic business acumen to drive digital transformation initiatives across Fortune-level organizations.</p>
+                </div>
                 
-                <p><strong>Leadership Excellence:</strong> I lead cross-functional teams of 20+ professionals, fostering a culture of innovation and continuous improvement that has achieved a 90% internal promotion rate among mentored engineers. My leadership philosophy centers on empowering teams to exceed expectations while maintaining the highest standards of technical excellence and customer service.</p>
+                <div class="experience-highlights">
+                    <div class="highlight-section">
+                        <div class="highlight-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>Leadership Excellence</h4>
+                            <p>I lead cross-functional teams of 20+ professionals, fostering a culture of innovation and continuous improvement that has achieved a 90% internal promotion rate among mentored engineers. My leadership philosophy centers on empowering teams to exceed expectations while maintaining the highest standards of technical excellence and customer service.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-section">
+                        <div class="highlight-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>Client Success Mastery</h4>
+                            <p>Managing relationships with 500+ enterprise clients, I've consistently maintained industry-leading 98% customer satisfaction rates. My approach to client success combines proactive problem-solving with strategic advisory services, ensuring clients maximize their Microsoft technology investments while achieving their business objectives.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-section">
+                        <div class="highlight-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>Operational Excellence</h4>
+                            <p>I excel at transforming complex technical challenges into streamlined business solutions. By engineering innovative automation frameworks using Power Platform and Azure technologies, I've delivered an 80% reduction in processing time, saving over 200 hours monthly while maintaining 100% SLA compliance across all performance metrics.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-section">
+                        <div class="highlight-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>Crisis Management Expertise</h4>
+                            <p>As a trusted escalation specialist, I resolve 40+ critical technical issues monthly, working directly with Microsoft product teams and engineering groups to deliver solutions that exceed client expectations. My systematic approach to problem-solving has improved first-call resolution rates by 25% across the organization.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-section">
+                        <div class="highlight-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>Strategic Technology Vision</h4>
+                            <p>Throughout my tenure, I've successfully led the implementation of cutting-edge Microsoft technologies including Copilot, Power Platform, SharePoint, and Azure across 200+ enterprise environments with a 95% successful adoption rate. My expertise spans the complete Microsoft ecosystem, from traditional infrastructure to modern AI-powered solutions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-section">
+                        <div class="highlight-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h4>Business Impact & Recognition</h4>
+                            <p>My work directly contributes to organizational success through measurable outcomes: reduced operational costs, improved efficiency metrics, enhanced customer satisfaction, and accelerated time-to-market for critical business initiatives. My commitment to excellence has been recognized through multiple Microsoft Spotlight Awards (2021, 2024), reflecting my dedication to innovation, leadership, and exceptional client service.</p>
+                        </div>
+                    </div>
+                </div>
                 
-                <p><strong>Client Success Mastery:</strong> Managing relationships with 500+ enterprise clients, I've consistently maintained industry-leading 98% customer satisfaction rates. My approach to client success combines proactive problem-solving with strategic advisory services, ensuring clients maximize their Microsoft technology investments while achieving their business objectives.</p>
-                
-                <p><strong>Operational Excellence:</strong> I excel at transforming complex technical challenges into streamlined business solutions. By engineering innovative automation frameworks using Power Platform and Azure technologies, I've delivered an 80% reduction in processing time, saving over 200 hours monthly while maintaining 100% SLA compliance across all performance metrics.</p>
-                
-                <p><strong>Crisis Management Expertise:</strong> As a trusted escalation specialist, I resolve 40+ critical technical issues monthly, working directly with Microsoft product teams and engineering groups to deliver solutions that exceed client expectations. My systematic approach to problem-solving has improved first-call resolution rates by 25% across the organization.</p>
-                
-                <p><strong>Strategic Technology Vision:</strong> Throughout my tenure, I've successfully led the implementation of cutting-edge Microsoft technologies including Copilot, Power Platform, SharePoint, and Azure across 200+ enterprise environments with a 95% successful adoption rate. My expertise spans the complete Microsoft ecosystem, from traditional infrastructure to modern AI-powered solutions.</p>
-                
-                <p><strong>Business Impact:</strong> My work directly contributes to organizational success through measurable outcomes: reduced operational costs, improved efficiency metrics, enhanced customer satisfaction, and accelerated time-to-market for critical business initiatives. I consistently deliver solutions that provide sustainable competitive advantages for enterprise clients.</p>
-                
-                <p><strong>Recognition & Awards:</strong> My commitment to excellence has been recognized through multiple Microsoft Spotlight Awards (2021, 2024), reflecting my dedication to innovation, leadership, and exceptional client service.</p>
-                
-                <p><strong>Forward-Looking Perspective:</strong> As technology continues to evolve, I remain at the forefront of Microsoft's strategic initiatives, particularly in AI integration, process automation, and enterprise digital transformation. My experience provides unique insights into both current enterprise challenges and emerging technology opportunities.</p>
+                <div class="experience-future">
+                    <div class="future-vision">
+                        <h4><i class="fas fa-rocket"></i> Forward-Looking Perspective</h4>
+                        <p>As technology continues to evolve, I remain at the forefront of Microsoft's strategic initiatives, particularly in AI integration, process automation, and enterprise digital transformation. My experience provides unique insights into both current enterprise challenges and emerging technology opportunities.</p>
+                    </div>
+                </div>
             `
         }
     ],
@@ -273,17 +331,20 @@ function initializeNavigation() {
         });
     });
 
-    // Smooth scrolling
+    // Smooth scrolling only for anchor links (starting with #)
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+            const href = link.getAttribute('href');
+            // Only apply smooth scrolling to anchor links, let regular page links work normally
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetSection = document.querySelector(href);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             }
         });
     });
