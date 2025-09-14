@@ -36,21 +36,22 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
+    height: 80px;
 }
 
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 15px;
 }
 
 .nav-logo .logo-image {
-    height: 40px;
-    width: 40px;
-    border-radius: 8px;
+    height: 60px;
+    width: 60px;
+    border-radius: 12px;
     object-fit: contain;
     transition: transform 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .nav-logo .logo-image:hover {
