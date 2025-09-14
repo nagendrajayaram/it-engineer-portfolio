@@ -40,9 +40,9 @@ const portfolioData = {
         }
     ],
     education: [
-        { id: '1', degree: 'MSc', school: 'Manipal University', year: '2010' },
-        { id: '2', degree: 'BE (Electronics & Communication)', school: 'Visvesvaraya Technological University', year: '2006' },
-        { id: '3', degree: 'Diploma (Electronics & Communication)', school: 'MEI Polytechnic', year: '2003' }
+        { id: '1', degree: 'MASTER OF SCIENCE', school: 'Manipal University', year: '2010' },
+        { id: '2', degree: 'BACHELOR OF ENGINEERING, ELECTRONICS & COMMUNICATION', school: 'Dr. AIT, Visvesvaraya Technological University', year: '2006' },
+        { id: '3', degree: 'DIPLOMA IN ELECTRONICS & COMMUNICATION', school: 'MEI Polytechnic', year: '2003' }
     ],
     projects: [
         {
@@ -71,18 +71,16 @@ const portfolioData = {
         }
     ],
     certifications: [
-        { id: '1', title: 'ITIL 4 Foundation', organization: 'AXELOS', date: '2023' },
-        { id: '2', title: 'AI-900: Azure AI Fundamentals', organization: 'Microsoft', date: '2024' },
-        { id: '3', title: 'AZ-900: Microsoft Azure Fundamentals', organization: 'Microsoft', date: '2023' },
-        { id: '4', title: 'Microsoft Certified: Azure Administrator Associate', organization: 'Microsoft', date: '2024' }
+        { id: '1', title: 'Microsoft Certified: AI-900 Azure AI Fundamentals', organization: 'Microsoft', date: '' },
+        { id: '2', title: 'Microsoft Certified: AZ-900 Microsoft Azure Fundamentals', organization: 'Microsoft', date: '' },
+        { id: '3', title: 'Microsoft Certified: Azure Administrator Associate', organization: 'Microsoft', date: '' },
+        { id: '4', title: 'ITIL 4 Foundation Certified', organization: 'AXELOS', date: '' }
     ],
     appreciations: [
-        { id: '1', title: 'Microsoft Spotlight Award – Performance', organization: 'Microsoft', date: '2024' },
-        { id: '2', title: 'Microsoft Spotlight Award – Performance', organization: 'Microsoft', date: '2021' },
-        { id: '3', title: 'Pulse Award – Culture', organization: 'Microsoft', date: '2022' },
-        { id: '4', title: 'ACE Award – Architects of Excellence', organization: 'Microsoft', date: '2019' },
-        { id: '5', title: 'Developed automation solutions for incident & escalation reporting and access provisioning', organization: 'Microsoft', date: 'Ongoing' },
-        { id: '6', title: 'Delivered customer success and escalation services for enterprise clients including NBN, Novo Nordisk, and Microsoft Corporation', organization: 'Various', date: 'Career-wide' }
+        { id: '1', title: 'Microsoft Spotlight Award – Performance Excellence', organization: 'Microsoft', date: 'March 2024' },
+        { id: '2', title: 'Microsoft Pulse Award – Culture Champion', organization: 'Microsoft', date: 'September 2022' },
+        { id: '3', title: 'Microsoft Spotlight Award – Performance Excellence', organization: 'Microsoft', date: 'September 2021' },
+        { id: '4', title: 'Architects of Excellence (ACE) Individual Award', organization: 'Microsoft', date: 'March 2019' }
     ],
     blogs: [
         {
@@ -105,6 +103,144 @@ const portfolioData = {
             excerpt: 'Strategies for effective stakeholder communication and collaboration between support, engineering, and product teams to drive root-cause analysis and solutions.',
             date: 'July 2024',
             url: ''
+        }
+    ],
+    annexure: [
+        {
+            id: '1',
+            name: 'Microsoft',
+            organization: 'Microsoft',
+            duration: 'Aug 2018 - Till Date',
+            teamSize: '3',
+            role: 'Technical Advisor – Escalation Services',
+            technology: 'Office 365 products including SharePoint, Teams, Security, PowerApps, Power Automate, Azure IaaS: Virtual Machines, Virtual network, Load Balancer, Azure DNS, VPN Gateway, Azure CDN, Azure AD, Express Route, Azure Site Recovery, Backup, Disaster recovery, Scripting & Coding: C#, HTML5, CSS, Data Structures and Algorithms, PowerShell, Azure CLI, ARM templates',
+            description: 'Current role at Microsoft as Technical Advisor managing enterprise escalations and driving digital transformation initiatives.'
+        },
+        {
+            id: '2',
+            name: 'NBN',
+            organization: 'Accenture Services and Accenture Australia',
+            duration: 'July 2013 – Aug 2018',
+            teamSize: '10',
+            role: 'Technical Lead/Offshore Delivery Lead / Team Lead/ Onshore Coordinator',
+            technology: 'SharePoint 2013, Azure, Blueprism, Intelledox, SQL, CLMx, Kofax, Nintex, C#, Angular Js, PowerShell, SharePoint Designer, Visual Studio, TFS and GitHub',
+            description: 'The NBNCO Document Management Solution (NDMS) is a web based document management system which acts a single source of truth for all NBNCo documents throughout their entire lifecycle. Employees, partners and access seekers can access NDMS either on the NBN network or from the internet using NBNCo credentials.',
+            responsibilities: [
+                'Led the team consisting of Developers and Application Support Members with offshore & onshore coordination',
+                'Managed Key Stakeholders & Business Owners of the Applications in Support',
+                'Worked as a Subject Matter Expert in Tier 2 & Tier 3 Application Support',
+                'Acted as the Single Point of Contact (SPOC) for all application related changes',
+                'Designed, Developed, Unit Testing and performed code Review as per the standards for application development and to meet the system requirements',
+                'Maintained the component design, technical design and operation guide',
+                'Performed Root Cause Analysis for major incidents and devised process enhancements to avoid such incidents',
+                'Administered transition process of the new application to support, review it as per the guidelines and quality standards',
+                'Reviewed incidents and guided team with action plan to fix the issues that customers facing',
+                'Conducted project and issue management (status reporting, issue reporting, ETC/budget reporting) for assigned scope of work; performed Code Review and share the feedback with the developer'
+            ]
+        },
+        {
+            id: '3',
+            name: 'Novo Nordisk',
+            organization: 'Accenture Services',
+            duration: 'Feb 2012 – Jun 2013',
+            teamSize: '10',
+            role: 'Technical Lead',
+            technology: 'SharePoint Server 2010, PowerShell Script, SharePoint Designer Workflow, Visual Studio, C# and TFS',
+            description: 'Migration of SharePoint 2007 to 2010',
+            responsibilities: [
+                'Identified technology limitations and deficiencies in existing systems and associated processes, procedures and methods',
+                'Converted the MOSS 2007 code base to the SharePoint 2010',
+                'Managed team, assisted in all the technical queries and delivery the modules',
+                'Creation of custom master page, content types, page layouts and custom timer jobs for the project',
+                'Creation of static page and adding web parts to a page',
+                'Creation of custom content management policy',
+                'Engaged in the solution deployment activity'
+            ]
+        },
+        {
+            id: '4',
+            name: 'Target',
+            organization: 'Accenture Services',
+            duration: 'Mar 2012 – Jan 2013',
+            teamSize: '7',
+            role: 'Technical Lead',
+            technology: 'SharePoint Server 2010, SharePoint Designer Workflow, Visual Studio, C# and TFS',
+            description: 'Developed the Collaboration, Publishing and Vendor Portal for the Client.',
+            responsibilities: [
+                'Participated in the design, design review, coding and peer review of the software',
+                'Wrote and maintained program code to meet system requirements, system designs and technical specifications in accordance with quality recognized standards',
+                'Developed sequential workflow with InfoPath to provision the site collection',
+                'Managed team, assisted in all the technical queries and delivery the modules (collaboration portal)',
+                'Worked on content types, Page Layouts and Event Handlers for the project',
+                'French Language Pack and provisioning French site'
+            ]
+        },
+        {
+            id: '5',
+            name: 'BMS',
+            organization: 'Accenture Services',
+            duration: 'May 2009 – Feb 2012',
+            teamSize: '7',
+            role: 'Senior Developer/Team Lead',
+            technology: 'SharePoint Server 2010, C#, Visual Studio and TFS',
+            description: 'Developed and maintained the Internet and Intranet Site for the BMS',
+            responsibilities: [
+                'Developed and maintained the client applications',
+                'Resolved the ticket in the short time of span and able to provide the root cause for most of the issues',
+                'Managed the team, assisted in all the technical queries and delivery the modules (Login, Registration, Profile and Contact Us)',
+                'Developed Custom web parts like picture rotator, Display my tasks for the approval workflow and Announcements',
+                'Developed Multi-level approval workflow for the intranet site',
+                'E-service platform (SOA Architecture) to the client which makes easy to launch a new brand',
+                'Server controls like (Registration, Login and profile) in the ESP project which can be customizable based on the brand requirement',
+                'Implemented site minder authentication for the ESP project which supports SOA'
+            ]
+        },
+        {
+            id: '6',
+            name: 'Telenor',
+            organization: 'Accenture Services',
+            duration: 'Jul 2008 - May 2009',
+            teamSize: '8',
+            role: 'Senior Developer',
+            technology: 'SharePoint Server 2007/2010, C#, Visual Studio and TFS',
+            description: 'Developed portal for the Telenor',
+            responsibilities: [
+                'Customized the Portal to suit the client requirement',
+                'Performed Testing, debugging, diagnosing and corrected errors and faults in an applications programming language within established testing protocols, guidelines and quality standards to ensure programs and applications perform to specification',
+                'Communicated with team and clients to happen the successful on time delivery',
+                'Provided advice, guidance and strategies for software design activities such as product upgrades',
+                'Participated in the analysis, coding & implementation'
+            ]
+        },
+        {
+            id: '7',
+            name: 'J & J',
+            organization: 'Wipro',
+            duration: 'May 2008 - Jun 2008',
+            teamSize: '3',
+            role: 'Developer',
+            technology: 'SharePoint Server 2007, C#, Visual Studio',
+            description: 'This Procurement portal is to provide a range of procurement information like the vendor details and providing rating for the vendors.'
+        },
+        {
+            id: '8',
+            name: 'General Motors',
+            organization: 'Wipro',
+            duration: 'Jan 2008 - Mar 2008',
+            teamSize: '4',
+            role: 'Developer',
+            technology: 'SharePoint Server 2007, SharePoint Designer, C#, Visual Studio',
+            description: 'This Procurement portal is to provide a range of procurement information like the vendor details and providing rating for the vendors.'
+        },
+        {
+            id: '9',
+            name: 'Microsoft Corporation',
+            organization: 'Wipro',
+            duration: 'May 2007 - Dec 2007',
+            teamSize: '11',
+            role: 'Technical Support Engineer',
+            technology: 'SharePoint Server 2007, SharePoint Designer',
+            description: 'This project provided administrative support for the Microsoft clients like Morgan Stanley, Bank of America, GE, and Samsung.'
         }
     ]
 };
@@ -158,10 +294,8 @@ function loadAllData() {
     renderSkills();
     renderEducation();
     renderExperience();
-    renderProjects();
     renderCertifications();
     renderAppreciations();
-    renderBlogs();
 }
 
 // Helper function to safely set text content
@@ -247,6 +381,99 @@ function renderExperience() {
         expItem.className = 'experience-item';
         expItem.innerHTML = exp.content;
         container.appendChild(expItem);
+    });
+}
+
+// Annexure rendering
+function renderAnnexure() {
+    const container = document.getElementById('annexure-container');
+    if (!container) return;
+    
+    container.innerHTML = '';
+    
+    portfolioData.annexure.forEach(project => {
+        const projectItem = document.createElement('div');
+        projectItem.className = 'annexure-item';
+        
+        const projectHeader = document.createElement('div');
+        projectHeader.className = 'annexure-header';
+        
+        const projectTitle = document.createElement('div');
+        projectTitle.className = 'annexure-title';
+        
+        const projectName = document.createElement('h3');
+        projectName.className = 'annexure-project-name';
+        safeSetText(projectName, project.name);
+        
+        const projectOrg = document.createElement('div');
+        projectOrg.className = 'annexure-organization';
+        safeSetText(projectOrg, project.organization);
+        
+        const projectRole = document.createElement('div');
+        projectRole.className = 'annexure-role';
+        safeSetText(projectRole, project.role);
+        
+        const projectDuration = document.createElement('div');
+        projectDuration.className = 'annexure-duration';
+        safeSetText(projectDuration, project.duration);
+        
+        const projectTeamSize = document.createElement('div');
+        projectTeamSize.className = 'annexure-team-size';
+        safeSetText(projectTeamSize, `Team Size: ${project.teamSize}`);
+        
+        projectTitle.appendChild(projectName);
+        projectTitle.appendChild(projectOrg);
+        projectTitle.appendChild(projectRole);
+        
+        const projectMeta = document.createElement('div');
+        projectMeta.className = 'annexure-meta';
+        projectMeta.appendChild(projectDuration);
+        projectMeta.appendChild(projectTeamSize);
+        
+        projectHeader.appendChild(projectTitle);
+        projectHeader.appendChild(projectMeta);
+        
+        const projectContent = document.createElement('div');
+        projectContent.className = 'annexure-content';
+        
+        const projectDescription = document.createElement('div');
+        projectDescription.className = 'annexure-description';
+        safeSetText(projectDescription, project.description);
+        
+        const projectTechnology = document.createElement('div');
+        projectTechnology.className = 'annexure-technology';
+        const techLabel = document.createElement('strong');
+        safeSetText(techLabel, 'Technology: ');
+        projectTechnology.appendChild(techLabel);
+        const techText = document.createElement('span');
+        safeSetText(techText, project.technology);
+        projectTechnology.appendChild(techText);
+        
+        projectContent.appendChild(projectDescription);
+        projectContent.appendChild(projectTechnology);
+        
+        if (project.responsibilities && project.responsibilities.length > 0) {
+            const responsibilitiesTitle = document.createElement('h4');
+            responsibilitiesTitle.className = 'annexure-responsibilities-title';
+            safeSetText(responsibilitiesTitle, 'Key Responsibilities:');
+            
+            const responsibilitiesList = document.createElement('ul');
+            responsibilitiesList.className = 'annexure-responsibilities';
+            
+            project.responsibilities.forEach(responsibility => {
+                const listItem = document.createElement('li');
+                safeSetText(listItem, responsibility);
+                responsibilitiesList.appendChild(listItem);
+            });
+            
+            projectContent.appendChild(responsibilitiesTitle);
+            projectContent.appendChild(responsibilitiesList);
+        }
+        
+        projectItem.appendChild(projectHeader);
+        projectItem.appendChild(projectContent);
+        
+        container.appendChild(projectItem);
     });
 }
 
