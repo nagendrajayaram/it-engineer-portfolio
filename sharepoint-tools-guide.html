@@ -229,287 +229,271 @@
             <p>This comprehensive guide covers the five essential tools every SharePoint Online administrator and developer should master. These tools form the foundation of effective SharePoint administration and are indispensable for maintaining enterprise-level environments.</p>
             
             <section id="search-query-tool" class="tool-section">
-                <h2><i class="fas fa-search"></i> 1. SharePoint Search Query Tool</h2>
+                <h2><i class="fas fa-search"></i> 1. GitHub Search Query Tool</h2>
                 
-                <p>The SharePoint Search Query Tool is a browser-based utility that provides direct access to SharePoint's search API. It's essential for testing search functionality, debugging query issues, and understanding search behavior.</p>
-                
-                <h3>Core Capabilities</h3>
-                <ul>
-                    <li><strong>KQL Testing:</strong> Test Keyword Query Language queries in real-time</li>
-                    <li><strong>Result Analysis:</strong> View detailed search results with metadata and relevance scores</li>
-                    <li><strong>Query Refinement:</strong> Test refiners, sort orders, and result trimming</li>
-                    <li><strong>People Search:</strong> Specialized interface for testing people and expertise queries</li>
-                    <li><strong>Query Suggestions:</strong> Test auto-complete and query suggestion functionality</li>
-                </ul>
-                
-                <h3>Access and Basic Usage</h3>
-                <div class="code-block">
-# Navigate to Search Query Tool
-https://[tenant].sharepoint.com/sites/[site]/_layouts/15/searchquerytool.aspx
-
-# Basic KQL Examples
-ContentClass:STS_ListItem_DocumentLibrary
-Author:"John Smith" AND FileExtension:pdf
-LastModifiedTime>=2025-09-01
-                </div>
+                <p>The GitHub Search Query Tool is an enhanced version of SharePoint's native search tool that provides comprehensive KQL testing and debugging capabilities. This community-maintained tool offers advanced features for testing search functionality, debugging query issues, and analyzing search behavior in SharePoint Online environments. It includes better error handling, enhanced result visualization, and additional debugging options not available in the standard SharePoint tool. The tool is actively maintained and regularly updated with new features based on community feedback.</p>
                 
                 <div class="feature-box">
-                    <h4><i class="fas fa-lightbulb"></i> Key Features</h4>
-                    <ul>
-                        <li><strong>Query Templates:</strong> Test pre-built query templates</li>
-                        <li><strong>Property Selection:</strong> Choose specific managed properties to return</li>
-                        <li><strong>Result Sources:</strong> Test different result sources and scopes</li>
-                        <li><strong>Query Rules:</strong> Understand how query rules affect results</li>
-                    </ul>
+                    <h4><i class="fas fa-external-link-alt"></i> Access the Tool</h4>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/SharePoint/sp-dev-solutions/tree/master/solutions/ColumnFormatter" target="_blank" rel="noopener noreferrer">SharePoint Search Query Tool</a></p>
+                    <p>Download and host locally or use the web-based version for immediate testing.</p>
                 </div>
                 
-                <h3>Advanced Query Examples</h3>
+                <h3>Usage Examples</h3>
                 <div class="code-block">
-# Search for recently modified documents by specific author
-Author:"Jane Doe" LastModifiedTime>=2025-09-08 ContentClass:STS_ListItem_DocumentLibrary
+# Test document library content
+ContentClass:STS_ListItem_DocumentLibrary
 
-# Find pages in specific site collections
-Path:"https://contoso.sharepoint.com/sites/marketing*" ContentClass:STS_Web
+# Search by author and file type
+Author:"John Smith" AND FileExtension:pdf
 
-# Search for content with specific managed properties
-Title:budget AND (FileExtension:xlsx OR FileExtension:pdf)
+# Find recently modified content
+LastModifiedTime>=2025-09-01
+
+# Search specific site paths
+Path:"https://contoso.sharepoint.com/sites/marketing*"
                 </div>
             </section>
             
             <section id="client-browser" class="tool-section">
                 <h2><i class="fas fa-globe"></i> 2. SharePoint Client Browser</h2>
                 
-                <p>SharePoint Client Browser is a powerful desktop application that provides low-level access to SharePoint's object model. It allows direct manipulation of SharePoint objects and is invaluable for deep administrative tasks.</p>
+                <p>SharePoint Client Browser is a powerful desktop application that provides low-level access to SharePoint's object model for advanced administrative tasks. It allows direct manipulation of SharePoint objects and provides hierarchical navigation through site collections, webs, lists, and items. The tool is essential for investigating complex permission scenarios, analyzing field schemas, and performing detailed object model operations. Use with caution as it provides direct access to SharePoint's underlying structure.</p>
                 
-                <h3>Core Functionality</h3>
-                <ul>
-                    <li><strong>Object Model Navigation:</strong> Browse through site collections, webs, lists, and items hierarchically</li>
-                    <li><strong>Property Inspection:</strong> View and edit object properties in real-time</li>
-                    <li><strong>Method Execution:</strong> Execute SharePoint object methods directly</li>
-                    <li><strong>Batch Operations:</strong> Perform operations on multiple objects simultaneously</li>
-                    <li><strong>Permission Analysis:</strong> Inspect complex permission inheritance chains</li>
-                </ul>
+                <div class="feature-box">
+                    <h4><i class="fas fa-external-link-alt"></i> Download and Setup</h4>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/SharePoint/PnP-Tools/tree/master/Solutions/SharePoint.Client.Browser" target="_blank" rel="noopener noreferrer">SharePoint Client Browser</a></p>
+                    <p>Download the latest release and install SharePoint Client Components SDK.</p>
+                </div>
                 
-                <h3>Installation Requirements</h3>
+                <h3>How to Use</h3>
                 <ol>
-                    <li>Download SharePoint Client Browser from official sources</li>
-                    <li>Install SharePoint Client Components SDK</li>
-                    <li>Configure authentication for SharePoint Online</li>
-                    <li>Ensure proper permissions for object model access</li>
+                    <li><strong>Install and Launch:</strong> Download from GitHub and run the application</li>
+                    <li><strong>Connect to Site:</strong> Enter your SharePoint Online site URL and authenticate</li>
+                    <li><strong>Navigate Objects:</strong> Browse through the hierarchical tree structure (Site > Webs > Lists > Items)</li>
+                    <li><strong>Inspect Properties:</strong> Select any object to view its properties and methods in the right panel</li>
+                    <li><strong>Execute Operations:</strong> Use read-only mode for investigation, modify mode for changes (with extreme caution)</li>
                 </ol>
                 
                 <div class="feature-box">
-                    <h4><i class="fas fa-shield-alt"></i> Safety Considerations</h4>
-                    <ul>
-                        <li><strong>Read-Only Mode:</strong> Use view-only mode for investigation</li>
-                        <li><strong>Backup Strategy:</strong> Always have backups before modifications</li>
-                        <li><strong>Test Environment:</strong> Practice in development environments first</li>
-                        <li><strong>Documentation:</strong> Record changes for audit trails</li>
-                    </ul>
+                    <h4><i class="fas fa-shield-alt"></i> Safety Warning</h4>
+                    <p><strong>Always use read-only mode for investigation.</strong> Test all operations in development environments before applying to production. Keep detailed documentation of any changes made.</p>
                 </div>
-                
-                <h3>Common Use Cases</h3>
-                <ul>
-                    <li><strong>Content Type Management:</strong> Modify content type definitions and inheritance</li>
-                    <li><strong>Field Schema Analysis:</strong> Examine field definitions and dependencies</li>
-                    <li><strong>Permission Troubleshooting:</strong> Investigate complex permission scenarios</li>
-                    <li><strong>List Configuration:</strong> Modify list settings and properties</li>
-                </ul>
             </section>
             
             <section id="fiddler" class="tool-section">
-                <h2><i class="fas fa-network-wired"></i> 3. Fiddler Web Debugger</h2>
+                <h2><i class="fas fa-network-wired"></i> 3. Network Traffic Analysis Tools</h2>
                 
-                <p>Fiddler is an HTTP debugging proxy that captures all web traffic between your browser and SharePoint Online. It's essential for understanding API calls, debugging authentication issues, and analyzing performance problems.</p>
+                <p>Network traffic analysis is crucial for debugging SharePoint Online issues, understanding API calls, and monitoring authentication flows. Use Fiddler for advanced debugging or browser developer tools for basic network analysis.</p>
                 
-                <h3>Setup for SharePoint Online</h3>
+                <div class="feature-box">
+                    <h4><i class="fas fa-download"></i> Download Fiddler</h4>
+                    <p><strong>Official Download:</strong> <a href="https://www.telerik.com/fiddler" target="_blank" rel="noopener noreferrer">Telerik Fiddler Classic or Fiddler Everywhere</a></p>
+                    <p>Choose Fiddler Classic for Windows or Fiddler Everywhere for cross-platform support.</p>
+                </div>
+                
+                <h3>Capturing Network Traces</h3>
+                
+                <h4>Method 1: Using Fiddler</h4>
                 <ol>
-                    <li>Download Fiddler Classic or Fiddler Everywhere</li>
-                    <li>Configure HTTPS decryption in Tools > Options > HTTPS</li>
-                    <li>Install and trust the Fiddler certificate</li>
-                    <li>Configure browser proxy settings if needed</li>
-                    <li>Set up filters for SharePoint-specific traffic</li>
+                    <li><strong>Install Fiddler:</strong> Download and install from the official website</li>
+                    <li><strong>Configure HTTPS:</strong> Tools > Options > HTTPS > Check "Capture HTTPS CONNECTs" and "Decrypt HTTPS traffic"</li>
+                    <li><strong>Install Certificate:</strong> Click "Install Certificate" and trust the Fiddler root certificate</li>
+                    <li><strong>Set Filters:</strong> Apply filters for SharePoint domains (*.sharepoint.com, *.microsoftonline.com)</li>
+                    <li><strong>Start Capture:</strong> Reproduce the issue while Fiddler captures all HTTP/HTTPS traffic</li>
                 </ol>
                 
-                <h3>Key Debugging Features</h3>
-                <ul>
-                    <li><strong>Request/Response Analysis:</strong> Inspect HTTP headers, payloads, and status codes</li>
-                    <li><strong>Authentication Tracking:</strong> Monitor OAuth flows and token exchanges</li>
-                    <li><strong>Performance Monitoring:</strong> Identify slow requests and bottlenecks</li>
-                    <li><strong>API Call Inspection:</strong> Monitor REST API calls and responses</li>
-                    <li><strong>Error Diagnosis:</strong> Capture detailed error responses</li>
-                </ul>
+                <h4>Method 2: Browser Developer Tools (Alternative)</h4>
+                <ol>
+                    <li><strong>Open Developer Tools:</strong> Press F12 in your browser</li>
+                    <li><strong>Navigate to Network Tab:</strong> Click on the "Network" tab</li>
+                    <li><strong>Enable Recording:</strong> Ensure recording is enabled (red circle)</li>
+                    <li><strong>Clear Existing:</strong> Click clear button to remove old entries</li>
+                    <li><strong>Reproduce Issue:</strong> Perform the action that causes the problem</li>
+                    <li><strong>Analyze Results:</strong> Review failed requests (red entries) and response codes</li>
+                </ol>
                 
+                <h3>SharePoint Correlation ID</h3>
+                <div class="feature-box">
+                    <h4><i class="fas fa-fingerprint"></i> Correlation ID Importance</h4>
+                    <p><strong>Critical for Support:</strong> Every SharePoint Online request generates a unique Correlation ID that Microsoft support uses to trace issues in their logs. Always capture this ID when reporting problems - it's found in error messages, HTTP response headers (SPRequestGuid), or ULS logs.</p>
+                </div>
+                
+                <h3>Common HTTP Response Codes in SharePoint</h3>
                 <div class="code-block">
-# Useful Fiddler Filters for SharePoint
-Host: *.sharepoint.com
-Host: *.microsoftonline.com
-Host: *.office.com
+# Success Codes
+200 OK - Request successful
+201 Created - Resource created successfully
+204 No Content - Successful DELETE operation
 
-# Filter by HTTP Methods
-Method: POST
-Method: GET
+# Client Error Codes  
+400 Bad Request - Invalid request syntax
+401 Unauthorized - Authentication required
+403 Forbidden - Access denied (permissions)
+404 Not Found - Resource doesn't exist
+409 Conflict - Resource already exists
+413 Payload Too Large - File size exceeds limits
 
-# Filter by Status Codes
-Status: 4**
-Status: 5**
+# Server Error Codes
+500 Internal Server Error - General server error
+503 Service Unavailable - Service temporarily down
+504 Gateway Timeout - Request timeout
                 </div>
                 
                 <div class="feature-box">
-                    <h4><i class="fas fa-tools"></i> Advanced Fiddler Features</h4>
-                    <ul>
-                        <li><strong>AutoResponder:</strong> Mock API responses for testing</li>
-                        <li><strong>Composer:</strong> Craft custom HTTP requests</li>
-                        <li><strong>Rules Engine:</strong> Automatically modify requests/responses</li>
-                        <li><strong>Extensions:</strong> Use specialized SharePoint analysis add-ons</li>
-                    </ul>
+                    <h4><i class="fas fa-filter"></i> Useful Filters for SharePoint Analysis</h4>
+                    <div class="code-block">
+# Fiddler Filters
+Host: *.sharepoint.com
+Host: *.microsoftonline.com  
+Host: *.office.com
+
+# Browser DevTools Filters
+- Filter by domain: sharepoint.com
+- Filter by status: 4xx, 5xx (errors only)
+- Filter by method: POST, PUT, DELETE
+                    </div>
                 </div>
             </section>
             
             <section id="management-shell" class="tool-section">
                 <h2><i class="fas fa-terminal"></i> 4. SharePoint Online Management Shell</h2>
                 
-                <p>SharePoint Online Management Shell provides comprehensive PowerShell-based administrative capabilities. It's the most powerful tool for bulk operations, automation, and advanced configuration tasks.</p>
+                <p>SharePoint Online Management Shell provides comprehensive PowerShell-based administrative capabilities for bulk operations, automation, and advanced configuration tasks. It's the most powerful tool for SharePoint Online administration, offering both traditional SPO cmdlets and modern PnP PowerShell modules. The tool supports modern authentication with MFA and provides extensive automation capabilities for enterprise environments. PowerShell is essential for tasks that cannot be performed through the web interface.</p>
                 
-                <h3>Installation and Setup</h3>
+                <h3>Connection Steps</h3>
                 <div class="code-block">
-# Install SharePoint Online PowerShell Module
-Install-Module -Name Microsoft.Online.SharePoint.PowerShell
+# Step 1: Install Required Modules
+Install-Module -Name Microsoft.Online.SharePoint.PowerShell -Force
+Install-Module -Name PnP.PowerShell -Force
 
-# Alternative: Install PnP PowerShell (recommended for modern scenarios)
-Install-Module PnP.PowerShell
+# Step 2: Connect to SharePoint Online Admin Center
+Connect-SPOService -Url https://[tenant]-admin.sharepoint.com
 
-# Connect to SharePoint Online Admin Center
-Connect-SPOService -Url https://contoso-admin.sharepoint.com
+# Step 3: Connect to Specific Site with PnP (Modern)
+Connect-PnPOnline -Url https://[tenant].sharepoint.com/sites/[sitename] -Interactive
 
-# Modern authentication with MFA support
-Connect-SPOService -Url https://contoso-admin.sharepoint.com -ModernAuth $true
-                </div>
-                
-                <h3>Core Administrative Cmdlets</h3>
-                
-                <h4>Site Collection Management</h4>
-                <div class="code-block">
-# Get site collection information
-Get-SPOSite -Identity https://contoso.sharepoint.com/sites/teamsite
-
-# Create new site collection
-New-SPOSite -Url https://contoso.sharepoint.com/sites/newsite -Owner admin@contoso.com -StorageQuota 1000 -Template "STS#3"
-
-# Set site collection properties
-Set-SPOSite -Identity https://contoso.sharepoint.com/sites/teamsite -StorageQuota 2000
-
-# Remove site collection
-Remove-SPOSite -Identity https://contoso.sharepoint.com/sites/oldsite
-                </div>
-                
-                <h4>User and Permission Management</h4>
-                <div class="code-block">
-# Add site collection administrator
-Set-SPOUser -Site https://contoso.sharepoint.com/sites/teamsite -LoginName user@contoso.com -IsSiteCollectionAdmin $true
-
-# Get site permissions
-Get-SPOSiteGroup -Site https://contoso.sharepoint.com/sites/teamsite
-
-# Manage external sharing
-Set-SPOSite -Identity https://contoso.sharepoint.com/sites/teamsite -SharingCapability ExternalUserSharingOnly
-                </div>
-                
-                <h4>Search Configuration</h4>
-                <div class="code-block">
-# Request site reindexing
-Request-SPOReIndexWeb -Identity https://contoso.sharepoint.com/sites/teamsite
-
-# Export search configuration
-Export-SPOSearchConfiguration -Owner "tenant" -Path "C:\SearchConfig.xml"
-
-# Import search configuration
-Import-SPOSearchConfiguration -Path "C:\SearchConfig.xml" -Owner "tenant"
+# Step 4: Verify Connection
+Get-SPOSite -Limit 5  # Test connection with admin cmdlets
+Get-PnPWeb            # Test connection with PnP cmdlets
                 </div>
                 
                 <div class="feature-box">
-                    <h4><i class="fas fa-rocket"></i> Modern PowerShell with PnP</h4>
+                    <h4><i class="fas fa-rocket"></i> Quick Command Examples</h4>
                     <div class="code-block">
-# Connect with PnP PowerShell
-Connect-PnPOnline -Url https://contoso.sharepoint.com/sites/teamsite -Interactive
+# Get site information
+Get-SPOSite -Identity https://contoso.sharepoint.com/sites/teamsite
 
-# Advanced list operations
-$lists = Get-PnPList | Where-Object {$_.Hidden -eq $false}
-Add-PnPListItem -List "Documents" -Values @{"Title"="New Document"}
+# Create new site collection  
+New-SPOSite -Url https://contoso.sharepoint.com/sites/newsite -Owner admin@contoso.com -StorageQuota 1000
 
-# Content type management
-$contentType = Get-PnPContentType -Identity "Document"
-Add-PnPContentTypeToList -List "Documents" -ContentType $contentType
+# Request site reindexing
+Request-SPOReIndexWeb -Identity https://contoso.sharepoint.com/sites/teamsite
+
+# Manage site permissions
+Set-SPOUser -Site https://contoso.sharepoint.com/sites/teamsite -LoginName user@contoso.com -IsSiteCollectionAdmin $true
                     </div>
                 </div>
             </section>
             
             <section id="self-diagnostics" class="tool-section">
-                <h2><i class="fas fa-stethoscope"></i> 5. Self-Diagnostics and Health Monitoring</h2>
+                <h2><i class="fas fa-stethoscope"></i> 5. Self-Diagnostics Before Contacting Support</h2>
                 
-                <p>SharePoint Online includes comprehensive built-in diagnostic and monitoring capabilities. These tools provide proactive insights into system health and performance trends.</p>
+                <p>Before reaching out to Microsoft Support, administrators should perform these self-diagnostic steps to identify and potentially resolve SharePoint Online issues independently. These diagnostic procedures can save time and often resolve common problems without requiring escalation.</p>
                 
-                <h3>Microsoft 365 Admin Center</h3>
+                <h3>Pre-Support Diagnostic Checklist</h3>
+                
+                <h4>1. Service Health Verification</h4>
                 <ul>
-                    <li><strong>Service Health Dashboard:</strong> Real-time service status and incident tracking</li>
-                    <li><strong>Message Center:</strong> Planned changes and feature announcements</li>
-                    <li><strong>Usage Reports:</strong> Detailed analytics on site and user activity</li>
-                    <li><strong>Security & Compliance:</strong> Security incident monitoring and compliance status</li>
+                    <li><strong>Check Service Health:</strong> Visit Microsoft 365 Admin Center > Health > Service Health to verify no known outages</li>
+                    <li><strong>Review Message Center:</strong> Check for recent service updates or planned maintenance</li>
+                    <li><strong>Validate Tenant Status:</strong> Ensure your tenant is in good standing with no billing issues</li>
                 </ul>
                 
-                <h3>SharePoint Admin Center Diagnostics</h3>
+                <h4>2. User Account and Permissions Analysis</h4>
                 <div class="code-block">
-# Access SharePoint Admin Center
-https://[tenant]-admin.sharepoint.com
+# PowerShell commands to check user status
+Connect-SPOService -Url https://[tenant]-admin.sharepoint.com
 
-# Key monitoring areas:
-- Active sites overview
-- Storage utilization across site collections
-- Sharing and external access policies
-- Search service health and indexing status
-- Migration tool status and history
+# Verify user exists and has proper licenses
+Get-SPOUser -Site https://[tenant].sharepoint.com/sites/[site] -LoginName user@domain.com
+
+# Check site collection administrators
+Get-SPOSite -Identity https://[tenant].sharepoint.com/sites/[site] | Select Owners
+
+# Validate external sharing settings
+Get-SPOSite -Identity https://[tenant].sharepoint.com/sites/[site] | Select SharingCapability
                 </div>
                 
-                <h3>Browser-Based Diagnostics</h3>
+                <h4>3. Site and Content Validation</h4>
                 <ul>
-                    <li><strong>F12 Developer Tools:</strong> Client-side performance and error analysis</li>
-                    <li><strong>Network Tab:</strong> Request timing and failure analysis</li>
-                    <li><strong>Console Monitoring:</strong> JavaScript errors and warnings</li>
-                    <li><strong>Performance Tab:</strong> Page load and rendering analysis</li>
+                    <li><strong>Test Different Browsers:</strong> Verify issue occurs in multiple browsers (Edge, Chrome, Firefox)</li>
+                    <li><strong>Incognito/Private Mode:</strong> Test in private browsing to rule out cache/cookie issues</li>
+                    <li><strong>Different Networks:</strong> Try accessing from different network connections</li>
+                    <li><strong>Mobile vs Desktop:</strong> Test on different device types</li>
                 </ul>
                 
+                <h4>4. Search and Indexing Issues</h4>
+                <div class="code-block">
+# Force site reindexing if search results are missing
+Connect-SPOService -Url https://[tenant]-admin.sharepoint.com
+Request-SPOReIndexWeb -Identity https://[tenant].sharepoint.com/sites/[site]
+
+# Check crawl status and last crawl time
+Get-SPOSite -Identity https://[tenant].sharepoint.com/sites/[site] -Detailed | Select LastContentModifiedDate
+                </div>
+                
+                <h4>5. Storage and Quota Analysis</h4>
+                <div class="code-block">
+# Check site storage usage and quotas
+$site = Get-SPOSite -Identity https://[tenant].sharepoint.com/sites/[site] -Detailed
+Write-Host "Storage Used: $($site.StorageUsageCurrent) MB"
+Write-Host "Storage Quota: $($site.StorageQuota) MB" 
+Write-Host "Percentage Used: $([math]::Round(($site.StorageUsageCurrent/$site.StorageQuota)*100,2))%"
+
+# Identify large lists that might cause performance issues
+Connect-PnPOnline -Url https://[tenant].sharepoint.com/sites/[site] -Interactive
+Get-PnPList | Where-Object {$_.ItemCount -gt 5000} | Select Title, ItemCount
+                </div>
+                
                 <div class="feature-box">
-                    <h4><i class="fas fa-chart-line"></i> Proactive Monitoring Setup</h4>
+                    <h4><i class="fas fa-clipboard-check"></i> Documentation for Support</h4>
+                    <p>If self-diagnostics don't resolve the issue, gather this information before contacting support:</p>
                     <ul>
-                        <li><strong>Health Check Scripts:</strong> Regular PowerShell health assessments</li>
-                        <li><strong>Usage Trend Analysis:</strong> Monitor storage and user activity trends</li>
-                        <li><strong>Performance Baselines:</strong> Establish normal performance metrics</li>
-                        <li><strong>Alert Configuration:</strong> Set up notifications for critical thresholds</li>
+                        <li><strong>Correlation ID:</strong> From error messages or HTTP headers (SPRequestGuid)</li>
+                        <li><strong>Exact Error Messages:</strong> Screenshots and full text of errors</li>
+                        <li><strong>Reproduction Steps:</strong> Detailed steps to reproduce the issue</li>
+                        <li><strong>User Impact:</strong> How many users affected and business impact</li>
+                        <li><strong>Environment Details:</strong> Browser versions, network setup, device types</li>
+                        <li><strong>Recent Changes:</strong> Any recent configuration changes or updates</li>
                     </ul>
                 </div>
                 
-                <h3>Custom Monitoring Solutions</h3>
+                <h3>Common Issue Quick Fixes</h3>
                 <div class="code-block">
-# PowerShell health check script example
-$sites = Get-SPOSite -Limit All
-$healthReport = @()
+# Fix: Site User ID Mismatch (similar to Microsoft Learn article)
+# This resolves issues where user permissions appear correct but access is denied
 
-foreach ($site in $sites) {
-    $siteInfo = Get-SPOSite -Identity $site.Url -Detailed
-    $storagePercent = ($siteInfo.StorageUsageCurrent / $siteInfo.StorageQuota) * 100
-    
-    if ($storagePercent -gt 80) {
-        $healthReport += [PSCustomObject]@{
-            Site = $site.Url
-            StorageUsed = $siteInfo.StorageUsageCurrent
-            StorageQuota = $siteInfo.StorageQuota
-            PercentUsed = [math]::Round($storagePercent, 2)
-            Status = "Warning"
-        }
-    }
-}
+# Step 1: Remove user from site
+Remove-SPOUser -Site https://[tenant].sharepoint.com/sites/[site] -LoginName user@domain.com
 
-$healthReport | Export-Csv -Path "SiteHealthReport.csv" -NoTypeInformation
+# Step 2: Clear any cached permissions
+Start-Sleep -Seconds 30
+
+# Step 3: Re-add user with proper permissions
+Add-SPOUser -Site https://[tenant].sharepoint.com/sites/[site] -LoginName user@domain.com -Group "Members"
+
+# Fix: Search Not Working
+Request-SPOReIndexWeb -Identity https://[tenant].sharepoint.com/sites/[site]
+
+# Fix: External Sharing Issues
+Set-SPOSite -Identity https://[tenant].sharepoint.com/sites/[site] -SharingCapability ExternalUserSharingOnly
+                </div>
+                
+                <div class="feature-box">
+                    <h4><i class="fas fa-link"></i> Reference</h4>
+                    <p><strong>Microsoft Learn:</strong> <a href="https://learn.microsoft.com/en-ca/troubleshoot/sharepoint/sharing-and-permissions/fix-site-user-id-mismatch" target="_blank" rel="noopener noreferrer">Fix site user ID mismatch in SharePoint Online</a></p>
+                    <p>Follow Microsoft's official troubleshooting procedures for systematic issue resolution.</p>
                 </div>
             </section>
             
