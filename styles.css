@@ -36,26 +36,70 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 90px;
 }
 
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
+}
+
+.logo-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav-logo .logo-image {
-    height: 60px;
-    width: 60px;
-    border-radius: 12px;
-    object-fit: contain;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    object-fit: cover;
     transition: transform 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 20px rgba(0,100,200,0.3);
+    border: 3px solid #fff;
+    position: relative;
+    z-index: 2;
 }
 
 .nav-logo .logo-image:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(0,100,200,0.4);
+}
+
+.rotating-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    animation: rotate 8s linear infinite;
+}
+
+.text-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 11px;
+    font-weight: bold;
+    color: #3498db;
+    transform-origin: 0 0;
+    transform: translate(-50%, -50%) rotate(var(--rotation)) translateY(-45px);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 .nav-logo .logo-text {
