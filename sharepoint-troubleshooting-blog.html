@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharePoint Online Troubleshooting Tools - Nagendra Jayaram</title>
+    <meta name="description" content="Comprehensive guide to essential SharePoint Online troubleshooting tools including Search Query Tool, SharePoint Client Browser, Fiddler, PowerShell, and self-diagnostics.">
+    <meta name="keywords" content="SharePoint Online, troubleshooting, Fiddler, PowerShell, Search Query Tool, Client Browser, Microsoft 365">
+    <meta name="author" content="Nagendra Jayaram">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .blog-post {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f1f3f4;
+        }
+        
+        .blog-post-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .blog-meta {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .blog-author {
+            color: #3498db;
+            font-weight: 600;
+        }
+        
+        .blog-tags {
+            margin-top: 15px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0 5px 5px 0;
+        }
+        
+        .blog-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c5aa0;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e3f2fd;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #34495e;
+            margin: 30px 0 15px 0;
+        }
+        
+        .blog-content h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4a90e2;
+            margin: 25px 0 10px 0;
+        }
+        
+        .blog-content p {
+            margin-bottom: 20px;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 20px;
+            padding-left: 30px;
+        }
+        
+        .blog-content li {
+            margin-bottom: 8px;
+        }
+        
+        .tool-section {
+            background: #f8f9fa;
+            border-left: 4px solid #4a90e2;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .troubleshooting-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .troubleshooting-box h4 {
+            color: #856404;
+            margin-top: 0;
+        }
+        
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .back-nav {
+            margin-bottom: 30px;
+        }
+        
+        .back-nav a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+        
+        .back-nav a:hover {
+            color: #2980b9;
+        }
+        
+        .toc {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .toc ul {
+            margin-bottom: 0;
+        }
+        
+        .toc a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-post {
+                padding: 20px 15px;
+            }
+            
+            .blog-post-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                font-size: 1rem;
+            }
+            
+            .tool-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-post">
+        <div class="back-nav">
+            <a href="details.html">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio Details
+            </a>
+        </div>
+        
+        <header class="blog-header">
+            <h1 class="blog-post-title">Essential SharePoint Online Troubleshooting Tools: A Complete Guide</h1>
+            <div class="blog-meta">
+                <span class="blog-author">By Nagendra Jayaram</span> • 
+                <span class="blog-date">September 15, 2025</span> • 
+                <span class="read-time">15 min read</span>
+            </div>
+            <div class="blog-tags">
+                <span class="tag">SharePoint Online</span>
+                <span class="tag">Troubleshooting</span>
+                <span class="tag">Microsoft 365</span>
+                <span class="tag">PowerShell</span>
+                <span class="tag">Fiddler</span>
+                <span class="tag">Diagnostics</span>
+            </div>
+        </header>
+        
+        <main class="blog-content">
+            <p>As a Microsoft Sr Technical Advisor with 18+ years of experience in enterprise environments, I've encountered virtually every SharePoint Online challenge imaginable. Whether you're dealing with search issues, authentication problems, or performance bottlenecks, having the right troubleshooting tools in your arsenal is crucial for efficient problem resolution.</p>
+            
+            <p>This comprehensive guide covers the five essential tools every SharePoint Online administrator and developer should master for effective troubleshooting and diagnostics.</p>
+            
+            <div class="toc">
+                <h3><i class="fas fa-list"></i> Table of Contents</h3>
+                <ul>
+                    <li><a href="#search-query-tool">1. SharePoint Search Query Tool</a></li>
+                    <li><a href="#client-browser">2. SharePoint Client Browser</a></li>
+                    <li><a href="#network-capture">3. Network Capture with Fiddler</a></li>
+                    <li><a href="#management-shell">4. SharePoint Online Management Shell</a></li>
+                    <li><a href="#self-diagnostics">5. Self-Diagnostics and Health Checks</a></li>
+                    <li><a href="#common-scenarios">Common Troubleshooting Scenarios</a></li>
+                    <li><a href="#best-practices">Best Practices and Tips</a></li>
+                </ul>
+            </div>
+            
+            <section id="search-query-tool" class="tool-section">
+                <h2><i class="fas fa-search"></i> 1. SharePoint Search Query Tool</h2>
+                
+                <p>The SharePoint Search Query Tool is an invaluable browser-based utility for testing and troubleshooting search functionality in SharePoint Online. It provides direct access to the search API without requiring custom code.</p>
+                
+                <h3>Key Features and Capabilities</h3>
+                <ul>
+                    <li><strong>Query Testing:</strong> Test KQL (Keyword Query Language) and search queries in real-time</li>
+                    <li><strong>Result Analysis:</strong> View detailed search results including metadata and relevance scores</li>
+                    <li><strong>Query Suggestions:</strong> Test auto-complete and query suggestion functionality</li>
+                    <li><strong>People Search:</strong> Specialized interface for testing people and expertise search</li>
+                </ul>
+                
+                <h3>How to Access and Use</h3>
+                <ol>
+                    <li>Navigate to your SharePoint Online site</li>
+                    <li>Append <code>/_layouts/15/searchquerytool.aspx</code> to your site URL</li>
+                    <li>Enter your KQL query in the query text box</li>
+                    <li>Configure additional parameters (select properties, result count, etc.)</li>
+                    <li>Execute the query and analyze results</li>
+                </ol>
+                
+                <div class="code-block">
+https://contoso.sharepoint.com/sites/yoursite/_layouts/15/searchquerytool.aspx
+                </div>
+                
+                <div class="troubleshooting-box">
+                    <h4><i class="fas fa-tools"></i> Common Search Issues to Troubleshoot:</h4>
+                    <ul>
+                        <li><strong>Content not appearing in search:</strong> Check crawl status and managed properties</li>
+                        <li><strong>Incorrect ranking:</strong> Analyze relevance scores and query processing</li>
+                        <li><strong>Performance issues:</strong> Test query response times and optimize KQL</li>
+                        <li><strong>People search problems:</strong> Verify user profile synchronization</li>
+                    </ul>
+                </div>
+                
+                <h3>Advanced Query Examples</h3>
+                <div class="code-block">
+# Search for documents by author
+Author:"John Smith" ContentClass:STS_ListItem_DocumentLibrary
+
+# Find pages modified in last week  
+LastModifiedTime>=2025-09-08 ContentClass:STS_Web
+
+# Search specific file types
+FileExtension:pdf OR FileExtension:docx
+                </div>
+            </section>
+            
+            <section id="client-browser" class="tool-section">
+                <h2><i class="fas fa-globe"></i> 2. SharePoint Client Browser</h2>
+                
+                <p>The SharePoint Client Browser is a desktop application that provides low-level access to SharePoint's object model, allowing administrators to browse, inspect, and modify SharePoint objects directly.</p>
+                
+                <h3>Core Functionality</h3>
+                <ul>
+                    <li><strong>Object Model Navigation:</strong> Browse through site collections, webs, lists, and items</li>
+                    <li><strong>Property Inspection:</strong> View and edit object properties in real-time</li>
+                    <li><strong>Method Execution:</strong> Execute SharePoint object methods directly</li>
+                    <li><strong>Batch Operations:</strong> Perform bulk operations on multiple objects</li>
+                </ul>
+                
+                <h3>Installation and Setup</h3>
+                <ol>
+                    <li>Download SharePoint Client Browser from CodePlex or GitHub</li>
+                    <li>Install on a machine with SharePoint Client Components</li>
+                    <li>Launch and connect using your SharePoint Online credentials</li>
+                    <li>Authenticate using modern authentication (OAuth)</li>
+                </ol>
+                
+                <div class="troubleshooting-box">
+                    <h4><i class="fas fa-exclamation-triangle"></i> When to Use Client Browser:</h4>
+                    <ul>
+                        <li><strong>Permission Issues:</strong> Investigate complex permission inheritance problems</li>
+                        <li><strong>Content Type Problems:</strong> Debug content type provisioning and inheritance</li>
+                        <li><strong>List Schema Issues:</strong> Examine field definitions and list configurations</li>
+                        <li><strong>Workflow Debugging:</strong> Inspect workflow associations and status</li>
+                    </ul>
+                </div>
+                
+                <h3>Best Practices for Safe Usage</h3>
+                <ul>
+                    <li>Always test in a development environment first</li>
+                    <li>Take screenshots/notes before making changes</li>
+                    <li>Understand the impact of modifications before executing</li>
+                    <li>Use read-only mode when possible for investigation</li>
+                </ul>
+            </section>
+            
+            <section id="network-capture" class="tool-section">
+                <h2><i class="fas fa-network-wired"></i> 3. Network Capture with Fiddler</h2>
+                
+                <p>Fiddler is a powerful HTTP debugging proxy that captures all HTTP(S) traffic between your computer and SharePoint Online. It's essential for troubleshooting authentication, API calls, and performance issues.</p>
+                
+                <h3>Setup for SharePoint Online</h3>
+                <ol>
+                    <li>Download and install Fiddler Classic or Fiddler Everywhere</li>
+                    <li>Configure HTTPS decryption in Tools > Options > HTTPS</li>
+                    <li>Install Fiddler certificate for HTTPS traffic inspection</li>
+                    <li>Configure browser proxy settings if needed</li>
+                </ol>
+                
+                <h3>Key Features for SharePoint Troubleshooting</h3>
+                <ul>
+                    <li><strong>Request/Response Analysis:</strong> Inspect HTTP headers, payloads, and status codes</li>
+                    <li><strong>Authentication Debugging:</strong> Monitor OAuth flows and token exchanges</li>
+                    <li><strong>Performance Monitoring:</strong> Identify slow requests and bottlenecks</li>
+                    <li><strong>API Call Tracking:</strong> Monitor REST API and GraphQL requests</li>
+                </ul>
+                
+                <div class="code-block">
+# Useful Fiddler Filters for SharePoint
+Host: *.sharepoint.com
+Host: *.microsoftonline.com
+Method: POST
+Status: 4**
+Status: 5**
+                </div>
+                
+                <div class="troubleshooting-box">
+                    <h4><i class="fas fa-bug"></i> Common Issues Fiddler Helps Diagnose:</h4>
+                    <ul>
+                        <li><strong>Authentication Failures:</strong> Track OAuth redirects and token validation</li>
+                        <li><strong>CORS Issues:</strong> Identify cross-origin request problems</li>
+                        <li><strong>API Errors:</strong> Capture detailed error responses from REST endpoints</li>
+                        <li><strong>Performance Problems:</strong> Measure request timing and identify slow operations</li>
+                        <li><strong>Upload Issues:</strong> Debug file upload failures and size limits</li>
+                    </ul>
+                </div>
+                
+                <h3>Advanced Fiddler Techniques</h3>
+                <ul>
+                    <li><strong>AutoResponder:</strong> Mock responses for testing scenarios</li>
+                    <li><strong>Composer:</strong> Craft custom HTTP requests for API testing</li>
+                    <li><strong>Rules:</strong> Automatically modify requests/responses</li>
+                    <li><strong>Extensions:</strong> Use specialized add-ons for SharePoint analysis</li>
+                </ul>
+            </section>
+            
+            <section id="management-shell" class="tool-section">
+                <h2><i class="fas fa-terminal"></i> 4. SharePoint Online Management Shell</h2>
+                
+                <p>SharePoint Online Management Shell is a PowerShell-based command-line tool that provides comprehensive administrative capabilities for SharePoint Online environments.</p>
+                
+                <h3>Installation and Connection</h3>
+                <div class="code-block">
+# Install SharePoint Online Module
+Install-Module -Name Microsoft.Online.SharePoint.PowerShell
+
+# Connect to SharePoint Online
+Connect-SPOService -Url https://contoso-admin.sharepoint.com
+
+# Modern authentication with MFA support
+Connect-SPOService -Url https://contoso-admin.sharepoint.com -ModernAuth $true
+                </div>
+                
+                <h3>Essential Troubleshooting Cmdlets</h3>
+                
+                <h4>Site Collection Management</h4>
+                <div class="code-block">
+# Get site collection information
+Get-SPOSite -Identity https://contoso.sharepoint.com/sites/teamsite
+
+# Check site collection storage and quota
+Get-SPOSite -Detailed | Select Url, StorageUsageCurrent, StorageQuota
+
+# Resolve site collection issues
+Repair-SPOSite -Identity https://contoso.sharepoint.com/sites/teamsite
+                </div>
+                
+                <h4>User and Permission Management</h4>
+                <div class="code-block">
+# Get site collection administrators
+Get-SPOSiteGroup -Site https://contoso.sharepoint.com/sites/teamsite
+
+# Add external user
+Add-SPOUser -Site https://contoso.sharepoint.com/sites/teamsite -LoginName user@external.com -Group "Members"
+
+# Check sharing settings
+Get-SPOSite -Identity https://contoso.sharepoint.com/sites/teamsite | Select SharingCapability
+                </div>
+                
+                <h4>Search and Content Management</h4>
+                <div class="code-block">
+# Trigger site reindexing
+Request-SPOReIndexWeb -Identity https://contoso.sharepoint.com/sites/teamsite
+
+# Check search schema
+Get-SPOSearchConfiguration -SearchObjectLevel SPSiteSubscription
+
+# Export search configuration
+Export-SPOSearchConfiguration -Owner "tenant"
+                </div>
+                
+                <div class="troubleshooting-box">
+                    <h4><i class="fas fa-lightbulb"></i> PowerShell Troubleshooting Scenarios:</h4>
+                    <ul>
+                        <li><strong>Bulk Permission Changes:</strong> Script permission modifications across multiple sites</li>
+                        <li><strong>Site Provisioning Issues:</strong> Automate site creation and configuration</li>
+                        <li><strong>Content Migration:</strong> Migrate content between site collections</li>
+                        <li><strong>Compliance and Auditing:</strong> Generate reports on site usage and permissions</li>
+                        <li><strong>Search Configuration:</strong> Manage search schemas and result sources</li>
+                    </ul>
+                </div>
+                
+                <h3>Modern PowerShell with PnP</h3>
+                <div class="code-block">
+# Install PnP PowerShell
+Install-Module PnP.PowerShell
+
+# Connect with modern authentication
+Connect-PnPOnline -Url https://contoso.sharepoint.com/sites/teamsite -Interactive
+
+# Advanced operations
+Get-PnPList | Where-Object {$_.Hidden -eq $false}
+Get-PnPFile -Url "/sites/teamsite/Shared Documents/document.pdf"
+                </div>
+            </section>
+            
+            <section id="self-diagnostics" class="tool-section">
+                <h2><i class="fas fa-stethoscope"></i> 5. Self-Diagnostics and Health Checks</h2>
+                
+                <p>SharePoint Online includes built-in diagnostic capabilities and health monitoring tools that provide insights into system performance and identify potential issues.</p>
+                
+                <h3>Microsoft 365 Admin Center Diagnostics</h3>
+                <ul>
+                    <li><strong>Service Health Dashboard:</strong> Monitor service incidents and advisories</li>
+                    <li><strong>Message Center:</strong> Stay informed about planned changes and updates</li>
+                    <li><strong>Usage Reports:</strong> Analyze SharePoint usage patterns and performance</li>
+                    <li><strong>Security & Compliance:</strong> Monitor security incidents and compliance status</li>
+                </ul>
+                
+                <h3>SharePoint Health Analyzer</h3>
+                <div class="code-block">
+# Access via SharePoint Admin Center
+https://[tenant]-admin.sharepoint.com/_layouts/15/online/AdminHome.aspx
+
+# Key areas to monitor:
+- Site collection health
+- Storage utilization
+- Sharing and external access
+- Search health and performance
+                </div>
+                
+                <h3>Browser-Based Diagnostics</h3>
+                <ul>
+                    <li><strong>Developer Tools:</strong> Use F12 tools for client-side debugging</li>
+                    <li><strong>Network Tab:</strong> Monitor request timing and failures</li>
+                    <li><strong>Console Errors:</strong> Identify JavaScript errors and warnings</li>
+                    <li><strong>Application Insights:</strong> Leverage telemetry for performance monitoring</li>
+                </ul>
+                
+                <div class="troubleshooting-box">
+                    <h4><i class="fas fa-chart-line"></i> Self-Diagnostic Checklist:</h4>
+                    <ul>
+                        <li><strong>Performance Baselines:</strong> Establish normal performance metrics</li>
+                        <li><strong>Regular Health Checks:</strong> Schedule periodic system assessments</li>
+                        <li><strong>User Experience Monitoring:</strong> Track page load times and user interactions</li>
+                        <li><strong>Proactive Alerting:</strong> Set up notifications for critical issues</li>
+                        <li><strong>Capacity Planning:</strong> Monitor storage and usage trends</li>
+                    </ul>
+                </div>
+                
+                <h3>Custom Monitoring Solutions</h3>
+                <div class="code-block">
+# PowerShell script for regular health checks
+$sites = Get-SPOSite -Limit All
+foreach ($site in $sites) {
+    $health = Get-SPOSite -Identity $site.Url -Detailed
+    if ($health.StorageUsageCurrent -gt ($health.StorageQuota * 0.8)) {
+        Write-Warning "Site $($site.Url) is approaching storage limit"
+    }
+}
+                </div>
+            </section>
+            
+            <section id="common-scenarios">
+                <h2><i class="fas fa-wrench"></i> Common Troubleshooting Scenarios</h2>
+                
+                <h3>Scenario 1: Search Results Not Appearing</h3>
+                <div class="troubleshooting-box">
+                    <h4><i class="fas fa-search"></i> Step-by-Step Resolution:</h4>
+                    <ol>
+                        <li><strong>Use Search Query Tool:</strong> Test if content is indexed using KQL queries</li>
+                        <li><strong>Check Fiddler:</strong> Monitor search API calls for errors</li>
+                        <li><strong>PowerShell Verification:</strong> Use <code>Request-SPOReIndexWeb</code> to force reindexing</li>
+                        <li><strong>Verify Permissions:</strong> Ensure search crawler has access to content</li>
+                    </ol>
+                </div>
+                
+                <h3>Scenario 2: Authentication and Access Issues</h3>
+                <div class="troubleshooting-box">
+                    <h4><i class="fas fa-lock"></i> Diagnostic Approach:</h4>
+                    <ol>
+                        <li><strong>Fiddler Analysis:</strong> Capture OAuth flow and identify failure points</li>
+                        <li><strong>Client Browser:</strong> Inspect user permissions and group memberships</li>
+                        <li><strong>PowerShell Checks:</strong> Verify external sharing settings and user status</li>
+                        <li><strong>Admin Center Review:</strong> Check security and compliance policies</li>
+                    </ol>
+                </div>
+                
+                <h3>Scenario 3: Performance and Loading Issues</h3>
+                <div class="troubleshooting-box">
+                    <h4><i class="fas fa-tachometer-alt"></i> Performance Investigation:</h4>
+                    <ol>
+                        <li><strong>Browser DevTools:</strong> Analyze page load waterfall and identify bottlenecks</li>
+                        <li><strong>Fiddler Timing:</strong> Measure server response times and request sizes</li>
+                        <li><strong>Health Diagnostics:</strong> Review site collection health and storage usage</li>
+                        <li><strong>PowerShell Optimization:</strong> Implement caching and optimize queries</li>
+                    </ol>
+                </div>
+            </section>
+            
+            <section id="best-practices">
+                <h2><i class="fas fa-star"></i> Best Practices and Tips</h2>
+                
+                <h3>Tool Selection Strategy</h3>
+                <ul>
+                    <li><strong>Start with Built-in Diagnostics:</strong> Always check service health and admin center first</li>
+                    <li><strong>Layer Your Approach:</strong> Use multiple tools to confirm findings</li>
+                    <li><strong>Document Everything:</strong> Keep detailed logs of troubleshooting steps</li>
+                    <li><strong>Test in Isolation:</strong> Reproduce issues in controlled environments</li>
+                </ul>
+                
+                <h3>Security Considerations</h3>
+                <ul>
+                    <li><strong>Principle of Least Privilege:</strong> Use minimal permissions for diagnostics</li>
+                    <li><strong>Secure Tool Access:</strong> Protect credentials and access tokens</li>
+                    <li><strong>Audit Trail:</strong> Maintain records of administrative actions</li>
+                    <li><strong>Compliance Awareness:</strong> Consider regulatory requirements when using tools</li>
+                </ul>
+                
+                <h3>Continuous Improvement</h3>
+                <ul>
+                    <li><strong>Stay Updated:</strong> Keep tools and modules current with latest versions</li>
+                    <li><strong>Share Knowledge:</strong> Document solutions for team reference</li>
+                    <li><strong>Automate Repetitive Tasks:</strong> Script common diagnostic procedures</li>
+                    <li><strong>Monitor Trends:</strong> Track recurring issues and implement preventive measures</li>
+                </ul>
+                
+                <div class="troubleshooting-box">
+                    <h4><i class="fas fa-graduation-cap"></i> Professional Development:</h4>
+                    <p>As organizations increasingly rely on SharePoint Online for critical business processes, mastering these troubleshooting tools becomes essential for maintaining operational excellence. Regular practice with these tools in non-production environments will build the expertise needed to resolve complex issues efficiently.</p>
+                </div>
+            </section>
+            
+            <h2><i class="fas fa-rocket"></i> Conclusion</h2>
+            <p>Effective SharePoint Online troubleshooting requires a comprehensive toolkit and systematic approach. By mastering the Search Query Tool, SharePoint Client Browser, Fiddler, PowerShell Management Shell, and built-in diagnostics, administrators can quickly identify root causes and implement solutions.</p>
+            
+            <p>The key to successful troubleshooting lies not just in knowing these tools, but in understanding when and how to apply them strategically. Each tool provides unique insights, and their combined use creates a powerful diagnostic capability that can address even the most complex SharePoint Online challenges.</p>
+            
+            <p>Remember: great troubleshooting is part art, part science. These tools provide the science – the systematic approach to gathering data and testing hypotheses. The art comes from experience, pattern recognition, and the ability to think creatively about problems.</p>
+            
+            <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid #f1f3f4;">
+                <p><strong>About the Author:</strong> Nagendra Jayaram is a Microsoft Sr Technical Advisor with 18+ years of enterprise experience and 98% customer satisfaction rating. He leads technical advisory services for 500+ Fortune companies and has resolved 40+ monthly escalations in Microsoft ecosystem environments.</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
