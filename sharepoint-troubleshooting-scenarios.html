@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharePoint Online Troubleshooting Scenarios - Nagendra Jayaram</title>
+    <meta name="description" content="Real-world SharePoint Online troubleshooting scenarios with step-by-step solutions using essential tools for common issues and problems.">
+    <meta name="keywords" content="SharePoint troubleshooting, scenarios, authentication, search, performance, Microsoft 365, solutions">
+    <meta name="author" content="Nagendra Jayaram">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .blog-post {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f1f3f4;
+        }
+        
+        .blog-post-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .blog-meta {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .blog-author {
+            color: #3498db;
+            font-weight: 600;
+        }
+        
+        .blog-tags {
+            margin-top: 15px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0 5px 5px 0;
+        }
+        
+        .blog-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #c0392b;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #fadbd8;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #34495e;
+            margin: 30px 0 15px 0;
+        }
+        
+        .blog-content h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4a90e2;
+            margin: 25px 0 10px 0;
+        }
+        
+        .blog-content p {
+            margin-bottom: 20px;
+        }
+        
+        .blog-content ul, .blog-content ol {
+            margin-bottom: 20px;
+            padding-left: 30px;
+        }
+        
+        .blog-content li {
+            margin-bottom: 8px;
+        }
+        
+        .scenario-section {
+            background: #fef9e7;
+            border-left: 4px solid #f39c12;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .solution-box {
+            background: #eafaf1;
+            border: 1px solid #a9dfbf;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .solution-box h4 {
+            color: #196f3d;
+            margin-top: 0;
+        }
+        
+        .warning-box {
+            background: #fdedec;
+            border: 1px solid #f1948a;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .warning-box h4 {
+            color: #c0392b;
+            margin-top: 0;
+        }
+        
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .step-by-step {
+            background: #ebf3fd;
+            border: 1px solid #3498db;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .step-by-step h4 {
+            color: #2980b9;
+            margin-top: 0;
+        }
+        
+        .step-by-step ol {
+            margin-bottom: 0;
+        }
+        
+        .step-by-step li {
+            margin-bottom: 12px;
+            padding-left: 10px;
+        }
+        
+        .back-nav {
+            margin-bottom: 30px;
+        }
+        
+        .back-nav a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+        
+        .back-nav a:hover {
+            color: #2980b9;
+        }
+        
+        .related-content {
+            background: #e8f6f3;
+            border: 1px solid #a3e4d7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .related-content h3 {
+            color: #0e6655;
+            margin-top: 0;
+        }
+        
+        .related-link {
+            display: inline-block;
+            background: #16a085;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .related-link:hover {
+            background: #138d75;
+        }
+        
+        .toc {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .toc ul {
+            margin-bottom: 0;
+        }
+        
+        .toc a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-post {
+                padding: 20px 15px;
+            }
+            
+            .blog-post-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                font-size: 1rem;
+            }
+            
+            .scenario-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-post">
+        <div class="back-nav">
+            <a href="details.html">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio Details
+            </a>
+        </div>
+        
+        <header class="blog-header">
+            <h1 class="blog-post-title">SharePoint Online Troubleshooting Scenarios: Real-World Solutions</h1>
+            <div class="blog-meta">
+                <span class="blog-author">By Nagendra Jayaram</span> • 
+                <span class="blog-date">September 15, 2025</span> • 
+                <span class="read-time">12 min read</span>
+            </div>
+            <div class="blog-tags">
+                <span class="tag">Troubleshooting</span>
+                <span class="tag">SharePoint Issues</span>
+                <span class="tag">Problem Solving</span>
+                <span class="tag">Technical Solutions</span>
+                <span class="tag">Best Practices</span>
+            </div>
+        </header>
+        
+        <main class="blog-content">
+            <p>After resolving 40+ critical SharePoint Online escalations monthly and achieving 98% customer satisfaction across 500+ enterprise clients, I've encountered virtually every SharePoint issue imaginable. This guide shares proven troubleshooting methodologies and step-by-step solutions for the most common SharePoint Online problems.</p>
+            
+            <p>Each scenario includes diagnostic approaches, tool usage strategies, and permanent resolution techniques based on real-world enterprise environments.</p>
+            
+            <div class="related-content">
+                <h3><i class="fas fa-tools"></i> Prerequisites</h3>
+                <p>This guide assumes familiarity with SharePoint tools. If you need to learn about the tools first:</p>
+                <a href="sharepoint-tools-guide.html" class="related-link">
+                    <i class="fas fa-arrow-left"></i>
+                    SharePoint Tools Guide
+                </a>
+            </div>
+            
+            <div class="toc">
+                <h3><i class="fas fa-list"></i> Troubleshooting Scenarios</h3>
+                <ul>
+                    <li><a href="#search-issues">1. Search Results Not Appearing</a></li>
+                    <li><a href="#authentication-issues">2. Authentication and Access Problems</a></li>
+                    <li><a href="#performance-issues">3. Performance and Loading Problems</a></li>
+                    <li><a href="#upload-issues">4. File Upload and Sync Issues</a></li>
+                    <li><a href="#permission-issues">5. Complex Permission Problems</a></li>
+                    <li><a href="#workflow-issues">6. Workflow and Automation Failures</a></li>
+                </ul>
+            </div>
+            
+            <section id="search-issues" class="scenario-section">
+                <h2><i class="fas fa-search"></i> Scenario 1: Search Results Not Appearing</h2>
+                
+                <h3>Problem Description</h3>
+                <p>Users report that recently uploaded documents or modified content is not appearing in search results, even after waiting several hours. This is one of the most common SharePoint issues in enterprise environments.</p>
+                
+                <div class="step-by-step">
+                    <h4><i class="fas fa-clipboard-list"></i> Diagnostic Steps</h4>
+                    <ol>
+                        <li><strong>Verify Content Indexing Status</strong>
+                            <ul>
+                                <li>Use Search Query Tool to test if content exists in index</li>
+                                <li>Check if managed properties are configured correctly</li>
+                                <li>Verify crawl permissions and security trimming</li>
+                            </ul>
+                        </li>
+                        <li><strong>Test with Search Query Tool</strong>
+                            <div class="code-block">
+# Navigate to Search Query Tool
+https://[tenant].sharepoint.com/sites/[site]/_layouts/15/searchquerytool.aspx
+
+# Test specific document by URL
+Path:"https://contoso.sharepoint.com/sites/marketing/Documents/Budget2025.xlsx"
+
+# Test by content properties
+Author:"John Smith" AND LastModifiedTime>=2025-09-14
+                            </div>
+                        </li>
+                        <li><strong>Monitor with Fiddler</strong>
+                            <ul>
+                                <li>Capture search API calls during user searches</li>
+                                <li>Check for HTTP errors or authentication issues</li>
+                                <li>Verify query processing and result filtering</li>
+                            </ul>
+                        </li>
+                        <li><strong>PowerShell Verification</strong>
+                            <div class="code-block">
+# Force site reindexing
+Request-SPOReIndexWeb -Identity https://contoso.sharepoint.com/sites/marketing
+
+# Check search configuration
+Get-SPOSearchConfiguration -SearchObjectLevel SPSiteSubscription
+
+# Verify site collection search settings
+Get-SPOSite -Identity https://contoso.sharepoint.com/sites/marketing | Select NoScriptSite, SearchScope
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="solution-box">
+                    <h4><i class="fas fa-check-circle"></i> Resolution Steps</h4>
+                    <ol>
+                        <li><strong>Immediate Actions:</strong>
+                            <ul>
+                                <li>Request site reindexing using PowerShell</li>
+                                <li>Verify document library allows search crawling</li>
+                                <li>Check item-level permissions don't block search</li>
+                            </ul>
+                        </li>
+                        <li><strong>Long-term Solutions:</strong>
+                            <ul>
+                                <li>Configure search managed properties for custom columns</li>
+                                <li>Set up result sources for scoped searches</li>
+                                <li>Implement query rules for improved relevance</li>
+                            </ul>
+                        </li>
+                        <li><strong>Monitoring Setup:</strong>
+                            <ul>
+                                <li>Create search health monitoring scripts</li>
+                                <li>Set up alerts for crawl failures</li>
+                                <li>Document search performance baselines</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="warning-box">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Common Pitfalls</h4>
+                    <ul>
+                        <li><strong>NoScript Sites:</strong> Custom scripts can interfere with search crawling</li>
+                        <li><strong>Permission Changes:</strong> Modified permissions may require reindexing</li>
+                        <li><strong>Large Files:</strong> Files over 100MB may not be fully indexed</li>
+                        <li><strong>Metadata Issues:</strong> Corrupted metadata can prevent indexing</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="authentication-issues" class="scenario-section">
+                <h2><i class="fas fa-lock"></i> Scenario 2: Authentication and Access Problems</h2>
+                
+                <h3>Problem Description</h3>
+                <p>Users experience authentication loops, access denied errors, or inconsistent sign-in behavior when accessing SharePoint sites, especially with external sharing or multi-tenant scenarios.</p>
+                
+                <div class="step-by-step">
+                    <h4><i class="fas fa-clipboard-list"></i> Diagnostic Approach</h4>
+                    <ol>
+                        <li><strong>Capture Authentication Flow with Fiddler</strong>
+                            <div class="code-block">
+# Key URLs to monitor in Fiddler
+Host: *.microsoftonline.com
+Host: *.sharepoint.com
+Host: *.office.com
+
+# Look for these authentication endpoints
+/oauth20/authorize
+/oauth20/token
+/api/signin
+/trust/oauth20/
+
+# Check for HTTP status codes
+401 - Unauthorized
+403 - Forbidden
+302 - Redirects (normal in OAuth flow)
+                            </div>
+                        </li>
+                        <li><strong>Analyze Browser Developer Tools</strong>
+                            <ul>
+                                <li>Check console for JavaScript errors</li>
+                                <li>Monitor network tab for failed requests</li>
+                                <li>Inspect cookies and local storage</li>
+                                <li>Verify correct tenant context</li>
+                            </ul>
+                        </li>
+                        <li><strong>PowerShell User Verification</strong>
+                            <div class="code-block">
+# Check user status and permissions
+Get-SPOUser -Site https://contoso.sharepoint.com/sites/teamsite -LoginName user@external.com
+
+# Verify sharing settings
+Get-SPOSite -Identity https://contoso.sharepoint.com/sites/teamsite | Select SharingCapability
+
+# Check tenant sharing configuration
+Get-SPOTenant | Select SharingCapability, RequireAcceptingAccountMatchInvitedAccount
+                            </div>
+                        </li>
+                        <li><strong>SharePoint Client Browser Analysis</strong>
+                            <ul>
+                                <li>Connect to site and examine user object</li>
+                                <li>Check group memberships and permissions</li>
+                                <li>Verify user principal name and claims</li>
+                                <li>Inspect permission inheritance chains</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="solution-box">
+                    <h4><i class="fas fa-check-circle"></i> Resolution Strategy</h4>
+                    <ol>
+                        <li><strong>Authentication Issues:</strong>
+                            <ul>
+                                <li>Clear browser cache and cookies</li>
+                                <li>Verify conditional access policies</li>
+                                <li>Check multi-factor authentication requirements</li>
+                                <li>Validate tenant guest access settings</li>
+                            </ul>
+                        </li>
+                        <li><strong>External User Problems:</strong>
+                            <div class="code-block">
+# Re-invite external user
+New-SPOSiteGroup -Site https://contoso.sharepoint.com/sites/teamsite -Group "External Users" -PermissionLevels "Read"
+Add-SPOUser -Site https://contoso.sharepoint.com/sites/teamsite -LoginName user@external.com -Group "External Users"
+
+# Check invitation acceptance requirement
+Set-SPOTenant -RequireAcceptingAccountMatchInvitedAccount $false
+                            </div>
+                        </li>
+                        <li><strong>Permission Resolution:</strong>
+                            <ul>
+                                <li>Break permission inheritance if needed</li>
+                                <li>Grant explicit permissions rather than group inheritance</li>
+                                <li>Verify user account is active in Azure AD</li>
+                                <li>Check for conflicting security policies</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="warning-box">
+                    <h4><i class="fas fa-shield-alt"></i> Security Considerations</h4>
+                    <ul>
+                        <li><strong>Conditional Access:</strong> Verify policies don't block legitimate access</li>
+                        <li><strong>Guest Settings:</strong> Balance security with collaboration needs</li>
+                        <li><strong>Domain Restrictions:</strong> Check if domain-based restrictions apply</li>
+                        <li><strong>Legacy Authentication:</strong> Ensure modern authentication is enabled</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="performance-issues" class="scenario-section">
+                <h2><i class="fas fa-tachometer-alt"></i> Scenario 3: Performance and Loading Problems</h2>
+                
+                <h3>Problem Description</h3>
+                <p>SharePoint pages load slowly, timeouts occur during large operations, or users experience degraded performance during peak usage times.</p>
+                
+                <div class="step-by-step">
+                    <h4><i class="fas fa-clipboard-list"></i> Performance Investigation</h4>
+                    <ol>
+                        <li><strong>Browser Performance Analysis</strong>
+                            <ul>
+                                <li>Use F12 Developer Tools Performance tab</li>
+                                <li>Analyze page load waterfall in Network tab</li>
+                                <li>Identify slow-loading resources and API calls</li>
+                                <li>Check for JavaScript errors affecting performance</li>
+                            </ul>
+                        </li>
+                        <li><strong>Fiddler Timing Analysis</strong>
+                            <div class="code-block">
+# Monitor these performance indicators in Fiddler
+- Time To First Byte (TTFB)
+- Overall request duration
+- Payload size and compression
+- Number of concurrent requests
+
+# Look for slow endpoints
+/_api/web/lists
+/_vti_bin/client.svc/ProcessQuery
+/_layouts/15/
+                            </div>
+                        </li>
+                        <li><strong>SharePoint Health Diagnostics</strong>
+                            <ul>
+                                <li>Check site collection storage utilization</li>
+                                <li>Monitor list view threshold violations</li>
+                                <li>Verify search service performance</li>
+                                <li>Review recent administrative changes</li>
+                            </ul>
+                        </li>
+                        <li><strong>PowerShell Performance Checks</strong>
+                            <div class="code-block">
+# Check site collection health
+Get-SPOSite -Detailed | Where-Object {$_.StorageUsageCurrent -gt 1000} | Select Url, StorageUsageCurrent
+
+# Monitor large lists
+Connect-PnPOnline -Url https://contoso.sharepoint.com/sites/teamsite -Interactive
+Get-PnPList | Where-Object {$_.ItemCount -gt 5000} | Select Title, ItemCount
+
+# Check view performance
+$list = Get-PnPList -Identity "Large List"
+$view = Get-PnPView -List $list -Identity "All Items"
+$view.Query  # Review CAML query complexity
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="solution-box">
+                    <h4><i class="fas fa-rocket"></i> Performance Optimization</h4>
+                    <ol>
+                        <li><strong>Immediate Improvements:</strong>
+                            <ul>
+                                <li>Optimize list views to show fewer columns</li>
+                                <li>Implement indexed columns for filtered views</li>
+                                <li>Reduce web part complexity on pages</li>
+                                <li>Enable modern experience where possible</li>
+                            </ul>
+                        </li>
+                        <li><strong>List and Library Optimization:</strong>
+                            <div class="code-block">
+# Create indexed columns for better performance
+$list = Get-PnPList -Identity "Documents"
+$field = Get-PnPField -List $list -Identity "Modified"
+Set-PnPField -List $list -Identity $field.Id -Values @{"Indexed"=$true}
+
+# Implement folder structures for large libraries
+Add-PnPFolder -Name "2025" -Folder "Documents"
+Add-PnPFolder -Name "January" -Folder "Documents/2025"
+                            </div>
+                        </li>
+                        <li><strong>Architectural Changes:</strong>
+                            <ul>
+                                <li>Split large lists across multiple sites</li>
+                                <li>Implement information architecture review</li>
+                                <li>Use content type publishing for consistency</li>
+                                <li>Consider Power Platform for complex workflows</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+            
+            <section id="upload-issues" class="scenario-section">
+                <h2><i class="fas fa-upload"></i> Scenario 4: File Upload and Sync Issues</h2>
+                
+                <h3>Problem Description</h3>
+                <p>Users cannot upload large files, sync client reports errors, or file operations fail with unclear error messages.</p>
+                
+                <div class="step-by-step">
+                    <h4><i class="fas fa-clipboard-list"></i> Upload Diagnostics</h4>
+                    <ol>
+                        <li><strong>Capture Upload Process in Fiddler</strong>
+                            <div class="code-block">
+# Monitor upload endpoints
+/_layouts/15/upload.aspx
+/_api/web/GetFolderByServerRelativeUrl/Files/Add
+/personal/*/Documents
+
+# Check for error responses
+HTTP 413 - Request Entity Too Large
+HTTP 409 - Conflict (filename issues)
+HTTP 507 - Insufficient Storage
+                            </div>
+                        </li>
+                        <li><strong>Verify File and Library Limits</strong>
+                            <ul>
+                                <li>Check file size against SharePoint limits (100GB max)</li>
+                                <li>Verify filename and path length restrictions</li>
+                                <li>Test for special characters in filenames</li>
+                                <li>Confirm library hasn't reached item limit</li>
+                            </ul>
+                        </li>
+                        <li><strong>PowerShell Storage Analysis</strong>
+                            <div class="code-block">
+# Check site storage quota and usage
+$site = Get-SPOSite -Identity https://contoso.sharepoint.com/sites/teamsite -Detailed
+Write-Host "Storage Used: $($site.StorageUsageCurrent) MB"
+Write-Host "Storage Quota: $($site.StorageQuota) MB"
+Write-Host "Percentage Used: $([math]::Round(($site.StorageUsageCurrent/$site.StorageQuota)*100,2))%"
+
+# Check for file version limits
+Get-SPOSite -Identity https://contoso.sharepoint.com/sites/teamsite | Select EnableMinorVersions, MajorVersionLimit
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="solution-box">
+                    <h4><i class="fas fa-check-circle"></i> Upload Resolution</h4>
+                    <ol>
+                        <li><strong>File Size and Format Issues:</strong>
+                            <ul>
+                                <li>Use PowerShell for files larger than 250MB</li>
+                                <li>Split large files into smaller segments</li>
+                                <li>Verify file type isn't blocked by tenant policy</li>
+                                <li>Check for malware scanning delays</li>
+                            </ul>
+                        </li>
+                        <li><strong>Sync Client Problems:</strong>
+                            <div class="code-block">
+# PowerShell upload for large files
+$file = "C:\LargeFile.zip"
+$targetUrl = "https://contoso.sharepoint.com/sites/teamsite/Documents"
+
+Connect-PnPOnline -Url https://contoso.sharepoint.com/sites/teamsite -Interactive
+Add-PnPFile -Path $file -Folder "Documents" -NewFileName "LargeFile.zip"
+                            </div>
+                        </li>
+                        <li><strong>Storage Management:</strong>
+                            <ul>
+                                <li>Increase site collection storage quota</li>
+                                <li>Implement retention policies for old files</li>
+                                <li>Configure version history limits</li>
+                                <li>Set up archive libraries for historical data</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+            
+            <section id="permission-issues" class="scenario-section">
+                <h2><i class="fas fa-users-cog"></i> Scenario 5: Complex Permission Problems</h2>
+                
+                <h3>Problem Description</h3>
+                <p>Users have unexpected access levels, permission inheritance isn't working correctly, or external users can't access shared content despite proper invitations.</p>
+                
+                <div class="step-by-step">
+                    <h4><i class="fas fa-clipboard-list"></i> Permission Analysis</h4>
+                    <ol>
+                        <li><strong>Use SharePoint Client Browser</strong>
+                            <ul>
+                                <li>Navigate to site > Security > Users and Groups</li>
+                                <li>Examine user object properties and group memberships</li>
+                                <li>Check permission inheritance at web and list levels</li>
+                                <li>Analyze effective permissions for specific users</li>
+                            </ul>
+                        </li>
+                        <li><strong>PowerShell Permission Audit</strong>
+                            <div class="code-block">
+# Get all users and their permission levels
+$site = "https://contoso.sharepoint.com/sites/teamsite"
+Connect-PnPOnline -Url $site -Interactive
+
+$users = Get-PnPUser
+foreach ($user in $users) {
+    $groups = Get-PnPGroupMember -Group $user.Title -ErrorAction SilentlyContinue
+    Write-Host "User: $($user.Title) - Groups: $($groups.Title -join ', ')"
+}
+
+# Check specific list permissions
+$list = Get-PnPList -Identity "Confidential Documents"
+Get-PnPListPermissions -List $list -PrincipalId $user.Id
+                            </div>
+                        </li>
+                        <li><strong>External Sharing Verification</strong>
+                            <ul>
+                                <li>Check tenant and site sharing settings alignment</li>
+                                <li>Verify external user invitation status</li>
+                                <li>Test sharing links and expiration settings</li>
+                                <li>Confirm security group memberships</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="solution-box">
+                    <h4><i class="fas fa-key"></i> Permission Resolution</h4>
+                    <ol>
+                        <li><strong>Clean Up Permission Structure:</strong>
+                            <div class="code-block">
+# Break inheritance and set explicit permissions
+$web = Get-PnPWeb
+$web.BreakRoleInheritance($true, $false)
+
+# Remove unnecessary permission assignments
+Remove-PnPGroupMember -Group "Visitors" -LoginName "user@external.com"
+
+# Add user to appropriate group
+Add-PnPGroupMember -Group "Members" -LoginName "user@internal.com"
+                            </div>
+                        </li>
+                        <li><strong>External User Management:</strong>
+                            <ul>
+                                <li>Re-send invitations for external users</li>
+                                <li>Verify guest access policies in Azure AD</li>
+                                <li>Check for domain restrictions</li>
+                                <li>Confirm invitation acceptance requirements</li>
+                            </ul>
+                        </li>
+                        <li><strong>Best Practices Implementation:</strong>
+                            <ul>
+                                <li>Use security groups instead of individual permissions</li>
+                                <li>Document permission model and inheritance structure</li>
+                                <li>Implement regular permission audits</li>
+                                <li>Train users on proper sharing practices</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+            
+            <section id="workflow-issues" class="scenario-section">
+                <h2><i class="fas fa-cogs"></i> Scenario 6: Workflow and Automation Failures</h2>
+                
+                <h3>Problem Description</h3>
+                <p>Power Automate flows fail intermittently, classic workflows stop working, or approval processes don't trigger correctly.</p>
+                
+                <div class="step-by-step">
+                    <h4><i class="fas fa-clipboard-list"></i> Workflow Diagnostics</h4>
+                    <ol>
+                        <li><strong>Monitor Flow Execution with Fiddler</strong>
+                            <div class="code-block">
+# Track Power Automate API calls
+Host: *.flow.microsoft.com
+Host: *.logic.azure.com
+
+# Monitor SharePoint webhook calls
+/_api/web/lists('guid')/subscriptions
+/webhook-endpoints/
+
+# Check for throttling responses
+HTTP 429 - Too Many Requests
+HTTP 503 - Service Unavailable
+                            </div>
+                        </li>
+                        <li><strong>Flow History Analysis</strong>
+                            <ul>
+                                <li>Review run history in Power Automate portal</li>
+                                <li>Check for timeout errors and retry attempts</li>
+                                <li>Analyze input/output data for each step</li>
+                                <li>Verify connection authentication status</li>
+                            </ul>
+                        </li>
+                        <li><strong>SharePoint Integration Checks</strong>
+                            <div class="code-block">
+# Verify list trigger settings
+Connect-PnPOnline -Url https://contoso.sharepoint.com/sites/teamsite -Interactive
+$list = Get-PnPList -Identity "Approvals"
+
+# Check if webhooks are configured
+$webhooks = Get-PnPWebhookSubscriptions -List $list
+$webhooks | Format-Table NotificationUrl, ExpirationDateTime
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                
+                <div class="solution-box">
+                    <h4><i class="fas fa-play-circle"></i> Workflow Resolution</h4>
+                    <ol>
+                        <li><strong>Flow Optimization:</strong>
+                            <ul>
+                                <li>Implement proper error handling and retry logic</li>
+                                <li>Add delay actions to prevent throttling</li>
+                                <li>Use parallel branches for independent actions</li>
+                                <li>Optimize connector usage and API calls</li>
+                            </ul>
+                        </li>
+                        <li><strong>Connection Management:</strong>
+                            <div class="code-block">
+# PowerShell to check webhook subscriptions
+$subscriptions = Get-PnPWebhookSubscriptions -List "Documents"
+foreach ($sub in $subscriptions) {
+    if ($sub.ExpirationDateTime -lt (Get-Date).AddDays(30)) {
+        Write-Warning "Webhook expiring soon: $($sub.NotificationUrl)"
+        # Extend subscription
+        Update-PnPWebhookSubscription -List "Documents" -Subscription $sub.Id -ExpirationDate (Get-Date).AddMonths(6)
+    }
+}
+                            </div>
+                        </li>
+                        <li><strong>Migration Strategy:</strong>
+                            <ul>
+                                <li>Plan migration from classic workflows to Power Automate</li>
+                                <li>Test new flows in development environment</li>
+                                <li>Document workflow business logic</li>
+                                <li>Train users on new approval processes</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+            
+            <h2><i class="fas fa-lightbulb"></i> Advanced Troubleshooting Techniques</h2>
+            
+            <h3>Systematic Problem-Solving Approach</h3>
+            <ol>
+                <li><strong>Define the Problem:</strong> Gather detailed symptoms and reproduction steps</li>
+                <li><strong>Isolate Variables:</strong> Test in different browsers, networks, and user accounts</li>
+                <li><strong>Layer Your Tools:</strong> Use multiple diagnostic tools to confirm findings</li>
+                <li><strong>Document Everything:</strong> Keep detailed logs of diagnostic steps and findings</li>
+                <li><strong>Test Solutions:</strong> Verify fixes in development before applying to production</li>
+            </ol>
+            
+            <h3>Enterprise Best Practices</h3>
+            <ul>
+                <li><strong>Proactive Monitoring:</strong> Set up automated health checks and alerting</li>
+                <li><strong>Change Management:</strong> Document all configuration changes and their impact</li>
+                <li><strong>User Training:</strong> Educate users on proper SharePoint usage patterns</li>
+                <li><strong>Regular Maintenance:</strong> Schedule periodic reviews of permissions, storage, and performance</li>
+            </ul>
+            
+            <div class="warning-box">
+                <h4><i class="fas fa-graduation-cap"></i> Continuous Learning</h4>
+                <p>SharePoint Online evolves rapidly with monthly updates and new features. Stay current with Microsoft's roadmap, participate in the community, and regularly review your troubleshooting processes to incorporate new tools and techniques.</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid #f1f3f4;">
+                <p><strong>About the Author:</strong> Nagendra Jayaram has resolved over 480 SharePoint escalations annually as a Microsoft Sr Technical Advisor, achieving 98% customer satisfaction across Fortune 500 environments. His systematic approach to troubleshooting has reduced average resolution time by 35% through effective tool utilization and process optimization.</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
