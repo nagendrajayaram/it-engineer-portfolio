@@ -58,45 +58,25 @@ body {
     justify-content: center;
 }
 
-.logo-backplate {
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+.logo-image {
+    width: clamp(68px, 8vw, 84px);
+    height: clamp(68px, 8vw, 84px);
     border-radius: 12px;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    object-fit: cover;
     transition: all 0.3s ease;
     filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
 }
 
-.logo-image {
-    width: clamp(48px, 6vw, 64px);
-    height: clamp(48px, 6vw, 64px);
-    border-radius: 8px;
-    object-fit: cover;
-    transition: all 0.3s ease;
-}
-
-.logo-backplate:hover {
-    transform: translateY(-1px);
+.logo-image:hover {
+    transform: translateY(-1px) scale(1.05);
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.16));
-    background: rgba(255, 255, 255, 1);
-}
-
-.logo-backplate:hover .logo-image {
-    transform: scale(1.05);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .logo-backplate,
     .logo-image {
         transition: none;
     }
-    .logo-backplate:hover {
-        transform: none;
-    }
-    .logo-backplate:hover .logo-image {
+    .logo-image:hover {
         transform: none;
     }
 }
