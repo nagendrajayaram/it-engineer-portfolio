@@ -198,6 +198,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0;
+    text-align: left;
     animation: textPulse 3s ease-in-out infinite;
     background: linear-gradient(45deg, #3498db, #9b59b6, #e74c3c, #3498db);
     background-size: 400% 400%;
