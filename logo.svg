@@ -1,81 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
   <defs>
-    <!-- Gradient definitions for depth and modern look -->
-    <linearGradient id="lightBlueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#7BB3E8;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#5A9BD4;stop-opacity:1" />
+    <linearGradient id="corpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2B5797;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1B365D;stop-opacity:1" />
     </linearGradient>
-    
-    <linearGradient id="mediumBlueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4A90C2;stop-opacity:1" />
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#357ABD;stop-opacity:1" />
     </linearGradient>
-    
-    <linearGradient id="darkBlueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#2C5AA0;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1E3A8A;stop-opacity:1" />
-    </linearGradient>
-    
-    <!-- Drop shadow filter -->
-    <filter id="dropshadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="rgba(0,0,0,0.2)"/>
+    <filter id="corpShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="1" dy="3" stdDeviation="2" flood-color="rgba(0,0,0,0.25)"/>
     </filter>
   </defs>
   
-  <!-- Background circle for better definition -->
-  <circle cx="200" cy="200" r="180" fill="none" stroke="none"/>
+  <!-- Corporate shield base -->
+  <path d="M 200 130 L 250 160 L 250 240 L 200 270 L 150 240 L 150 160 Z" 
+        fill="url(#corpGrad)" 
+        filter="url(#corpShadow)"/>
   
-  <!-- Outer light blue diamond/rhombus -->
-  <path d="M 200 120 L 280 200 L 200 280 L 120 200 Z" 
-        fill="url(#lightBlueGradient)" 
-        filter="url(#dropshadow)"
-        opacity="0.9"/>
+  <!-- Professional accent bands -->
+  <path d="M 165 175 L 235 175 L 230 185 L 170 185 Z" 
+        fill="url(#accentGrad)" 
+        opacity="0.8"/>
   
-  <!-- Medium blue geometric shape -->
-  <path d="M 200 140 L 260 200 L 200 260 L 140 200 Z" 
-        fill="url(#mediumBlueGradient)" 
-        opacity="0.95"/>
+  <path d="M 170 215 L 230 215 L 235 225 L 165 225 Z" 
+        fill="url(#accentGrad)" 
+        opacity="0.8"/>
   
-  <!-- Main hexagonal shape outline -->
-  <path d="M 200 150 
-           L 235 175 
-           L 235 225 
-           L 200 250 
-           L 165 225 
-           L 165 175 Z" 
-        fill="none" 
-        stroke="#2C5AA0" 
-        stroke-width="3"/>
-  
-  <!-- Inner dark blue hexagon (clean, no text) -->
-  <path d="M 200 160 
-           L 225 180 
-           L 225 220 
-           L 200 240 
-           L 175 220 
-           L 175 180 Z" 
-        fill="url(#darkBlueGradient)"/>
-  
-  <!-- Additional geometric accent shapes for tech sophistication -->
-  <path d="M 160 160 L 200 140 L 180 120 L 140 140 Z" 
-        fill="url(#mediumBlueGradient)" 
-        opacity="0.7"/>
-  
-  <path d="M 240 160 L 280 140 L 260 120 L 220 140 Z" 
-        fill="url(#mediumBlueGradient)" 
-        opacity="0.7"/>
-  
-  <!-- Bottom accent shapes -->
-  <path d="M 160 240 L 200 260 L 180 280 L 140 260 Z" 
-        fill="url(#mediumBlueGradient)" 
-        opacity="0.7"/>
-  
-  <path d="M 240 240 L 280 260 L 260 280 L 220 260 Z" 
-        fill="url(#mediumBlueGradient)" 
-        opacity="0.7"/>
-        
-  <!-- Central highlight for depth -->
-  <ellipse cx="200" cy="200" rx="15" ry="15" 
-           fill="rgba(255,255,255,0.1)"/>
-           
+  <!-- Center professional emblem -->
+  <circle cx="200" cy="200" r="15" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
+  <circle cx="200" cy="200" r="6" fill="#ffffff" opacity="0.5"/>
 </svg>
