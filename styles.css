@@ -1238,3 +1238,106 @@ section {
     }
 
 }
+
+/* Professional Journey Timeline Visual Styling */
+.journey-timeline-visual {
+    margin: 3rem 0;
+    padding: 2rem 0;
+    border-top: 2px solid #e1ecf4;
+    border-bottom: 2px solid #e1ecf4;
+}
+
+.timeline-image-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(52, 90, 160, 0.1);
+    border: 1px solid #e1ecf4;
+}
+
+.journey-timeline-image {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.journey-timeline-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-caption {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(52, 90, 160, 0.05);
+    border-radius: 10px;
+    border-left: 4px solid #3498db;
+}
+
+.timeline-caption h3 {
+    color: #2c5aa0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.timeline-caption h3::before {
+    content: "🏆";
+    font-size: 1.2rem;
+}
+
+.timeline-caption p {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    font-style: italic;
+}
+
+/* Mobile responsive for timeline image */
+@media screen and (max-width: 768px) {
+    .journey-timeline-visual {
+        margin: 2rem 0;
+        padding: 1rem 0;
+    }
+    
+    .timeline-image-container {
+        padding: 1rem;
+        margin: 0 1rem;
+    }
+    
+    .timeline-caption h3 {
+        font-size: 1.2rem;
+    }
+    
+    .timeline-caption p {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .timeline-image-container {
+        padding: 0.8rem;
+        margin: 0 0.5rem;
+    }
+    
+    .timeline-caption {
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .timeline-caption h3 {
+        font-size: 1.1rem;
+    }
+}
