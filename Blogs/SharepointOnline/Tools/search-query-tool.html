@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Search Query Tool for SharePoint Online - Nagendra Jayaram</title>
+    <meta name="description" content="Complete guide to using the GitHub Search Query Tool for SharePoint Online KQL testing, debugging, and search analysis.">
+    <meta name="keywords" content="SharePoint Search, KQL, Search Query Tool, GitHub, SharePoint Online, Debugging">
+    <meta name="author" content="Nagendra Jayaram">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .blog-post {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f1f3f4;
+        }
+        
+        .blog-post-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .blog-meta {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .blog-author {
+            color: #3498db;
+            font-weight: 600;
+        }
+        
+        .blog-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c5aa0;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e3f2fd;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #34495e;
+            margin: 30px 0 15px 0;
+        }
+        
+        .feature-box {
+            background: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .feature-box h4 {
+            color: #2d5016;
+            margin-top: 0;
+        }
+        
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .back-nav {
+            margin-bottom: 30px;
+        }
+        
+        .back-nav a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+        
+        .back-nav a:hover {
+            color: #2980b9;
+        }
+        
+        .tool-highlight {
+            background: #f8f9fa;
+            border-left: 4px solid #4a90e2;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .best-practices {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .best-practices h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-post {
+                padding: 20px 15px;
+            }
+            
+            .blog-post-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-post">
+        <div class="back-nav">
+            <a href="index.html">
+                <i class="fas fa-arrow-left"></i>
+                Back to SharePoint Tools
+            </a>
+        </div>
+        
+        <header class="blog-header">
+            <h1 class="blog-post-title">GitHub Search Query Tool for SharePoint Online</h1>
+            <div class="blog-meta">
+                <span class="blog-author">By Nagendra Jayaram</span> • 
+                <span class="blog-date">September 15, 2025</span> • 
+                <span class="read-time">8 min read</span>
+            </div>
+        </header>
+        
+        <main class="blog-content">
+            <div class="tool-highlight">
+                <h2><i class="fas fa-search"></i> About the GitHub Search Query Tool</h2>
+                <p>The GitHub Search Query Tool is an enhanced version of SharePoint's native search tool that provides comprehensive KQL testing and debugging capabilities. This community-maintained tool offers advanced features for testing search functionality, debugging query issues, and analyzing search behavior in SharePoint Online environments. It includes better error handling, enhanced result visualization, and additional debugging options not available in the standard SharePoint tool. The tool is actively maintained and regularly updated with new features based on community feedback.</p>
+                
+                <div class="feature-box">
+                    <h4><i class="fas fa-external-link-alt"></i> Access the Tool</h4>
+                    <p><strong>GitHub Repository:</strong> <a href="https://github.com/SharePoint/sp-dev-solutions/tree/master/solutions/ColumnFormatter" target="_blank" rel="noopener noreferrer">SharePoint Search Query Tool</a></p>
+                    <p>Download and host locally or use the web-based version for immediate testing.</p>
+                </div>
+            </div>
+            
+            <h2>Key Features and Capabilities</h2>
+            <ul>
+                <li><strong>Enhanced KQL Testing:</strong> Advanced Keyword Query Language testing with syntax highlighting and error detection</li>
+                <li><strong>Result Analysis:</strong> Detailed search results with metadata, relevance scores, and performance metrics</li>
+                <li><strong>Query Debugging:</strong> Step-by-step query execution analysis with detailed error messages</li>
+                <li><strong>Property Inspector:</strong> View and analyze managed properties and their values</li>
+                <li><strong>Performance Monitoring:</strong> Track query execution time and result count statistics</li>
+                <li><strong>Export Capabilities:</strong> Export search results and configurations for documentation</li>
+            </ul>
+            
+            <h2>Installation and Setup</h2>
+            <ol>
+                <li><strong>Download from GitHub:</strong> Clone or download the repository from the official GitHub location</li>
+                <li><strong>Host Locally:</strong> Deploy to your SharePoint environment or host on a local web server</li>
+                <li><strong>Configure Permissions:</strong> Ensure the tool has appropriate permissions to access search APIs</li>
+                <li><strong>Test Connection:</strong> Verify connectivity to your SharePoint Online tenant</li>
+            </ol>
+            
+            <h2>Basic Usage Examples</h2>
+            <div class="code-block">
+# Search for documents in a specific library
+ContentClass:STS_ListItem_DocumentLibrary
+
+# Find content by specific author
+Author:"John Smith" AND ContentClass:STS_ListItem_DocumentLibrary
+
+# Search for recently modified documents
+LastModifiedTime>=2025-09-01 AND FileExtension:pdf
+
+# Find pages in specific site collections
+Path:"https://contoso.sharepoint.com/sites/marketing*" AND ContentClass:STS_Web
+
+# Search by content type
+ContentTypeId:0x0101* AND Title:budget
+
+# Complex query with multiple conditions
+(FileExtension:xlsx OR FileExtension:pdf) AND Author:"Jane Doe" AND LastModifiedTime>=2025-09-01
+            </div>
+            
+            <h2>Advanced Query Techniques</h2>
+            
+            <h3>Property-Based Searches</h3>
+            <div class="code-block">
+# Search specific managed properties
+Title:budget AND Department:Finance
+
+# Use wildcards for partial matches
+Author:John* AND FileExtension:doc*
+
+# Range queries for dates and numbers
+LastModifiedTime:[2025-09-01..2025-09-15]
+Size:[1000000..5000000]
+
+# Boolean operations
+(Title:budget OR Title:financial) AND -Author:external
+            </div>
+            
+            <h3>Site and Location Targeting</h3>
+            <div class="code-block">
+# Target specific sites
+Site:https://contoso.sharepoint.com/sites/marketing
+
+# Search within site collections
+SiteCollection:https://contoso.sharepoint.com/sites/finance
+
+# List-specific searches
+ListId:"{12345678-1234-1234-1234-123456789012}"
+
+# Web-specific content
+WebId:"{87654321-4321-4321-4321-210987654321}"
+            </div>
+            
+            <h2>Debugging and Troubleshooting</h2>
+            
+            <h3>Common Query Issues</h3>
+            <ul>
+                <li><strong>No Results Returned:</strong> Check managed property names and ensure content is crawled</li>
+                <li><strong>Syntax Errors:</strong> Validate KQL syntax and proper use of operators</li>
+                <li><strong>Performance Issues:</strong> Optimize queries by adding specific filters and avoiding wildcards</li>
+                <li><strong>Permission Errors:</strong> Verify user has read access to target content</li>
+            </ul>
+            
+            <h3>Query Optimization Tips</h3>
+            <div class="code-block">
+# Use specific properties instead of general text search
+Title:budget (instead of just "budget")
+
+# Combine filters to narrow results
+Author:"John Smith" AND LastModifiedTime>=2025-09-01 AND ContentClass:STS_ListItem_DocumentLibrary
+
+# Use exact paths for better performance
+Path:"https://contoso.sharepoint.com/sites/finance/documents*"
+
+# Limit results for testing
+(Your query here) AND RowLimit:50
+            </div>
+            
+            <div class="best-practices">
+                <h3><i class="fas fa-lightbulb"></i> Best Practices</h3>
+                
+                <h4>Query Development</h4>
+                <ul>
+                    <li><strong>Start Simple:</strong> Begin with basic queries and gradually add complexity</li>
+                    <li><strong>Test Incrementally:</strong> Add one filter at a time to understand impact</li>
+                    <li><strong>Use Specific Properties:</strong> Target exact managed properties rather than full-text search</li>
+                    <li><strong>Document Queries:</strong> Save successful queries for reuse and documentation</li>
+                </ul>
+                
+                <h4>Performance Optimization</h4>
+                <ul>
+                    <li><strong>Limit Scope:</strong> Use Path or Site properties to narrow search scope</li>
+                    <li><strong>Use Filters:</strong> Apply ContentClass and other filters to reduce result set</li>
+                    <li><strong>Avoid Wildcards:</strong> Minimize use of wildcard characters in queries</li>
+                    <li><strong>Set Row Limits:</strong> Use RowLimit property for testing and development</li>
+                </ul>
+                
+                <h4>Security Considerations</h4>
+                <ul>
+                    <li><strong>Test Permissions:</strong> Verify queries respect security trimming</li>
+                    <li><strong>Use Service Accounts:</strong> Use dedicated accounts for automated queries</li>
+                    <li><strong>Audit Query Usage:</strong> Monitor and log query execution for compliance</li>
+                    <li><strong>Protect Sensitive Data:</strong> Ensure queries don't expose confidential information</li>
+                </ul>
+            </div>
+            
+            <h2>Integration with SharePoint Administration</h2>
+            
+            <h3>Search Configuration Testing</h3>
+            <p>Use the tool to validate search configurations:</p>
+            <ul>
+                <li><strong>Managed Properties:</strong> Test custom managed properties and their mappings</li>
+                <li><strong>Result Sources:</strong> Validate result source configurations and scoping</li>
+                <li><strong>Query Rules:</strong> Test query rule triggers and result modifications</li>
+                <li><strong>Search Scopes:</strong> Verify search scope definitions and content inclusion</li>
+            </ul>
+            
+            <h3>Content Analysis</h3>
+            <div class="code-block">
+# Analyze content distribution
+ContentClass:STS_ListItem_DocumentLibrary AND FileExtension:pdf
+
+# Check indexing completeness
+LastModifiedTime>=2025-09-14 AND ContentClass:STS_ListItem_DocumentLibrary
+
+# Verify metadata extraction
+Author:* AND Department:* AND Title:*
+
+# Test multilingual content
+Language:1033 OR Language:1036
+            </div>
+            
+            <h2>Troubleshooting Common Scenarios</h2>
+            
+            <h3>Search Not Finding Recent Content</h3>
+            <ol>
+                <li>Check if content is within crawl scope</li>
+                <li>Verify LastModifiedTime properties</li>
+                <li>Test with specific document URLs</li>
+                <li>Check for permission issues</li>
+            </ol>
+            
+            <h3>Query Performance Issues</h3>
+            <ol>
+                <li>Analyze query complexity and filters</li>
+                <li>Check for inefficient wildcard usage</li>
+                <li>Verify result source configurations</li>
+                <li>Monitor query execution time</li>
+            </ol>
+            
+            <h3>Unexpected Results</h3>
+            <ol>
+                <li>Review managed property mappings</li>
+                <li>Check for query rule interference</li>
+                <li>Verify security trimming behavior</li>
+                <li>Analyze relevance scoring factors</li>
+            </ol>
+            
+            <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid #f1f3f4;">
+                <p><strong>About the Author:</strong> Nagendra Jayaram is a Microsoft Sr Technical Advisor with 18+ years of enterprise experience specializing in SharePoint Online search architecture and administration.</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
