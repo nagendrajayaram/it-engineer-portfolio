@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Blogs - Nagendra Jayaram Portfolio</title>
+    <meta name="description" content="Technical blogs and insights on Microsoft technologies including SharePoint Online, SharePoint On-Premises, Microsoft Copilot, Exchange, Teams, and PowerApps by Microsoft Sr Technical Advisor Nagendra Jayaram.">
+    <meta name="keywords" content="SharePoint Online, SharePoint On-Premises, Microsoft Copilot, Exchange, Teams, PowerApps, Microsoft 365, Technical Blog, IT Solutions, Enterprise Technology">
+    <meta name="author" content="Nagendra Jayaram">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nagendrajayaram.github.io/myportfolio/blogs.html">
+    <meta property="og:title" content="Technical Blogs - Nagendra Jayaram Portfolio">
+    <meta property="og:description" content="Technical blogs and insights on Microsoft technologies by Microsoft Sr Technical Advisor Nagendra Jayaram.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nagendrajayaram.github.io/myportfolio/blogs.html">
+    <meta property="twitter:title" content="Technical Blogs - Nagendra Jayaram Portfolio">
+    <meta property="twitter:description" content="Technical blogs and insights on Microsoft technologies by Microsoft Sr Technical Advisor Nagendra Jayaram.">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .blogs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .blogs-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .blogs-header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blogs-header p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .tab-container {
+            background: var(--card-background);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .tab-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+        
+        .tab-button {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tab-button:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .tab-button.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .blog-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .blog-card p {
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .blog-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .blog-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .blog-link:hover {
+            color: var(--primary-hover);
+            transform: translateX(5px);
+        }
+        
+        .no-content {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-light);
+        }
+        
+        .no-content i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--border-color);
+        }
+        
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-nav:hover {
+            color: var(--primary-hover);
+            transform: translateX(-5px);
+        }
+        
+        @media (max-width: 768px) {
+            .blogs-container {
+                padding: 1rem;
+            }
+            
+            .blogs-header h1 {
+                font-size: 2rem;
+            }
+            
+            .tab-nav {
+                justify-content: center;
+            }
+            
+            .tab-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .blog-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.svg" alt="Nagendra Jayaram" class="logo">
+                <span class="nav-title">Nagendra Jayaram Portfolio</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="details.html" class="nav-link">Details</a>
+                <a href="blogs.html" class="nav-link active">Blogs</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="blogs-container">
+        <a href="index.html" class="back-nav">
+            <i class="fas fa-arrow-left"></i>
+            Back to Portfolio
+        </a>
+        
+        <div class="blogs-header">
+            <h1><i class="fas fa-blog"></i> Technical Blogs</h1>
+            <p>Insights, solutions, and best practices across Microsoft technologies from 18+ years of enterprise experience</p>
+        </div>
+
+        <div class="tab-container">
+            <div class="tab-nav">
+                <button class="tab-button active" onclick="showTab('sharepoint-online')">
+                    <i class="fab fa-microsoft"></i>
+                    SharePoint Online
+                </button>
+                <button class="tab-button" onclick="showTab('sharepoint-onprem')">
+                    <i class="fas fa-server"></i>
+                    SharePoint On-Premises
+                </button>
+                <button class="tab-button" onclick="showTab('copilot')">
+                    <i class="fas fa-robot"></i>
+                    Microsoft Copilot
+                </button>
+                <button class="tab-button" onclick="showTab('exchange')">
+                    <i class="fas fa-envelope"></i>
+                    Exchange
+                </button>
+                <button class="tab-button" onclick="showTab('teams')">
+                    <i class="fab fa-microsoft"></i>
+                    Teams
+                </button>
+                <button class="tab-button" onclick="showTab('powerapps')">
+                    <i class="fas fa-cogs"></i>
+                    PowerApps
+                </button>
+            </div>
+
+            <!-- SharePoint Online Tab -->
+            <div id="sharepoint-online" class="tab-content active">
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div class="blog-meta">
+                            <span class="blog-date">September 2025</span>
+                            <span class="blog-tag">Tools & Administration</span>
+                        </div>
+                        <h3>SharePoint Online Tools Guide: Essential Administrator's Toolkit</h3>
+                        <p>Comprehensive collection of essential SharePoint Online tools including GitHub Search Query Tool, Client Browser, Network Analysis with Fiddler, PowerShell Management, and Self-Diagnostics procedures for enterprise administrators.</p>
+                        <a href="Blogs/SharepointOnline/Tools/index.html" class="blog-link">
+                            Read Full Guide <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SharePoint On-Premises Tab -->
+            <div id="sharepoint-onprem" class="tab-content">
+                <div class="no-content">
+                    <i class="fas fa-server"></i>
+                    <h3>SharePoint On-Premises Content Coming Soon</h3>
+                    <p>Enterprise solutions, migration strategies, and on-premises administration guides will be available here.</p>
+                </div>
+            </div>
+
+            <!-- Microsoft Copilot Tab -->
+            <div id="copilot" class="tab-content">
+                <div class="no-content">
+                    <i class="fas fa-robot"></i>
+                    <h3>Microsoft Copilot Insights Coming Soon</h3>
+                    <p>Implementation guides, best practices, and enterprise adoption strategies for Microsoft Copilot will be featured here.</p>
+                </div>
+            </div>
+
+            <!-- Exchange Tab -->
+            <div id="exchange" class="tab-content">
+                <div class="no-content">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Exchange Content Coming Soon</h3>
+                    <p>Exchange Online administration, hybrid configurations, and troubleshooting guides will be available here.</p>
+                </div>
+            </div>
+
+            <!-- Teams Tab -->
+            <div id="teams" class="tab-content">
+                <div class="no-content">
+                    <i class="fab fa-microsoft"></i>
+                    <h3>Microsoft Teams Content Coming Soon</h3>
+                    <p>Teams administration, governance, and enterprise deployment strategies will be featured here.</p>
+                </div>
+            </div>
+
+            <!-- PowerApps Tab -->
+            <div id="powerapps" class="tab-content">
+                <div class="no-content">
+                    <i class="fas fa-cogs"></i>
+                    <h3>PowerApps Content Coming Soon</h3>
+                    <p>Low-code development guides, enterprise app deployment, and PowerApps best practices will be available here.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Nagendra Jayaram. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/nagendrajayaram" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        function showTab(tabId) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+        
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+        
+        // Smooth scrolling for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth transitions
+            document.body.style.transition = 'all 0.3s ease';
+        });
+    </script>
+</body>
+</html>
