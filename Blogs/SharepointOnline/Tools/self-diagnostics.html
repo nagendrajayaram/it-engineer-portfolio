@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharePoint Online Self-Diagnostics Before Contacting Support - Nagendra Jayaram</title>
+    <meta name="description" content="Comprehensive self-diagnostic procedures for SharePoint Online administrators before escalating to Microsoft Support.">
+    <meta name="keywords" content="SharePoint Online, Self-Diagnostics, Troubleshooting, Microsoft Support, SharePoint Administration, Problem Resolution">
+    <meta name="author" content="Nagendra Jayaram">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .blog-post {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f1f3f4;
+        }
+        
+        .blog-post-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .blog-meta {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .blog-author {
+            color: #3498db;
+            font-weight: 600;
+        }
+        
+        .blog-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c5aa0;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e3f2fd;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #34495e;
+            margin: 30px 0 15px 0;
+        }
+        
+        .feature-box {
+            background: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .feature-box h4 {
+            color: #2d5016;
+            margin-top: 0;
+        }
+        
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .back-nav {
+            margin-bottom: 30px;
+        }
+        
+        .back-nav a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+        
+        .back-nav a:hover {
+            color: #2980b9;
+        }
+        
+        .tool-highlight {
+            background: #f8f9fa;
+            border-left: 4px solid #4a90e2;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .checklist-section {
+            background: #f0f8ff;
+            border: 1px solid #b0d4f1;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .checklist-section h3 {
+            color: #1e3a8a;
+            margin-top: 0;
+        }
+        
+        .quick-fix {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .quick-fix h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        
+        .support-prep {
+            background: #fdedec;
+            border: 1px solid #f1948a;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .support-prep h4 {
+            color: #c0392b;
+            margin-top: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-post {
+                padding: 20px 15px;
+            }
+            
+            .blog-post-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-post">
+        <div class="back-nav">
+            <a href="index.html">
+                <i class="fas fa-arrow-left"></i>
+                Back to SharePoint Tools
+            </a>
+        </div>
+        
+        <header class="blog-header">
+            <h1 class="blog-post-title">SharePoint Online Self-Diagnostics: Before Contacting Support</h1>
+            <div class="blog-meta">
+                <span class="blog-author">By Nagendra Jayaram</span> • 
+                <span class="blog-date">September 15, 2025</span> • 
+                <span class="read-time">18 min read</span>
+            </div>
+        </header>
+        
+        <main class="blog-content">
+            <div class="tool-highlight">
+                <h2><i class="fas fa-stethoscope"></i> About Self-Diagnostics</h2>
+                <p>Before reaching out to Microsoft Support, administrators should perform these self-diagnostic steps to identify and potentially resolve SharePoint Online issues independently. These diagnostic procedures can save time and often resolve common problems without requiring escalation. A systematic approach to self-diagnosis not only speeds up problem resolution but also provides valuable information for support teams when escalation is necessary.</p>
+            </div>
+            
+            <h2>Pre-Diagnostic Preparation</h2>
+            
+            <h3>Essential Information Gathering</h3>
+            <ul>
+                <li><strong>Problem Statement:</strong> Clear description of the issue, when it started, and affected users</li>
+                <li><strong>Environment Details:</strong> Tenant ID, site URLs, user accounts, and browser information</li>
+                <li><strong>Reproduction Steps:</strong> Exact steps to reproduce the issue consistently</li>
+                <li><strong>Error Messages:</strong> Complete error text, screenshots, and correlation IDs</li>
+                <li><strong>Recent Changes:</strong> Any configuration changes, updates, or migrations in the past 30 days</li>
+            </ul>
+            
+            <div class="feature-box">
+                <h4><i class="fas fa-link"></i> Reference Documentation</h4>
+                <p><strong>Microsoft Learn:</strong> <a href="https://learn.microsoft.com/en-ca/troubleshoot/sharepoint/sharing-and-permissions/fix-site-user-id-mismatch" target="_blank" rel="noopener noreferrer">Fix site user ID mismatch in SharePoint Online</a></p>
+                <p>This Microsoft Learn article provides a systematic approach to troubleshooting that we'll expand upon in this guide.</p>
+            </div>
+            
+            <h2>Systematic Diagnostic Checklist</h2>
+            
+            <div class="checklist-section">
+                <h3><i class="fas fa-clipboard-check"></i> 1. Service Health Verification</h3>
+                
+                <h4>Microsoft 365 Service Health Check</h4>
+                <ol>
+                    <li><strong>Access Admin Center:</strong> Navigate to Microsoft 365 Admin Center > Health > Service Health</li>
+                    <li><strong>Check SharePoint Status:</strong> Look for any active incidents or advisories</li>
+                    <li><strong>Review Recent Issues:</strong> Check for resolved issues that might have ongoing effects</li>
+                    <li><strong>Message Center Review:</strong> Check for planned maintenance or feature changes</li>
+                </ol>
+                
+                <div class="code-block">
+# PowerShell Service Health Check
+Connect-MgGraph -Scopes "ServiceHealth.Read.All"
+
+# Get current service health status
+Get-MgServiceAnnouncementHealthOverview | Where-Object {$_.Service -eq "SharePoint"}
+
+# Get recent service issues
+Get-MgServiceAnnouncementIssue | Where-Object {$_.Service -eq "SharePoint" -and $_.EndDateTime -gt (Get-Date).AddDays(-7)}
+                </div>
+                
+                <h4>Tenant Status Validation</h4>
+                <ul>
+                    <li><strong>Billing Status:</strong> Verify tenant is in good standing with no payment issues</li>
+                    <li><strong>License Assignments:</strong> Confirm affected users have proper SharePoint licenses</li>
+                    <li><strong>Feature Availability:</strong> Check if the problematic feature is included in current licenses</li>
+                    <li><strong>Maintenance Mode:</strong> Verify tenant isn't in maintenance or migration state</li>
+                </ul>
+            </div>
+            
+            <div class="checklist-section">
+                <h3><i class="fas fa-user-shield"></i> 2. User Account and Authentication Analysis</h3>
+                
+                <h4>User Account Verification</h4>
+                <div class="code-block">
+# Connect to SharePoint Online Admin Center
+Connect-SPOService -Url https://[tenant]-admin.sharepoint.com
+
+# Verify user exists and has proper access
+Get-SPOUser -Site https://[tenant].sharepoint.com/sites/[site] -LoginName user@domain.com
+
+# Check user's license assignments
+Connect-MgGraph -Scopes "User.Read.All"
+Get-MgUserLicenseDetail -UserId "user@domain.com"
+
+# Verify site collection administrators
+Get-SPOSite -Identity https://[tenant].sharepoint.com/sites/[site] | Select Url, Owner, @{Name="Admins";Expression={$_.Administrators}}
+                </div>
+                
+                <h4>Authentication and Access Testing</h4>
+                <ol>
+                    <li><strong>Multiple Browser Test:</strong> Test in Edge, Chrome, and Firefox</li>
+                    <li><strong>Incognito/Private Mode:</strong> Test in private browsing to eliminate cache issues</li>
+                    <li><strong>Different Networks:</strong> Test from different network connections (corporate, home, mobile)</li>
+                    <li><strong>Different Devices:</strong> Test on desktop, mobile, and tablet devices</li>
+                    <li><strong>Different Users:</strong> Test with multiple user accounts to isolate user-specific issues</li>
+                </ol>
+                
+                <h4>Permission and Group Membership Analysis</h4>
+                <div class="code-block">
+# Check external sharing settings at tenant and site level
+Get-SPOTenant | Select SharingCapability, RequireAcceptingAccountMatchInvitedAccount
+Get-SPOSite -Identity https://[tenant].sharepoint.com/sites/[site] | Select SharingCapability
+
+# Analyze user group memberships
+Connect-PnPOnline -Url https://[tenant].sharepoint.com/sites/[site] -Interactive
+$user = Get-PnPUser -Identity "user@domain.com"
+Get-PnPGroupMember -Group "Site Members" | Where-Object {$_.Email -eq $user.Email}
+
+# Check effective permissions
+$web = Get-PnPWeb
+$permissions = $web.GetUserEffectivePermissions($user.LoginName)
+                </div>
+            </div>
+            
+            <div class="checklist-section">
+                <h3><i class="fas fa-search"></i> 3. Search and Indexing Diagnostics</h3>
+                
+                <h4>Search Functionality Testing</h4>
+                <div class="code-block">
+# Test search service availability
+$searchResults = Search-PnPContent -Query "ContentClass:STS_ListItem_DocumentLibrary"
+Write-Host "Search returned $($searchResults.Count) results"
+
+# Check recent content indexing
+$recentQuery = "LastModifiedTime>=$(Get-Date -Format 'yyyy-MM-dd')"
+$recentResults = Search-PnPContent -Query $recentQuery
+Write-Host "Recent content found: $($recentResults.Count) items"
+
+# Test site-specific search
+$siteQuery = "Path:https://[tenant].sharepoint.com/sites/[site]*"
+$siteResults = Search-PnPContent -Query $siteQuery
+                </div>
+                
+                <h4>Force Reindexing Procedures</h4>
+                <div class="code-block">
+# Force site reindexing
+Connect-SPOService -Url https://[tenant]-admin.sharepoint.com
+Request-SPOReIndexWeb -Identity https://[tenant].sharepoint.com/sites/[site]
+
+# Force list reindexing
+Request-SPOReIndexList -Identity https://[tenant].sharepoint.com/sites/[site]/lists/documents
+
+# Check indexing status and last crawl time
+$site = Get-SPOSite -Identity https://[tenant].sharepoint.com/sites/[site] -Detailed
+Write-Host "Last content modified: $($site.LastContentModifiedDate)"
+Write-Host "Site creation time: $($site.Created)"
+                </div>
+                
+                <h4>Search Configuration Validation</h4>
+                <ul>
+                    <li><strong>Managed Properties:</strong> Verify custom managed properties are configured correctly</li>
+                    <li><strong>Result Sources:</strong> Check result source configurations and scoping</li>
+                    <li><strong>Query Rules:</strong> Review query rules that might affect search results</li>
+                    <li><strong>Search Schema:</strong> Validate search schema modifications and mappings</li>
+                </ul>
+            </div>
+            
+            <div class="checklist-section">
+                <h3><i class="fas fa-database"></i> 4. Storage and Performance Analysis</h3>
+                
+                <h4>Site Storage Diagnostics</h4>
+                <div class="code-block">
+# Comprehensive site storage analysis
+$sites = Get-SPOSite -Limit All
+$storageReport = @()
+
+foreach ($site in $sites) {
+    $siteDetails = Get-SPOSite -Identity $site.Url -Detailed
+    $storagePercent = if ($siteDetails.StorageQuota -gt 0) { 
+        [math]::Round(($siteDetails.StorageUsageCurrent / $siteDetails.StorageQuota) * 100, 2) 
+    } else { 0 }
+    
+    $storageReport += [PSCustomObject]@{
+        SiteUrl = $site.Url
+        Title = $site.Title
+        StorageUsedMB = $siteDetails.StorageUsageCurrent
+        StorageQuotaMB = $siteDetails.StorageQuota
+        PercentageUsed = $storagePercent
+        Status = if ($storagePercent -gt 90) { "Critical" } 
+                elseif ($storagePercent -gt 80) { "Warning" } 
+                else { "Normal" }
+        LastModified = $siteDetails.LastContentModifiedDate
+    }
+}
+
+# Display sites with storage issues
+$storageReport | Where-Object {$_.Status -ne "Normal"} | Format-Table -AutoSize
+
+# Export for detailed analysis
+$storageReport | Export-Csv -Path "C:\Reports\SiteStorageAnalysis.csv" -NoTypeInformation
+                </div>
+                
+                <h4>List and Library Performance Check</h4>
+                <div class="code-block">
+# Check for large lists that might impact performance
+Connect-PnPOnline -Url https://[tenant].sharepoint.com/sites/[site] -Interactive
+
+$lists = Get-PnPList
+$largeListsReport = @()
+
+foreach ($list in $lists) {
+    if ($list.ItemCount -gt 2000) {
+        $largeListsReport += [PSCustomObject]@{
+            ListTitle = $list.Title
+            ItemCount = $list.ItemCount
+            BaseType = $list.BaseType
+            Created = $list.Created
+            LastModified = $list.LastItemModifiedDate
+            HasThresholdIssues = $list.ItemCount -gt 5000
+        }
+    }
+}
+
+$largeListsReport | Format-Table -AutoSize
+                </div>
+                
+                <h4>Version History and Cleanup</h4>
+                <div class="code-block">
+# Check version history settings and storage impact
+$libraries = Get-PnPList | Where-Object {$_.BaseType -eq "DocumentLibrary"}
+
+foreach ($library in $libraries) {
+    $versionSettings = Get-PnPList -Identity $library.Title
+    Write-Host "Library: $($library.Title)"
+    Write-Host "  Major Versions: $($versionSettings.MajorVersionLimit)"
+    Write-Host "  Minor Versions: $($versionSettings.MajorWithMinorVersionsLimit)"
+    Write-Host "  Versioning Enabled: $($versionSettings.EnableVersioning)"
+    Write-Host "  Item Count: $($versionSettings.ItemCount)"
+}
+                </div>
+            </div>
+            
+            <div class="checklist-section">
+                <h3><i class="fas fa-network-wired"></i> 5. Network and Connectivity Diagnostics</h3>
+                
+                <h4>Network Connectivity Testing</h4>
+                <div class="code-block">
+# Test connectivity to key SharePoint Online endpoints
+$endpoints = @(
+    "login.microsoftonline.com",
+    "[tenant].sharepoint.com",
+    "[tenant]-admin.sharepoint.com",
+    "outlook.office365.com",
+    "graph.microsoft.com"
+)
+
+foreach ($endpoint in $endpoints) {
+    $result = Test-NetConnection -ComputerName $endpoint -Port 443 -InformationLevel Quiet
+    Write-Host "$endpoint`: $($result)" -ForegroundColor $(if ($result) { "Green" } else { "Red" })
+}
+
+# Test DNS resolution
+foreach ($endpoint in $endpoints) {
+    $dnsResult = Resolve-DnsName -Name $endpoint -ErrorAction SilentlyContinue
+    if ($dnsResult) {
+        Write-Host "DNS Resolution for $endpoint`: Success" -ForegroundColor Green
+    } else {
+        Write-Host "DNS Resolution for $endpoint`: Failed" -ForegroundColor Red
+    }
+}
+                </div>
+                
+                <h4>Browser and Client Diagnostics</h4>
+                <ul>
+                    <li><strong>Clear Browser Cache:</strong> Clear cache, cookies, and stored data</li>
+                    <li><strong>Disable Extensions:</strong> Test with browser extensions disabled</li>
+                    <li><strong>Reset Browser Settings:</strong> Test with default browser settings</li>
+                    <li><strong>Update Browser:</strong> Ensure browser is updated to latest version</li>
+                    <li><strong>Test Alternative Browsers:</strong> Compare behavior across different browsers</li>
+                </ul>
+            </div>
+            
+            <h2>Common Issue Quick Fixes</h2>
+            
+            <div class="quick-fix">
+                <h3><i class="fas fa-tools"></i> Site User ID Mismatch Resolution</h3>
+                <p>This addresses issues where user permissions appear correct but access is denied (similar to the Microsoft Learn article referenced above).</p>
+                
+                <div class="code-block">
+# Step 1: Document current user permissions
+$userLogin = "user@domain.com"
+$siteUrl = "https://[tenant].sharepoint.com/sites/[site]"
+
+Connect-PnPOnline -Url $siteUrl -Interactive
+$userBefore = Get-PnPUser -Identity $userLogin -ErrorAction SilentlyContinue
+
+if ($userBefore) {
+    Write-Host "User found - Groups: $($userBefore.Groups -join ', ')"
+    
+    # Step 2: Remove user from site (this clears cached permissions)
+    Remove-PnPUser -Identity $userLogin -Force
+    Write-Host "User removed from site"
+    
+    # Step 3: Wait for replication
+    Start-Sleep -Seconds 30
+    
+    # Step 4: Re-add user with proper permissions
+    Add-PnPUser -LoginName $userLogin -Group "Members"
+    Write-Host "User re-added to Members group"
+    
+    # Step 5: Verify fix
+    $userAfter = Get-PnPUser -Identity $userLogin
+    Write-Host "Fix applied - New groups: $($userAfter.Groups -join ', ')"
+} else {
+    Write-Host "User not found in site - adding fresh"
+    Add-PnPUser -LoginName $userLogin -Group "Members"
+}
+                </div>
+            </div>
+            
+            <div class="quick-fix">
+                <h3><i class="fas fa-search"></i> Search Index Refresh</h3>
+                <div class="code-block">
+# Comprehensive search reindexing procedure
+Connect-SPOService -Url https://[tenant]-admin.sharepoint.com
+
+# Option 1: Full site reindexing
+Request-SPOReIndexWeb -Identity $siteUrl
+Write-Host "Site reindexing requested"
+
+# Option 2: Specific list reindexing
+$listUrl = "$siteUrl/lists/Documents"
+Request-SPOReIndexList -Identity $listUrl
+Write-Host "List reindexing requested"
+
+# Option 3: Force crawl through site settings (PowerShell method)
+Connect-PnPOnline -Url $siteUrl -Interactive
+$web = Get-PnPWeb
+$web.ReindexWeb()
+Invoke-PnPQuery
+Write-Host "Web reindex executed"
+                </div>
+            </div>
+            
+            <div class="quick-fix">
+                <h3><i class="fas fa-share-alt"></i> External Sharing Configuration Fix</h3>
+                <div class="code-block">
+# Fix external sharing issues
+$siteUrl = "https://[tenant].sharepoint.com/sites/[site]"
+
+# Check current sharing settings
+$tenant = Get-SPOTenant
+$site = Get-SPOSite -Identity $siteUrl
+
+Write-Host "Tenant sharing capability: $($tenant.SharingCapability)"
+Write-Host "Site sharing capability: $($site.SharingCapability)"
+
+# Fix: Align site sharing with tenant policy
+if ($site.SharingCapability -ne $tenant.SharingCapability) {
+    Set-SPOSite -Identity $siteUrl -SharingCapability $tenant.SharingCapability
+    Write-Host "Site sharing capability updated to match tenant settings"
+}
+
+# Fix: Enable external user sharing if needed
+Set-SPOSite -Identity $siteUrl -SharingCapability ExternalUserSharingOnly
+Write-Host "External user sharing enabled"
+
+# Fix: Remove invitation acceptance requirement if blocking access
+Set-SPOTenant -RequireAcceptingAccountMatchInvitedAccount $false
+Write-Host "Invitation acceptance requirement removed"
+                </div>
+            </div>
+            
+            <div class="quick-fix">
+                <h3><i class="fas fa-sync-alt"></i> OneDrive Sync Issues</h3>
+                <div class="code-block">
+# OneDrive sync diagnostics and fixes
+
+# Step 1: Check OneDrive service health
+Get-Service -Name "OneDrive*" | Format-Table Name, Status, StartType
+
+# Step 2: Reset OneDrive sync client
+Stop-Process -Name "OneDrive" -Force -ErrorAction SilentlyContinue
+Start-Sleep -Seconds 5
+
+# Step 3: Clear OneDrive cache
+$oneDriveCache = "$env:LOCALAPPDATA\Microsoft\OneDrive\settings"
+if (Test-Path $oneDriveCache) {
+    Remove-Item "$oneDriveCache\*" -Recurse -Force
+    Write-Host "OneDrive cache cleared"
+}
+
+# Step 4: Restart OneDrive
+Start-Process "OneDrive.exe"
+Write-Host "OneDrive restarted"
+
+# Step 5: Verify library sync settings
+Connect-PnPOnline -Url $siteUrl -Interactive
+$library = Get-PnPList -Identity "Documents"
+$syncEnabled = $library.DisableCommenting -eq $false
+Write-Host "Library sync enabled: $syncEnabled"
+                </div>
+            </div>
+            
+            <h2>Advanced Diagnostic Procedures</h2>
+            
+            <h3>PowerShell Health Check Script</h3>
+            <div class="code-block">
+# Comprehensive SharePoint Online health check script
+param(
+    [Parameter(Mandatory=$true)]
+    [string]$SiteUrl,
+    
+    [Parameter(Mandatory=$false)]
+    [string]$OutputPath = "C:\Reports\SPOHealthCheck.html"
+)
+
+# Initialize report
+$healthReport = @{
+    SiteUrl = $SiteUrl
+    CheckTime = Get-Date
+    Issues = @()
+    Recommendations = @()
+}
+
+try {
+    # Connect to site
+    Connect-PnPOnline -Url $SiteUrl -Interactive
+    $web = Get-PnPWeb
+    
+    Write-Host "✓ Connection successful" -ForegroundColor Green
+    $healthReport.ConnectionStatus = "Success"
+    
+    # Check 1: Site storage
+    $site = Get-PnPTenantSite -Url $SiteUrl
+    $storagePercent = ($site.StorageUsageCurrent / $site.StorageQuota) * 100
+    
+    if ($storagePercent -gt 90) {
+        $healthReport.Issues += "Critical: Storage usage at $([math]::Round($storagePercent,2))%"
+        $healthReport.Recommendations += "Increase storage quota or archive old content"
+    }
+    
+    # Check 2: Large lists
+    $lists = Get-PnPList
+    $largeLists = $lists | Where-Object {$_.ItemCount -gt 5000}
+    
+    if ($largeLists.Count -gt 0) {
+        $healthReport.Issues += "Warning: $($largeLists.Count) lists exceed 5000 items"
+        $healthReport.Recommendations += "Implement list archiving or folder structure"
+    }
+    
+    # Check 3: External sharing
+    if ($site.SharingCapability -eq "Disabled") {
+        $healthReport.Issues += "Info: External sharing is disabled"
+    }
+    
+    # Check 4: Search functionality
+    $searchResults = Search-PnPContent -Query "ContentClass:STS_ListItem_DocumentLibrary" -MaxResults 1
+    if ($searchResults.Count -eq 0) {
+        $healthReport.Issues += "Warning: Search returned no document library results"
+        $healthReport.Recommendations += "Request site reindexing"
+    }
+    
+    # Generate HTML report
+    $htmlReport = @"
+<html>
+<head><title>SharePoint Online Health Check</title></head>
+<body>
+<h1>SharePoint Online Health Check Report</h1>
+<h2>Site: $($healthReport.SiteUrl)</h2>
+<h3>Check Time: $($healthReport.CheckTime)</h3>
+<h3>Issues Found:</h3>
+<ul>
+$(($healthReport.Issues | ForEach-Object {"<li>$_</li>"}) -join "`n")
+</ul>
+<h3>Recommendations:</h3>
+<ul>
+$(($healthReport.Recommendations | ForEach-Object {"<li>$_</li>"}) -join "`n")
+</ul>
+</body>
+</html>
+"@
+    
+    $htmlReport | Out-File -FilePath $OutputPath -Encoding UTF8
+    Write-Host "Health check report saved to: $OutputPath" -ForegroundColor Green
+}
+catch {
+    Write-Host "✗ Health check failed: $($_.Exception.Message)" -ForegroundColor Red
+    $healthReport.ConnectionStatus = "Failed"
+    $healthReport.Issues += "Critical: $($_.Exception.Message)"
+}
+            </div>
+            
+            <div class="support-prep">
+                <h4><i class="fas fa-clipboard-list"></i> Documentation for Microsoft Support</h4>
+                <p>If self-diagnostics don't resolve the issue, gather this information before contacting support:</p>
+                
+                <h4>Essential Information Package</h4>
+                <ul>
+                    <li><strong>Correlation ID:</strong> From error messages or HTTP headers (SPRequestGuid, request-id)</li>
+                    <li><strong>Exact Error Messages:</strong> Complete text and screenshots of all error messages</li>
+                    <li><strong>Reproduction Steps:</strong> Detailed step-by-step process to reproduce the issue</li>
+                    <li><strong>User Impact Assessment:</strong> Number of affected users, business impact, and urgency level</li>
+                    <li><strong>Environment Details:</strong> Browser versions, device types, network configuration</li>
+                    <li><strong>Recent Changes Log:</strong> Any configuration changes, migrations, or updates in past 30 days</li>
+                    <li><strong>Diagnostic Results:</strong> Results from all self-diagnostic procedures performed</li>
+                </ul>
+                
+                <div class="code-block">
+# Template for support information gathering
+$supportPackage = @{
+    TenantID = (Get-PnPTenantId)
+    SiteURL = $siteUrl
+    AffectedUsers = @("user1@domain.com", "user2@domain.com")
+    ErrorMessage = "Detailed error message here"
+    CorrelationID = "12345678-1234-1234-1234-123456789012"
+    BrowserInfo = "Chrome 118.0.5993.88 on Windows 11"
+    NetworkInfo = "Corporate network, no proxy"
+    ReproductionSteps = @(
+        "1. Navigate to site",
+        "2. Click on Documents library",
+        "3. Attempt to upload file",
+        "4. Error occurs"
+    )
+    DiagnosticsPerformed = @(
+        "Service health check - No issues found",
+        "User permissions verified - User has Contribute access",
+        "Storage check - 45% utilized",
+        "Browser cache cleared - Issue persists"
+    )
+    BusinessImpact = "High - Blocking document uploads for 25 users"
+    Timeline = "Issue started 2025-09-15 at 10:30 AM UTC"
+}
+
+# Export support package
+$supportPackage | ConvertTo-Json -Depth 3 | Out-File "C:\Reports\SupportPackage.json"
+                </div>
+            </div>
+            
+            <h2>Proactive Monitoring and Prevention</h2>
+            
+            <h3>Automated Health Monitoring</h3>
+            <div class="code-block">
+# Schedule this script to run daily for proactive monitoring
+# Create scheduled task or Azure Function for automated execution
+
+$monitoringResults = @()
+$alertThresholds = @{
+    StorageWarning = 80
+    StorageCritical = 90
+    LargeListThreshold = 5000
+    SearchLatencyWarning = 5000  # milliseconds
+}
+
+# Monitor all site collections
+$sites = Get-SPOSite -Limit All
+
+foreach ($site in $sites) {
+    $siteHealth = @{
+        SiteUrl = $site.Url
+        Title = $site.Title
+        CheckTime = Get-Date
+        Alerts = @()
+    }
+    
+    # Storage monitoring
+    $storagePercent = ($site.StorageUsageCurrent / $site.StorageQuota) * 100
+    if ($storagePercent -gt $alertThresholds.StorageCritical) {
+        $siteHealth.Alerts += "CRITICAL: Storage at $([math]::Round($storagePercent,2))%"
+    } elseif ($storagePercent -gt $alertThresholds.StorageWarning) {
+        $siteHealth.Alerts += "WARNING: Storage at $([math]::Round($storagePercent,2))%"
+    }
+    
+    # Performance monitoring
+    $searchStart = Get-Date
+    $searchTest = Search-PnPContent -Query "Path:$($site.Url)*" -MaxResults 1
+    $searchDuration = (Get-Date) - $searchStart
+    
+    if ($searchDuration.TotalMilliseconds -gt $alertThresholds.SearchLatencyWarning) {
+        $siteHealth.Alerts += "WARNING: Search latency $([math]::Round($searchDuration.TotalMilliseconds,0))ms"
+    }
+    
+    $monitoringResults += $siteHealth
+}
+
+# Generate alerts for sites with issues
+$sitesWithAlerts = $monitoringResults | Where-Object {$_.Alerts.Count -gt 0}
+
+if ($sitesWithAlerts.Count -gt 0) {
+    # Send email alert, write to log, or trigger notification
+    $alertMessage = "SharePoint Online Health Alert: $($sitesWithAlerts.Count) sites require attention"
+    Write-Host $alertMessage -ForegroundColor Yellow
+    
+    # Log details
+    $sitesWithAlerts | Format-Table SiteUrl, @{Name="Alerts";Expression={$_.Alerts -join "; "}} -AutoSize
+}
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid #f1f3f4;">
+                <p><strong>About the Author:</strong> Nagendra Jayaram is a Microsoft Sr Technical Advisor who has resolved over 480 SharePoint escalations annually, achieving 98% customer satisfaction through systematic self-diagnostic procedures and proactive monitoring strategies.</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
