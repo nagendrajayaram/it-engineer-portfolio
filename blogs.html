@@ -266,27 +266,27 @@
 
         <div class="tab-container">
             <div class="tab-nav">
-                <button class="tab-button active" onclick="showTab('sharepoint-online')">
+                <button class="tab-button active" onclick="showTab('sharepoint-online', this)">
                     <i class="fab fa-microsoft"></i>
                     SharePoint Online
                 </button>
-                <button class="tab-button" onclick="showTab('sharepoint-onprem')">
+                <button class="tab-button" onclick="showTab('sharepoint-onprem', this)">
                     <i class="fas fa-server"></i>
                     SharePoint On-Premises
                 </button>
-                <button class="tab-button" onclick="showTab('copilot')">
+                <button class="tab-button" onclick="showTab('copilot', this)">
                     <i class="fas fa-robot"></i>
                     Microsoft Copilot
                 </button>
-                <button class="tab-button" onclick="showTab('exchange')">
+                <button class="tab-button" onclick="showTab('exchange', this)">
                     <i class="fas fa-envelope"></i>
                     Exchange
                 </button>
-                <button class="tab-button" onclick="showTab('teams')">
+                <button class="tab-button" onclick="showTab('teams', this)">
                     <i class="fab fa-microsoft"></i>
                     Teams
                 </button>
-                <button class="tab-button" onclick="showTab('powerapps')">
+                <button class="tab-button" onclick="showTab('powerapps', this)">
                     <i class="fas fa-cogs"></i>
                     PowerApps
                 </button>
@@ -369,7 +369,7 @@
 
     <script>
         // Tab switching functionality
-        function showTab(tabId) {
+        function showTab(tabId, clickedButton) {
             // Hide all tab contents
             const tabContents = document.querySelectorAll('.tab-content');
             tabContents.forEach(content => {
@@ -386,7 +386,7 @@
             document.getElementById(tabId).classList.add('active');
             
             // Add active class to clicked button
-            event.target.classList.add('active');
+            clickedButton.classList.add('active');
         }
         
         // Hamburger menu functionality
