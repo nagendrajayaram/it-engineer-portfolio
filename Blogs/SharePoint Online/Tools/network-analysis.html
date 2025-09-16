@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Analysis Tools for SharePoint Online - Nagendra Jayaram</title>
+    <meta name="description" content="Complete guide to network analysis tools including Fiddler and browser developer tools for SharePoint Online troubleshooting.">
+    <meta name="keywords" content="Fiddler, Network Analysis, SharePoint Online, HTTP Debugging, Correlation ID, Browser DevTools">
+    <meta name="author" content="Nagendra Jayaram">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .blog-post {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f1f3f4;
+        }
+        
+        .blog-post-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .blog-meta {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .blog-author {
+            color: #3498db;
+            font-weight: 600;
+        }
+        
+        .blog-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c5aa0;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e3f2fd;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #34495e;
+            margin: 30px 0 15px 0;
+        }
+        
+        .feature-box {
+            background: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .feature-box h4 {
+            color: #2d5016;
+            margin-top: 0;
+        }
+        
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .back-nav {
+            margin-bottom: 30px;
+        }
+        
+        .back-nav a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+        
+        .back-nav a:hover {
+            color: #2980b9;
+        }
+        
+        .tool-highlight {
+            background: #f8f9fa;
+            border-left: 4px solid #4a90e2;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .best-practices {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .best-practices h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        
+        .method-section {
+            background: #f0f8ff;
+            border: 1px solid #b0d4f1;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .method-section h3 {
+            color: #1e3a8a;
+            margin-top: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-post {
+                padding: 20px 15px;
+            }
+            
+            .blog-post-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-post">
+        <div class="back-nav">
+            <a href="index.html">
+                <i class="fas fa-arrow-left"></i>
+                Back to SharePoint Tools
+            </a>
+        </div>
+        
+        <header class="blog-header">
+            <h1 class="blog-post-title">Network Analysis Tools for SharePoint Online</h1>
+            <div class="blog-meta">
+                <span class="blog-author">By Nagendra Jayaram</span> • 
+                <span class="blog-date">September 15, 2025</span> • 
+                <span class="read-time">12 min read</span>
+            </div>
+        </header>
+        
+        <main class="blog-content">
+            <div class="tool-highlight">
+                <h2><i class="fas fa-network-wired"></i> About Network Analysis for SharePoint</h2>
+                <p>Network traffic analysis is crucial for debugging SharePoint Online issues, understanding API calls, and monitoring authentication flows. Whether you're troubleshooting performance problems, authentication failures, or API errors, capturing and analyzing network traffic provides invaluable insights into the root cause of issues.</p>
+                
+                <div class="feature-box">
+                    <h4><i class="fas fa-download"></i> Download Fiddler</h4>
+                    <p><strong>Official Download:</strong> <a href="https://www.telerik.com/fiddler" target="_blank" rel="noopener noreferrer">Telerik Fiddler Classic or Fiddler Everywhere</a></p>
+                    <p>Choose Fiddler Classic for Windows or Fiddler Everywhere for cross-platform support.</p>
+                </div>
+            </div>
+            
+            <h2>Tool Options: Fiddler vs Browser Developer Tools</h2>
+            
+            <div class="method-section">
+                <h3><i class="fas fa-desktop"></i> Method 1: Fiddler (Advanced Analysis)</h3>
+                <p><strong>Best for:</strong> Deep HTTP analysis, HTTPS decryption, advanced filtering, and professional debugging scenarios.</p>
+                
+                <h4>Installation and Setup</h4>
+                <ol>
+                    <li><strong>Download Fiddler:</strong> Get Fiddler Classic (Windows) or Fiddler Everywhere (cross-platform)</li>
+                    <li><strong>Install Application:</strong> Run installer with administrator privileges</li>
+                    <li><strong>Configure HTTPS Decryption:</strong> Tools > Options > HTTPS tab</li>
+                    <li><strong>Enable HTTPS Capture:</strong> Check "Capture HTTPS CONNECTs" and "Decrypt HTTPS traffic"</li>
+                    <li><strong>Install Certificate:</strong> Click "Install Certificate" and trust the Fiddler root certificate</li>
+                    <li><strong>Restart Browser:</strong> Close and reopen browsers to pick up proxy settings</li>
+                </ol>
+                
+                <h4>SharePoint-Specific Configuration</h4>
+                <div class="code-block">
+# Fiddler Filters for SharePoint Online
+Host: *.sharepoint.com
+Host: *.microsoftonline.com
+Host: *.office.com
+Host: *.windows.net
+
+# Filter by Request Methods
+Method: POST     # API calls, form submissions
+Method: GET      # Page loads, resource requests
+Method: PUT      # Updates and modifications
+Method: DELETE   # Deletion operations
+
+# Filter by Response Codes
+Status: 4**      # Client errors (401, 403, 404, etc.)
+Status: 5**      # Server errors (500, 503, etc.)
+Status: 200      # Successful requests
+                </div>
+                
+                <h4>Advanced Fiddler Features</h4>
+                <ul>
+                    <li><strong>AutoResponder:</strong> Mock API responses for testing scenarios</li>
+                    <li><strong>Composer:</strong> Craft and send custom HTTP requests</li>
+                    <li><strong>Timeline View:</strong> Visualize request timing and dependencies</li>
+                    <li><strong>Request Comparison:</strong> Compare similar requests to identify differences</li>
+                    <li><strong>Script Debugging:</strong> Custom FiddlerScript for automated analysis</li>
+                </ul>
+            </div>
+            
+            <div class="method-section">
+                <h3><i class="fas fa-browser"></i> Method 2: Browser Developer Tools (Quick Analysis)</h3>
+                <p><strong>Best for:</strong> Quick debugging, basic network analysis, and scenarios where Fiddler installation isn't possible.</p>
+                
+                <h4>Step-by-Step Process</h4>
+                <ol>
+                    <li><strong>Open Developer Tools:</strong> Press F12 in Chrome, Edge, or Firefox</li>
+                    <li><strong>Navigate to Network Tab:</strong> Click on the "Network" tab in developer tools</li>
+                    <li><strong>Clear Existing Entries:</strong> Click the clear button (🚫) to remove old network entries</li>
+                    <li><strong>Enable Recording:</strong> Ensure recording is enabled (red circle should be visible)</li>
+                    <li><strong>Reproduce Issue:</strong> Perform the action that causes the SharePoint problem</li>
+                    <li><strong>Analyze Results:</strong> Look for failed requests (red entries) and examine response details</li>
+                </ol>
+                
+                <h4>Browser DevTools Analysis Features</h4>
+                <ul>
+                    <li><strong>Request Headers:</strong> Examine authentication tokens, user agents, and custom headers</li>
+                    <li><strong>Response Analysis:</strong> View response bodies, headers, and status codes</li>
+                    <li><strong>Timing Information:</strong> Analyze request timing breakdown (DNS, SSL, response time)</li>
+                    <li><strong>Initiator Tracking:</strong> See which script or action triggered each request</li>
+                    <li><strong>Resource Filtering:</strong> Filter by domain, file type, or response status</li>
+                </ul>
+                
+                <div class="code-block">
+# Useful Browser DevTools Filters
+# Filter by domain
+sharepoint.com
+microsoftonline.com
+
+# Filter by status codes
+status-code:4*     # Client errors
+status-code:5*     # Server errors
+status-code:200    # Successful requests
+
+# Filter by request methods
+method:POST
+method:GET
+
+# Filter by resource type
+xhr                # AJAX requests
+fetch              # Fetch API calls
+doc                # Documents/pages
+                </div>
+            </div>
+            
+            <h2>SharePoint Correlation ID: Critical for Support</h2>
+            
+            <div class="feature-box">
+                <h4><i class="fas fa-fingerprint"></i> Understanding Correlation IDs</h4>
+                <p><strong>Every SharePoint Online request generates a unique Correlation ID that Microsoft support uses to trace issues in their logs.</strong> This ID is essential for effective support interactions and should always be captured when reporting problems.</p>
+                
+                <h4>Where to Find Correlation IDs</h4>
+                <ul>
+                    <li><strong>Error Pages:</strong> Displayed prominently in SharePoint error messages</li>
+                    <li><strong>HTTP Headers:</strong> Found in response headers as "SPRequestGuid" or "request-id"</li>
+                    <li><strong>Browser Console:</strong> Sometimes logged in JavaScript console errors</li>
+                    <li><strong>ULS Logs:</strong> Recorded in SharePoint's Unified Logging System</li>
+                </ul>
+                
+                <h4>Capturing Correlation IDs</h4>
+                <div class="code-block">
+# In Fiddler - Look for these headers in responses:
+SPRequestGuid: 12345678-1234-1234-1234-123456789012
+request-id: 87654321-4321-4321-4321-210987654321
+X-SharePointHealthScore: 1
+
+# In Browser DevTools - Check Response Headers:
+1. Select failed request
+2. Click Headers tab
+3. Look in Response Headers section
+4. Find SPRequestGuid or request-id value
+                </div>
+            </div>
+            
+            <h2>Common SharePoint HTTP Response Codes</h2>
+            
+            <h3>Success Codes (2xx)</h3>
+            <div class="code-block">
+200 OK                 - Request successful, content returned
+201 Created            - Resource created successfully (new item/document)
+202 Accepted           - Request accepted for processing (async operations)
+204 No Content         - Successful operation with no content (DELETE, some PUTs)
+            </div>
+            
+            <h3>Client Error Codes (4xx) - SharePoint Specific</h3>
+            <div class="code-block">
+400 Bad Request        - Invalid request syntax or malformed data
+401 Unauthorized       - Authentication required or failed
+403 Forbidden          - User lacks permissions for the resource
+404 Not Found          - Site, list, item, or resource doesn't exist
+409 Conflict           - Resource already exists or version conflict
+412 Precondition Failed - If-Match header doesn't match current ETag
+413 Payload Too Large  - File upload exceeds size limits (100GB max)
+415 Unsupported Media  - File type blocked by admin policy
+429 Too Many Requests  - Rate limiting or throttling applied
+            </div>
+            
+            <h3>Server Error Codes (5xx) - SharePoint Specific</h3>
+            <div class="code-block">
+500 Internal Server Error - General server error, check Correlation ID
+503 Service Unavailable   - Service temporarily unavailable or throttled
+504 Gateway Timeout       - Request timeout (large operations, slow networks)
+507 Insufficient Storage  - Site storage quota exceeded
+            </div>
+            
+            <h2>Practical Analysis Scenarios</h2>
+            
+            <h3>Authentication and Login Issues</h3>
+            <div class="feature-box">
+                <h4><i class="fas fa-key"></i> Authentication Flow Analysis</h4>
+                <p>Monitor these key URLs during authentication problems:</p>
+                <div class="code-block">
+# OAuth Authentication Flow URLs
+https://login.microsoftonline.com/*/oauth2/authorize
+https://login.microsoftonline.com/*/oauth2/token
+https://*.sharepoint.com/_forms/default.aspx
+https://*.sharepoint.com/_trust/
+
+# Common Authentication Response Codes
+302 - Normal redirect during OAuth flow
+401 - Authentication failed or expired
+403 - User account disabled or conditional access blocked
+                </div>
+            </div>
+            
+            <h3>API Call Debugging</h3>
+            <div class="code-block">
+# SharePoint REST API Endpoints to Monitor
+/_api/web/lists                    # List operations
+/_api/web/currentuser              # Current user context
+/_api/search/query                 # Search operations
+/_vti_bin/client.svc               # Client object model calls
+/_layouts/15/basepage.aspx         # Page rendering
+
+# Key Headers to Examine
+Accept: application/json;odata=verbose
+Content-Type: application/json;odata=verbose
+Authorization: Bearer [token]
+X-RequestDigest: [form digest value]
+If-Match: [etag for updates]
+            </div>
+            
+            <h3>Performance Analysis</h3>
+            <ul>
+                <li><strong>Request Timing:</strong> Identify slow API calls and resource loading</li>
+                <li><strong>Payload Size:</strong> Check for oversized responses or uploads</li>
+                <li><strong>Concurrent Requests:</strong> Monitor request parallelization and dependencies</li>
+                <li><strong>Caching Behavior:</strong> Verify cache headers and browser caching efficiency</li>
+                <li><strong>CDN Performance:</strong> Analyze Office 365 CDN usage and effectiveness</li>
+            </ul>
+            
+            <div class="best-practices">
+                <h3><i class="fas fa-lightbulb"></i> Best Practices for Network Analysis</h3>
+                
+                <h4>Data Collection</h4>
+                <ul>
+                    <li><strong>Clear Cache First:</strong> Start with clean browser cache to avoid misleading results</li>
+                    <li><strong>Reproduce Consistently:</strong> Ensure the issue can be reproduced reliably</li>
+                    <li><strong>Capture Complete Flows:</strong> Start recording before the issue occurs</li>
+                    <li><strong>Document Context:</strong> Note user actions, timing, and environmental factors</li>
+                    <li><strong>Save Sessions:</strong> Export Fiddler sessions or save HAR files for later analysis</li>
+                </ul>
+                
+                <h4>Analysis Methodology</h4>
+                <ul>
+                    <li><strong>Start with Errors:</strong> Focus on failed requests (4xx, 5xx status codes) first</li>
+                    <li><strong>Check Authentication:</strong> Verify OAuth flows and token validity</li>
+                    <li><strong>Examine Timing:</strong> Identify performance bottlenecks and slow requests</li>
+                    <li><strong>Validate Headers:</strong> Ensure required headers are present and correct</li>
+                    <li><strong>Compare Working vs Broken:</strong> Analyze differences between successful and failed scenarios</li>
+                </ul>
+                
+                <h4>Security and Privacy</h4>
+                <ul>
+                    <li><strong>Sensitive Data Handling:</strong> Be cautious with authentication tokens and personal data</li>
+                    <li><strong>Certificate Trust:</strong> Only install Fiddler certificates on development machines</li>
+                    <li><strong>Session Sharing:</strong> Sanitize captures before sharing with others</li>
+                    <li><strong>Compliance Considerations:</strong> Follow organizational policies for network monitoring</li>
+                </ul>
+            </div>
+            
+            <h2>Troubleshooting Common Network Issues</h2>
+            
+            <h3>Fiddler Not Capturing HTTPS Traffic</h3>
+            <ol>
+                <li>Verify HTTPS decryption is enabled in Fiddler options</li>
+                <li>Check that Fiddler certificate is installed and trusted</li>
+                <li>Restart browser after enabling HTTPS capture</li>
+                <li>Verify proxy settings aren't being overridden</li>
+                <li>Try disabling antivirus HTTPS scanning temporarily</li>
+            </ol>
+            
+            <h3>Browser DevTools Missing Network Data</h3>
+            <ol>
+                <li>Ensure Network tab is open before reproducing the issue</li>
+                <li>Check that recording is enabled (red circle visible)</li>
+                <li>Clear network log and try again</li>
+                <li>Disable browser extensions that might interfere</li>
+                <li>Try in incognito/private mode to rule out cache issues</li>
+            </ol>
+            
+            <h3>SharePoint-Specific Network Issues</h3>
+            <ul>
+                <li><strong>CORS Errors:</strong> Cross-origin request issues with SharePoint APIs</li>
+                <li><strong>Request Digest Expiration:</strong> Form digest values timing out for POST operations</li>
+                <li><strong>Authentication Token Renewal:</strong> OAuth token refresh failures</li>
+                <li><strong>Throttling Responses:</strong> 429 status codes indicating rate limiting</li>
+            </ul>
+            
+            <h2>Integration with Other SharePoint Tools</h2>
+            
+            <h3>PowerShell Correlation</h3>
+            <div class="code-block">
+# Use network analysis to validate PowerShell operations
+# Example: Monitor API calls during PowerShell execution
+
+# In Fiddler/DevTools, look for these patterns during PowerShell:
+POST /_vti_bin/client.svc/ProcessQuery
+GET /_api/web/lists/getbytitle('ListName')
+POST /_api/web/lists/getbytitle('ListName')/items
+
+# Correlation with PowerShell error messages:
+# Match Correlation IDs from network traffic with PowerShell exceptions
+            </div>
+            
+            <h3>Search Query Tool Validation</h3>
+            <ul>
+                <li><strong>API Call Verification:</strong> Confirm search queries are reaching the search service</li>
+                <li><strong>Result Processing:</strong> Analyze how search results are formatted and returned</li>
+                <li><strong>Performance Metrics:</strong> Compare query execution times across different methods</li>
+                <li><strong>Error Diagnosis:</strong> Identify search service communication failures</li>
+            </ul>
+            
+            <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid #f1f3f4;">
+                <p><strong>About the Author:</strong> Nagendra Jayaram is a Microsoft Sr Technical Advisor with 18+ years of enterprise experience specializing in SharePoint Online troubleshooting and network analysis.</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
