@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharePoint Online PowerShell Management - Nagendra Jayaram</title>
+    <meta name="description" content="Complete guide to SharePoint Online PowerShell management including SPO and PnP PowerShell modules for enterprise administration.">
+    <meta name="keywords" content="SharePoint PowerShell, PnP PowerShell, SPO Management Shell, SharePoint Online Administration, PowerShell Automation">
+    <meta name="author" content="Nagendra Jayaram">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .blog-post {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f1f3f4;
+        }
+        
+        .blog-post-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .blog-meta {
+            color: #7f8c8d;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .blog-author {
+            color: #3498db;
+            font-weight: 600;
+        }
+        
+        .blog-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+        
+        .blog-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c5aa0;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e3f2fd;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #34495e;
+            margin: 30px 0 15px 0;
+        }
+        
+        .feature-box {
+            background: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .feature-box h4 {
+            color: #2d5016;
+            margin-top: 0;
+        }
+        
+        .code-block {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .back-nav {
+            margin-bottom: 30px;
+        }
+        
+        .back-nav a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+        
+        .back-nav a:hover {
+            color: #2980b9;
+        }
+        
+        .tool-highlight {
+            background: #f8f9fa;
+            border-left: 4px solid #4a90e2;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .best-practices {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .best-practices h3 {
+            color: #856404;
+            margin-top: 0;
+        }
+        
+        .module-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .module-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            background: #f9f9f9;
+        }
+        
+        .module-card h4 {
+            margin-top: 0;
+            color: #2c5aa0;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-post {
+                padding: 20px 15px;
+            }
+            
+            .blog-post-title {
+                font-size: 2rem;
+            }
+            
+            .module-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-post">
+        <div class="back-nav">
+            <a href="index.html">
+                <i class="fas fa-arrow-left"></i>
+                Back to SharePoint Tools
+            </a>
+        </div>
+        
+        <header class="blog-header">
+            <h1 class="blog-post-title">SharePoint Online PowerShell Management</h1>
+            <div class="blog-meta">
+                <span class="blog-author">By Nagendra Jayaram</span> • 
+                <span class="blog-date">September 15, 2025</span> • 
+                <span class="read-time">15 min read</span>
+            </div>
+        </header>
+        
+        <main class="blog-content">
+            <div class="tool-highlight">
+                <h2><i class="fas fa-terminal"></i> About SharePoint Online PowerShell</h2>
+                <p>SharePoint Online Management Shell provides comprehensive PowerShell-based administrative capabilities for bulk operations, automation, and advanced configuration tasks. It's the most powerful tool for SharePoint Online administration, offering both traditional SPO cmdlets and modern PnP PowerShell modules. The tool supports modern authentication with MFA and provides extensive automation capabilities for enterprise environments. PowerShell is essential for tasks that cannot be performed through the web interface.</p>
+            </div>
+            
+            <h2>PowerShell Module Options</h2>
+            
+            <div class="module-comparison">
+                <div class="module-card">
+                    <h4><i class="fas fa-shield-alt"></i> Traditional SPO Module</h4>
+                    <p><strong>Microsoft.Online.SharePoint.PowerShell</strong></p>
+                    <ul>
+                        <li>Official Microsoft module</li>
+                        <li>Tenant-level administration</li>
+                        <li>Site collection management</li>
+                        <li>User and group operations</li>
+                        <li>Compliance and security settings</li>
+                    </ul>
+                </div>
+                
+                <div class="module-card">
+                    <h4><i class="fas fa-rocket"></i> Modern PnP Module</h4>
+                    <p><strong>PnP.PowerShell</strong></p>
+                    <ul>
+                        <li>Community-driven, Microsoft-supported</li>
+                        <li>Site-level and content operations</li>
+                        <li>Modern authentication features</li>
+                        <li>Cross-platform compatibility</li>
+                        <li>Extensive functionality and flexibility</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2>Installation and Setup</h2>
+            
+            <h3>Prerequisites</h3>
+            <ul>
+                <li><strong>PowerShell 5.1+:</strong> Windows PowerShell 5.1 or PowerShell 7+</li>
+                <li><strong>Execution Policy:</strong> Set to RemoteSigned or Unrestricted for module installation</li>
+                <li><strong>Administrative Permissions:</strong> Global Admin or SharePoint Admin roles</li>
+                <li><strong>Modern Authentication:</strong> Azure AD account with MFA support</li>
+            </ul>
+            
+            <h3>Module Installation</h3>
+            <div class="code-block">
+# Step 1: Set Execution Policy (Run as Administrator)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Step 2: Install SharePoint Online PowerShell Module
+Install-Module -Name Microsoft.Online.SharePoint.PowerShell -Force -AllowClobber
+
+# Step 3: Install PnP PowerShell (Recommended for modern scenarios)
+Install-Module -Name PnP.PowerShell -Force -AllowClobber
+
+# Step 4: Verify Installation
+Get-Module -Name Microsoft.Online.SharePoint.PowerShell -ListAvailable
+Get-Module -Name PnP.PowerShell -ListAvailable
+
+# Step 5: Update Modules (run periodically)
+Update-Module -Name Microsoft.Online.SharePoint.PowerShell
+Update-Module -Name PnP.PowerShell
+            </div>
+            
+            <h2>Connection Methods</h2>
+            
+            <h3>SPO Admin Center Connection</h3>
+            <div class="code-block">
+# Traditional SPO Connection (Tenant Administration)
+Connect-SPOService -Url https://[tenant]-admin.sharepoint.com
+
+# With Modern Authentication (supports MFA)
+Connect-SPOService -Url https://[tenant]-admin.sharepoint.com -ModernAuth $true
+
+# Verify Connection
+Get-SPOTenant
+            </div>
+            
+            <h3>PnP PowerShell Connection</h3>
+            <div class="code-block">
+# Modern PnP Connection (Interactive with MFA support)
+Connect-PnPOnline -Url https://[tenant].sharepoint.com/sites/[sitename] -Interactive
+
+# Connection with specific credentials
+Connect-PnPOnline -Url https://[tenant].sharepoint.com/sites/[sitename] -Credentials (Get-Credential)
+
+# Admin Center Connection with PnP
+Connect-PnPOnline -Url https://[tenant]-admin.sharepoint.com -Interactive
+
+# Verify Connection
+Get-PnPWeb
+Get-PnPContext
+            </div>
+            
+            <h2>Essential Administrative Tasks</h2>
+            
+            <h3>Site Collection Management</h3>
+            <div class="code-block">
+# Get Site Collection Information
+Get-SPOSite -Identity https://contoso.sharepoint.com/sites/teamsite
+Get-SPOSite -Limit All | Where-Object {$_.Title -like "*Finance*"}
+
+# Create New Site Collection
+New-SPOSite -Url https://contoso.sharepoint.com/sites/newproject `
+           -Owner admin@contoso.com `
+           -StorageQuota 1000 `
+           -Template "STS#3" `
+           -Title "New Project Site"
+
+# Modify Site Properties
+Set-SPOSite -Identity https://contoso.sharepoint.com/sites/teamsite `
+           -StorageQuota 2000 `
+           -SharingCapability ExternalUserSharingOnly
+
+# Remove Site Collection (moves to recycle bin)
+Remove-SPOSite -Identity https://contoso.sharepoint.com/sites/oldsite -Confirm:$false
+
+# Permanently Delete Site
+Remove-SPODeletedSite -Identity https://contoso.sharepoint.com/sites/oldsite -Confirm:$false
+            </div>
+            
+            <h3>User and Permission Management</h3>
+            <div class="code-block">
+# Add Site Collection Administrator
+Set-SPOUser -Site https://contoso.sharepoint.com/sites/teamsite `
+           -LoginName user@contoso.com `
+           -IsSiteCollectionAdmin $true
+
+# Get Site Users and Groups
+Get-SPOSiteGroup -Site https://contoso.sharepoint.com/sites/teamsite
+Get-SPOUser -Site https://contoso.sharepoint.com/sites/teamsite
+
+# Manage External User Access
+Add-SPOUser -Site https://contoso.sharepoint.com/sites/teamsite `
+           -LoginName external@partner.com `
+           -Group "Team Site Visitors"
+
+# Remove User Access
+Remove-SPOUser -Site https://contoso.sharepoint.com/sites/teamsite `
+              -LoginName user@contoso.com
+            </div>
+            
+            <h3>Search Configuration and Management</h3>
+            <div class="code-block">
+# Request Site Reindexing
+Request-SPOReIndexWeb -Identity https://contoso.sharepoint.com/sites/teamsite
+
+# Request List Reindexing
+Request-SPOReIndexList -Identity https://contoso.sharepoint.com/sites/teamsite/lists/documents
+
+# Export Search Configuration
+Export-SPOSearchConfiguration -Owner "tenant" -Path "C:\SearchConfig.xml"
+
+# Import Search Configuration
+Import-SPOSearchConfiguration -Path "C:\SearchConfig.xml" -Owner "tenant"
+
+# Get Search Center URL
+Get-SPOTenant | Select SearchCenterUrl
+            </div>
+            
+            <h2>Advanced PnP PowerShell Operations</h2>
+            
+            <h3>List and Library Management</h3>
+            <div class="code-block">
+# Get All Lists
+$lists = Get-PnPList
+$documentLibraries = Get-PnPList | Where-Object {$_.BaseType -eq "DocumentLibrary"}
+
+# Create New List
+New-PnPList -Title "Project Tasks" -Template GenericList -Url "Lists/ProjectTasks"
+
+# Create Document Library
+New-PnPList -Title "Project Documents" -Template DocumentLibrary -Url "ProjectDocs"
+
+# Add List Items
+Add-PnPListItem -List "Project Tasks" -Values @{
+    "Title" = "Complete Analysis"
+    "Priority" = "High"
+    "DueDate" = "2025-09-30"
+}
+
+# Update List Items
+Set-PnPListItem -List "Project Tasks" -Identity 1 -Values @{
+    "Status" = "Completed"
+}
+
+# Get List Items with Filtering
+$items = Get-PnPListItem -List "Project Tasks" -Query "<View><Query><Where><Eq><FieldRef Name='Priority'/><Value Type='Text'>High</Value></Eq></Where></Query></View>"
+            </div>
+            
+            <h3>Content Type and Field Management</h3>
+            <div class="code-block">
+# Get Content Types
+$contentTypes = Get-PnPContentType
+$documentCT = Get-PnPContentType -Identity "Document"
+
+# Create New Content Type
+$newCT = Add-PnPContentType -Name "Project Document" -Group "Custom Content Types" -ParentContentType $documentCT
+
+# Add Field to Content Type
+$field = Get-PnPField -Identity "ProjectPhase"
+Add-PnPFieldToContentType -Field $field -ContentType $newCT
+
+# Create Custom Field
+Add-PnPField -DisplayName "Project Phase" -InternalName "ProjectPhase" -Type Choice -Choices @("Planning","Development","Testing","Deployment")
+
+# Add Content Type to List
+Add-PnPContentTypeToList -List "Project Documents" -ContentType $newCT
+            </div>
+            
+            <h3>File and Document Management</h3>
+            <div class="code-block">
+# Upload Files
+Add-PnPFile -Path "C:\Documents\ProjectPlan.docx" -Folder "Project Documents"
+
+# Upload Large Files (>100MB)
+Add-PnPFile -Path "C:\LargeFiles\Database.bak" -Folder "Backups" -UseWebDav
+
+# Download Files
+Get-PnPFile -Url "/sites/teamsite/Project Documents/ProjectPlan.docx" -Path "C:\Downloads\" -Filename "ProjectPlan.docx" -AsFile
+
+# Copy Files Between Libraries
+Copy-PnPFile -SourceUrl "/sites/source/Documents/file.docx" -TargetUrl "/sites/target/Archive/file.docx"
+
+# Set File Properties
+Set-PnPFileCheckedOut -Url "/sites/teamsite/Documents/ProjectPlan.docx"
+Set-PnPFileCheckedIn -Url "/sites/teamsite/Documents/ProjectPlan.docx" -Comment "Updated project timeline"
+            </div>
+            
+            <h2>Bulk Operations and Automation</h2>
+            
+            <h3>Site Provisioning Script</h3>
+            <div class="code-block">
+# Bulk Site Creation Script
+$siteRequests = @(
+    @{Name="Finance Team"; Url="finance"; Owner="finance-lead@contoso.com"},
+    @{Name="HR Team"; Url="hr"; Owner="hr-lead@contoso.com"},
+    @{Name="IT Team"; Url="it"; Owner="it-lead@contoso.com"}
+)
+
+Connect-SPOService -Url https://contoso-admin.sharepoint.com -ModernAuth $true
+
+foreach ($site in $siteRequests) {
+    try {
+        New-SPOSite -Url "https://contoso.sharepoint.com/sites/$($site.Url)" `
+                   -Owner $site.Owner `
+                   -Title $site.Name `
+                   -StorageQuota 1000 `
+                   -Template "STS#3"
+        
+        Write-Host "✓ Created site: $($site.Name)" -ForegroundColor Green
+    }
+    catch {
+        Write-Host "✗ Failed to create site: $($site.Name) - $($_.Exception.Message)" -ForegroundColor Red
+    }
+}
+            </div>
+            
+            <h3>User Audit and Reporting</h3>
+            <div class="code-block">
+# Site User Audit Script
+$auditResults = @()
+$sites = Get-SPOSite -Limit All
+
+foreach ($site in $sites) {
+    try {
+        Connect-PnPOnline -Url $site.Url -Interactive
+        
+        $users = Get-PnPUser | Where-Object {$_.Email -ne ""}
+        
+        foreach ($user in $users) {
+            $auditResults += [PSCustomObject]@{
+                SiteUrl = $site.Url
+                SiteTitle = $site.Title
+                UserEmail = $user.Email
+                UserTitle = $user.Title
+                IsSiteAdmin = $user.IsSiteAdmin
+                LastLoginTime = $user.UsageLocation
+            }
+        }
+    }
+    catch {
+        Write-Warning "Could not process site: $($site.Url)"
+    }
+}
+
+# Export Results
+$auditResults | Export-Csv -Path "C:\Reports\SharePointUserAudit.csv" -NoTypeInformation
+            </div>
+            
+            <div class="best-practices">
+                <h3><i class="fas fa-lightbulb"></i> Best Practices</h3>
+                
+                <h4>Script Development and Testing</h4>
+                <ul>
+                    <li><strong>Test in Development:</strong> Always test scripts in development environments first</li>
+                    <li><strong>Error Handling:</strong> Implement try-catch blocks for robust error management</li>
+                    <li><strong>Progress Tracking:</strong> Use Write-Progress for long-running operations</li>
+                    <li><strong>Logging:</strong> Implement comprehensive logging for audit trails</li>
+                    <li><strong>Parameterization:</strong> Use parameters and configuration files for flexibility</li>
+                </ul>
+                
+                <h4>Authentication and Security</h4>
+                <ul>
+                    <li><strong>Modern Authentication:</strong> Always use modern authentication with MFA support</li>
+                    <li><strong>Service Accounts:</strong> Use dedicated service accounts for automated scripts</li>
+                    <li><strong>Certificate Authentication:</strong> Consider certificate-based authentication for production</li>
+                    <li><strong>Least Privilege:</strong> Use accounts with minimum required permissions</li>
+                    <li><strong>Session Management:</strong> Properly disconnect sessions after operations</li>
+                </ul>
+                
+                <h4>Performance Optimization</h4>
+                <ul>
+                    <li><strong>Batch Operations:</strong> Use batch operations for multiple related tasks</li>
+                    <li><strong>Throttling Awareness:</strong> Implement delays to avoid throttling</li>
+                    <li><strong>Parallel Processing:</strong> Use parallel execution for independent operations</li>
+                    <li><strong>Efficient Queries:</strong> Use CAML queries and filters to limit data retrieval</li>
+                    <li><strong>Connection Reuse:</strong> Reuse connections within script execution</li>
+                </ul>
+            </div>
+            
+            <h2>Troubleshooting Common Issues</h2>
+            
+            <h3>Authentication Problems</h3>
+            <div class="feature-box">
+                <h4><i class="fas fa-key"></i> Common Authentication Issues</h4>
+                <ul>
+                    <li><strong>MFA Challenges:</strong> Use -Interactive parameter for MFA-enabled accounts</li>
+                    <li><strong>Conditional Access:</strong> Ensure PowerShell access is allowed in conditional access policies</li>
+                    <li><strong>Legacy Authentication:</strong> Verify modern authentication is enabled for the tenant</li>
+                    <li><strong>Application Permissions:</strong> Check Azure AD app registrations and permissions</li>
+                </ul>
+                
+                <div class="code-block">
+# Troubleshooting Authentication
+# Test basic connectivity
+Test-NetConnection login.microsoftonline.com -Port 443
+
+# Check authentication method
+Connect-PnPOnline -Url https://tenant.sharepoint.com/sites/site -Interactive -ForceAuthentication
+
+# Verify context
+$context = Get-PnPContext
+Write-Host "Connected as: $($context.Web.CurrentUser.Email)"
+                </div>
+            </div>
+            
+            <h3>Permission and Access Issues</h3>
+            <div class="code-block">
+# Check User Permissions
+$user = Get-PnPUser -Identity "user@contoso.com"
+$permissions = Get-PnPUserPermissions -User $user
+Write-Host "User permissions: $($permissions -join ', ')"
+
+# Verify Site Collection Admin
+$site = Get-SPOSite -Identity https://contoso.sharepoint.com/sites/teamsite
+Write-Host "Site Collection Admins: $($site.Owner)"
+
+# Test Site Access
+try {
+    Connect-PnPOnline -Url $siteUrl -Interactive
+    $web = Get-PnPWeb
+    Write-Host "✓ Access confirmed: $($web.Title)" -ForegroundColor Green
+}
+catch {
+    Write-Host "✗ Access denied: $($_.Exception.Message)" -ForegroundColor Red
+}
+            </div>
+            
+            <h3>Module and Version Issues</h3>
+            <div class="code-block">
+# Check Module Versions
+Get-Module -Name PnP.PowerShell -ListAvailable | Select Version, ModuleBase
+Get-Module -Name Microsoft.Online.SharePoint.PowerShell -ListAvailable | Select Version
+
+# Update Modules
+Update-Module -Name PnP.PowerShell -Force
+Update-Module -Name Microsoft.Online.SharePoint.PowerShell -Force
+
+# Resolve Module Conflicts
+Remove-Module -Name PnP.PowerShell -Force
+Import-Module -Name PnP.PowerShell -Force
+
+# Check PowerShell Version
+$PSVersionTable.PSVersion
+            </div>
+            
+            <h2>Integration with Other SharePoint Tools</h2>
+            
+            <h3>PowerShell + SharePoint Designer Replacement</h3>
+            <ul>
+                <li><strong>Workflow Migration:</strong> Use Power Automate with PowerShell triggers</li>
+                <li><strong>Custom Forms:</strong> PowerApps integration with PowerShell data sources</li>
+                <li><strong>Site Templates:</strong> PowerShell-based site provisioning replacing SPD templates</li>
+                <li><strong>Data Views:</strong> PnP PowerShell for creating custom list views and web parts</li>
+            </ul>
+            
+            <h3>PowerShell + Microsoft 365 CLI</h3>
+            <div class="code-block">
+# Cross-platform alternative using Microsoft 365 CLI
+npm install -g @pnp/cli-microsoft365
+
+# Login
+m365 login
+
+# SharePoint operations
+m365 spo site list
+m365 spo site add --url https://contoso.sharepoint.com/sites/newsite --title "New Site"
+m365 spo list add --webUrl https://contoso.sharepoint.com/sites/site --title "New List"
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid #f1f3f4;">
+                <p><strong>About the Author:</strong> Nagendra Jayaram is a Microsoft Sr Technical Advisor with 18+ years of enterprise experience specializing in SharePoint Online automation and PowerShell administration.</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
