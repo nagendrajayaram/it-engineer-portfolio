@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SharePoint Online Tools Guide - Nagendra Jayaram</title>
+    <meta name="description" content="Comprehensive guide to essential SharePoint Online tools for administrators including search tools, client browser, network analysis, PowerShell, and self-diagnostics.">
+    <meta name="keywords" content="SharePoint Online Tools, SharePoint Administration, PowerShell, Network Analysis, Search Tools, SharePoint Troubleshooting">
+    <meta name="author" content="Nagendra Jayaram">
+    <link rel="stylesheet" href="../../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .blog-post {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            min-height: 100vh;
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f1f3f4;
+        }
+        
+        .blog-post-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .blog-meta {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .blog-author {
+            color: #3498db;
+            font-weight: 600;
+        }
+        
+        .tools-intro {
+            background: #f8f9fa;
+            border-left: 4px solid #4a90e2;
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #2c3e50;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .tool-card {
+            background: white;
+            border: 1px solid #e0e6ed;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #4a90e2;
+        }
+        
+        .tool-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4a90e2, #357abd);
+        }
+        
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .tool-icon {
+            font-size: 2.5rem;
+            color: #4a90e2;
+            margin-right: 20px;
+            min-width: 60px;
+        }
+        
+        .tool-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin: 0;
+            line-height: 1.3;
+        }
+        
+        .tool-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #5a6c7d;
+            margin-bottom: 20px;
+        }
+        
+        .tool-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+        
+        .tool-features li {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            color: #34495e;
+            margin-bottom: 8px;
+        }
+        
+        .tool-features li::before {
+            content: '✓';
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+        
+        .tool-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .tool-link:hover {
+            background: linear-gradient(135deg, #357abd, #2c5aa0);
+            transform: translateY(-1px);
+            color: white;
+            text-decoration: none;
+        }
+        
+        .back-nav {
+            margin-bottom: 30px;
+        }
+        
+        .back-nav a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+        
+        .back-nav a:hover {
+            color: #2980b9;
+        }
+        
+        .overview-section {
+            background: #e8f5e8;
+            border: 1px solid #c3e6c3;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 40px 0;
+        }
+        
+        .overview-section h2 {
+            color: #2d5016;
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-post {
+                padding: 20px 15px;
+            }
+            
+            .blog-post-title {
+                font-size: 2.2rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .tool-card {
+                padding: 20px;
+            }
+            
+            .tool-icon {
+                font-size: 2rem;
+                margin-right: 15px;
+                min-width: 50px;
+            }
+            
+            .tool-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-post">
+        <div class="back-nav">
+            <a href="../../../details.html#blogs">
+                <i class="fas fa-arrow-left"></i>
+                Back to Blogs
+            </a>
+        </div>
+        
+        <header class="blog-header">
+            <h1 class="blog-post-title">SharePoint Online Tools Guide</h1>
+            <div class="blog-meta">
+                <span class="blog-author">By Nagendra Jayaram</span> • 
+                <span class="blog-date">Microsoft Sr Technical Advisor</span> • 
+                <span class="read-time">Essential Tools Collection</span>
+            </div>
+        </header>
+        
+        <div class="tools-intro">
+            <h2 style="margin-top: 0; color: #2c5aa0;"><i class="fas fa-toolbox"></i> Essential SharePoint Online Administrative Tools</h2>
+            <p>This comprehensive collection covers the essential tools every SharePoint Online administrator needs for effective management, troubleshooting, and optimization. Each tool guide provides detailed usage instructions, best practices, and real-world scenarios based on 18+ years of enterprise SharePoint experience.</p>
+        </div>
+        
+        <div class="overview-section">
+            <h2><i class="fas fa-info-circle"></i> Tool Selection Guide</h2>
+            <p><strong>For New Administrators:</strong> Start with Self-Diagnostics to understand systematic troubleshooting, then explore PowerShell Management for automation capabilities.</p>
+            <p><strong>For Advanced Users:</strong> The Search Query Tool and Network Analysis provide deep diagnostic capabilities for complex scenarios.</p>
+            <p><strong>For Enterprise Environments:</strong> All tools are essential, with PowerShell Management and Self-Diagnostics being critical for scaled operations.</p>
+        </div>
+        
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="tool-header">
+                    <i class="fas fa-search tool-icon"></i>
+                    <h3 class="tool-title">GitHub Search Query Tool</h3>
+                </div>
+                <p class="tool-description">
+                    Enhanced version of SharePoint's native search tool with comprehensive KQL testing and debugging capabilities. Perfect for testing search functionality and analyzing search behavior.
+                </p>
+                <ul class="tool-features">
+                    <li>Advanced KQL testing and syntax highlighting</li>
+                    <li>Detailed search results with metadata analysis</li>
+                    <li>Query debugging with error detection</li>
+                    <li>Property inspector and performance monitoring</li>
+                    <li>Export capabilities for documentation</li>
+                </ul>
+                <a href="search-query-tool.html" class="tool-link">
+                    <i class="fas fa-arrow-right"></i>
+                    Explore Search Tool
+                </a>
+            </div>
+            
+            <div class="tool-card">
+                <div class="tool-header">
+                    <i class="fas fa-globe tool-icon"></i>
+                    <h3 class="tool-title">SharePoint Client Browser</h3>
+                </div>
+                <p class="tool-description">
+                    Powerful desktop application providing low-level access to SharePoint's object model for advanced administrative tasks and complex permission analysis.
+                </p>
+                <ul class="tool-features">
+                    <li>Direct object model manipulation and inspection</li>
+                    <li>Hierarchical navigation through site structure</li>
+                    <li>Advanced permission troubleshooting</li>
+                    <li>Content type and field schema analysis</li>
+                    <li>Real-time property examination</li>
+                </ul>
+                <a href="client-browser.html" class="tool-link">
+                    <i class="fas fa-arrow-right"></i>
+                    Learn Client Browser
+                </a>
+            </div>
+            
+            <div class="tool-card">
+                <div class="tool-header">
+                    <i class="fas fa-network-wired tool-icon"></i>
+                    <h3 class="tool-title">Network Analysis Tools</h3>
+                </div>
+                <p class="tool-description">
+                    Comprehensive guide to network traffic analysis using Fiddler and browser developer tools for debugging authentication, API calls, and performance issues.
+                </p>
+                <ul class="tool-features">
+                    <li>Fiddler setup and HTTPS decryption</li>
+                    <li>Browser developer tools alternatives</li>
+                    <li>SharePoint Correlation ID tracking</li>
+                    <li>HTTP response code analysis</li>
+                    <li>Performance and authentication debugging</li>
+                </ul>
+                <a href="network-analysis.html" class="tool-link">
+                    <i class="fas fa-arrow-right"></i>
+                    Master Network Analysis
+                </a>
+            </div>
+            
+            <div class="tool-card">
+                <div class="tool-header">
+                    <i class="fas fa-terminal tool-icon"></i>
+                    <h3 class="tool-title">PowerShell Management</h3>
+                </div>
+                <p class="tool-description">
+                    Complete guide to SharePoint Online PowerShell administration covering both traditional SPO and modern PnP modules for automation and bulk operations.
+                </p>
+                <ul class="tool-features">
+                    <li>SPO and PnP PowerShell module comparison</li>
+                    <li>Modern authentication with MFA support</li>
+                    <li>Bulk operations and automation scripts</li>
+                    <li>Site collection and content management</li>
+                    <li>User permissions and group administration</li>
+                </ul>
+                <a href="powershell-management.html" class="tool-link">
+                    <i class="fas fa-arrow-right"></i>
+                    Master PowerShell
+                </a>
+            </div>
+            
+            <div class="tool-card">
+                <div class="tool-header">
+                    <i class="fas fa-stethoscope tool-icon"></i>
+                    <h3 class="tool-title">Self-Diagnostics Guide</h3>
+                </div>
+                <p class="tool-description">
+                    Systematic diagnostic procedures for SharePoint Online administrators to identify and resolve issues before escalating to Microsoft Support.
+                </p>
+                <ul class="tool-features">
+                    <li>Comprehensive pre-support checklists</li>
+                    <li>Service health and connectivity verification</li>
+                    <li>User account and permission analysis</li>
+                    <li>Storage and performance diagnostics</li>
+                    <li>Quick fixes for common issues</li>
+                </ul>
+                <a href="self-diagnostics.html" class="tool-link">
+                    <i class="fas fa-arrow-right"></i>
+                    Start Diagnostics
+                </a>
+            </div>
+        </div>
+        
+        <div style="background: #f8f9fa; border-radius: 8px; padding: 30px; margin: 50px 0; text-align: center;">
+            <h2 style="color: #2c5aa0; margin-bottom: 20px;"><i class="fas fa-user-tie"></i> Expert Insights</h2>
+            <p style="font-size: 1.1rem; line-height: 1.6; color: #2c3e50; margin-bottom: 0;">
+                <strong>Nagendra Jayaram</strong> is a Microsoft Sr Technical Advisor with 18+ years of enterprise experience. 
+                Having resolved over 480 SharePoint escalations annually with 98% customer satisfaction, these tools represent 
+                the essential toolkit for effective SharePoint Online administration and troubleshooting.
+            </p>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 2px solid #f1f3f4;">
+            <p style="color: #7f8c8d; font-size: 0.95rem;">
+                This tools collection is continuously updated based on real-world enterprise scenarios and Microsoft's evolving SharePoint Online platform.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
