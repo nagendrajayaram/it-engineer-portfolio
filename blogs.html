@@ -234,18 +234,32 @@
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="logo.svg" alt="Nagendra Jayaram" class="logo">
-                <span class="nav-title">Nagendra Jayaram Portfolio</span>
+                <div class="logo-section">
+                    <div class="logo-container">
+                        <img src="logo.svg" alt="Nagendra Jayaram Logo" class="logo-image" width="84" height="84">
+                    </div>
+                    <div class="logo-text-container">
+                        <span class="logo-main-text">Nagendra Jayaram</span>
+                        <span class="logo-animated-text">Sr Technical Advisor</span>
+                    </div>
+                </div>
             </div>
-            <div class="nav-menu" id="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="details.html" class="nav-link">Details</a>
-                <a href="blogs.html" class="nav-link active">Blogs</a>
-            </div>
-            <div class="hamburger" id="hamburger">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blogs.html" class="nav-link active">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="details.html" class="nav-link">Details</a>
+                </li>
+            </ul>
+            <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -356,16 +370,6 @@
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2025 Nagendra Jayaram. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="https://www.linkedin.com/in/nagendrajayaram" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
 
     <script>
         // Tab switching functionality
@@ -390,13 +394,15 @@
         }
         
         // Hamburger menu functionality
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('nav-menu');
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
         
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
         
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
