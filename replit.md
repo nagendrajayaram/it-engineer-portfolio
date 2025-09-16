@@ -24,11 +24,11 @@ This is a professional HTML/CSS/JavaScript portfolio website for an IT engineer.
 - Updated education details with proper degree formatting and institution names
 - Refreshed achievements and certifications sections with current Microsoft awards and credentials
 - Added comprehensive Annexure section documenting 9 detailed project histories from 2007-2018
-- Created new details.html page containing Projects, Blogs, and Annexure sections
-- Reorganized portfolio structure: main page for strategic overview, details page for comprehensive information
+- Created new details.html page containing Projects, Blogs, and Annexure sections (later renamed to myjourney.html)
+- Reorganized portfolio structure: main page for strategic overview, professional journey page for comprehensive information
 - Updated LinkedIn profile links to correct URL format
 - Enhanced Professional Experience section with visual cards, icons, and improved readability
-- Fixed navigation JavaScript to allow proper linking to details.html page
+- Fixed navigation JavaScript to allow proper linking between pages
 - Updated web title from "IT Engineer" to "Nagendra Jayaram Portfolio" in navigation
 - Updated Microsoft Professional Journey section with comprehensive Sr Technical Advisor details including team size (25), enhanced responsibilities (9 detailed points), and measurable achievements highlighting 18+ years of leadership experience
 - Replaced Projects section with Innovation Leadership section featuring Formula AI League Core Team achievements from Microsoft Global Hackathon 2024
@@ -77,6 +77,26 @@ This is a professional HTML/CSS/JavaScript portfolio website for an IT engineer.
 - Removed legacy folder with spaces to eliminate potential URL encoding issues
 - Maintained all existing SharePoint tools content in new organized structure: Search Query Tool, Client Browser, Network Analysis, PowerShell Management, Self-Diagnostics
 - Successfully committed streamlined blog architecture to GitHub repository with technology-specific organization ready for future content expansion
+
+**September 16, 2025 (Latest Update - Tabbed Blogs Interface)**:
+- Created new blogs.html page with professional tabbed interface for direct blog navigation
+- Implemented six technology-specific tabs: SharePoint Online, SharePoint On-Premises, Microsoft Copilot, Exchange, Teams, PowerApps
+- Added responsive design with smooth animations and hover effects matching portfolio branding
+- Integrated existing SharePoint Online Tools content with direct linking to comprehensive tool guides
+- Created structured placeholder content for future technology-specific blog posts
+- Updated navigation in both index.html and details.html to include dedicated Blogs page link
+- Fixed JavaScript tab activation functionality to ensure reliable cross-browser performance
+- Added mobile-responsive design with hamburger menu integration for seamless user experience
+- Implemented professional styling with cards, gradients, and interactive elements
+- Successfully committed complete tabbed blog interface to GitHub repository for immediate user access
+
+**September 16, 2025 (Latest Update - Portfolio Restructure)**:
+- Renamed details.html to myjourney.html for clearer purpose identification
+- Updated page title and header to "Professional Journey" focusing on career progression
+- Removed blogs section from myjourney.html since blogs now have dedicated tabbed interface
+- Updated all navigation links across portfolio to point to myjourney.html instead of details.html
+- Cleaned up portfolio structure: index.html (main overview), blogs.html (technology blogs), myjourney.html (career journey)
+- Successfully committed portfolio restructure to GitHub repository with improved navigation clarity
 
 ## User Preferences
 
