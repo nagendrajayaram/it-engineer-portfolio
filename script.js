@@ -136,7 +136,7 @@ const portfolioData = {
             title: 'SharePoint Online Tools Guide: Essential Administrator\'s Toolkit',
             excerpt: 'Comprehensive collection of essential SharePoint Online tools including GitHub Search Query Tool, Client Browser, Network Analysis with Fiddler, PowerShell Management, and Self-Diagnostics procedures.',
             date: 'September 2025',
-            url: 'Blogs/SharePoint Online/Tools/index.html'
+            url: 'Blogs/SharepointOnline/Tools/index.html'
         },
         {
             id: '2',
