@@ -140,27 +140,20 @@ const portfolioData = {
         },
         {
             id: '2',
-            title: 'SharePoint Online Troubleshooting Scenarios: Real-World Solutions',
-            excerpt: 'Step-by-step solutions for common SharePoint issues including search problems, authentication failures, performance issues, and workflow troubleshooting with proven methodologies.',
-            date: 'September 2025',
-            url: 'sharepoint-troubleshooting-scenarios.html'
-        },
-        {
-            id: '3',
             title: 'Mastering Incident Escalation Management',
             excerpt: 'Best practices for managing escalated incidents, from intake assessment to permanent resolution. Learn how to bridge the gap between customers, product teams, and engineering for successful outcomes.',
             date: 'September 2024',
             url: ''
         },
         {
-            id: '4',
+            id: '3',
             title: 'Automation in Customer Support: A Microsoft Perspective',
             excerpt: 'How Power Automate and Copilot integration transformed our escalation tracking and reporting processes, improving efficiency and customer satisfaction.',
             date: 'August 2024',
             url: ''
         },
         {
-            id: '5',
+            id: '4',
             title: 'Building Cross-Functional Collaboration in Technical Support',
             excerpt: 'Strategies for effective stakeholder communication and collaboration between support, engineering, and product teams to drive root-cause analysis and solutions.',
             date: 'July 2024',
